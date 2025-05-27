@@ -1,0 +1,165 @@
+﻿@page
+@model RequestModel
+@{
+    ViewData["Title"] = "Форма заявки";
+}
+
+@{
+    Layout = "_Layout4";
+}
+<style>
+    body {
+        /* background-color: #121212; Тёмный фон, чтобы белый текст был виден */
+        color: white; /* Все тексты будут белыми */
+        text-align: center;
+        margin-top: 2%;
+    }
+</style>
+<h4>Техническая поддержка. Форма заявки</h4>
+<a href="/ru" class="back-to-home" aria-label="Вернуться на главную">
+    <div class="back-circle">
+        <span class="arrow a1">&lt;</span>
+        <span class="arrow a2">&lt;</span>
+        <span class="arrow a3">&lt;</span>
+    </div>
+    <span class="back-label">Назад</span>
+</a>
+<form class="form" id="clientRequestForm" method="post">
+
+    <!--<div asp-validation-summary="All" class="text-danger"></div>-->
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group tooltip-wrapper">
+        <label asp-for="ClientRequest.ClientName"></label>
+        <input type="text"
+               id="ClientRequest_ClientName"
+               name="ClientRequest.ClientName"
+               maxlength="60"
+               required
+               class="form-control"
+               
+               data-error="Пожалуйста, введите имя"
+               oninvalid="setCustomError(this)"
+               oninput="clearCustomError(this)" />
+        
+
+        <div class="tooltip-popup"></div>
+    </div>
+    
+    <div class="form-group tooltip-wrapper">
+        <label asp-for="ClientRequest.CompanyName"></label>
+        <input type="text"
+               id="ClientRequest_CompanyName"
+               name="ClientRequest.CompanyName"
+               maxlength="60"
+               required
+               class="form-control"
+               data-error="Пожалуйста, введите Название Компании"
+               oninvalid="setCustomError(this)"
+               oninput="clearCustomError(this)" />
+        <div class="tooltip-popup"></div>
+    </div>
+    
+    <div class="form-group tooltip-wrapper">
+        <label asp-for="ClientRequest.PhoneNumber"></label>
+        <input type="tel"
+               id="ClientRequest_PhoneNumber"
+               name="ClientRequest.PhoneNumber"
+               required
+               class="form-control"
+               pattern="^\+?[0-9\s\-]{7,15}$"
+               data-error="Пожалуйста, введите Телефонный номер"
+               oninvalid="setCustomError(this)"
+               oninput="clearCustomError(this)" />
+        <div class="tooltip-popup"></div>
+    </div>
+    
+    <div class="form-group tooltip-wrapper">
+        <label asp-for="ClientRequest.Email"></label>
+        <input type="email"
+               id="ClientRequest_Email"
+               name="ClientRequest.Email"
+               required
+               class="form-control"
+               data-error="Пожалуйста, введите Email"
+               oninvalid="setCustomError(this)"
+               oninput="clearCustomError(this)" />
+        <div class="tooltip-popup"></div>
+    </div>
+
+    <div class="form-group tooltip-wrapper">
+        <label asp-for="ClientRequest.Message"></label>
+        <textarea asp-for="ClientRequest.Message"
+                  class="form-control"
+                  maxlength="600"
+                  required
+                  data-error="Пожалуйста, введите сообщение"
+                  oninvalid="setCustomError(this)"
+                  oninput="clearCustomError(this)"></textarea>
+        <div class="tooltip-popup"></div>
+    </div>
+    <div class="form-group tooltip-wrapper">
+        <label class="control-label">Сколько будет @Model.CaptchaNum1 + @Model.CaptchaNum2?</label>
+
+        <input type="hidden" asp-for="CaptchaNum1" />
+        <input type="hidden" asp-for="CaptchaNum2" />
+
+        <input type="number"
+               asp-for="CaptchaAnswer"
+               class="form-control"
+               required
+               data-error="Введите правильный ответ"
+               oninvalid="setCustomError(this)"
+               oninput="clearCustomError(this)" />
+
+        <span asp-validation-for="CaptchaAnswer" class="text-danger"></span>
+        <div class="tooltip-popup"></div>
+    </div>
+
+    <div class="form-group tooltip-wrapper">
+    <button type="submit" class="btn btn-primary mt-3">Отправить</button></div>
+</form>
+
+
+<body>
+   
+   
+</body>
+
+
+
+<script>
+    function setCustomError(input) {
+        const message = input.dataset.error || 'Это поле обязательно';
+        input.setCustomValidity(message);
+
+        const wrapper = input.closest('.tooltip-wrapper');
+        const tooltip = wrapper.querySelector('.tooltip-popup');
+        tooltip.textContent = message;
+        wrapper.classList.add('show-tooltip');
+    }
+
+    function clearCustomError(input) {
+        input.setCustomValidity('');
+        const wrapper = input.closest('.tooltip-wrapper');
+        wrapper.classList.remove('show-tooltip');
+    }
+    function setCustomError(input) {
+        if (input.validity.valueMissing) {
+            input.setCustomValidity(input.dataset.error || 'Это поле обязательно');
+        } else if (input.validity.typeMismatch || input.validity.patternMismatch) {
+            input.setCustomValidity(input.dataset.error || 'Неверный формат');
+        } else {
+            input.setCustomValidity('');
+        }
+
+        const wrapper = input.closest('.tooltip-wrapper');
+        const tooltip = wrapper.querySelector('.tooltip-popup');
+        tooltip.textContent = input.validationMessage;
+        wrapper.classList.add('show-tooltip');
+    }
+</script>
+
+
+
+
+

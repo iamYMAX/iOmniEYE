@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Select Language";
+}
+
+
+<div class="content">
+<div class="text-center">
+    <h1 class="display-4">IOmniEYE</h1>
+    
+
+        <!-- Main Text with Dynamic Words -->
+        <p class="main-text">
+            <span class="changing-text" id="word1"></span> IT <span class="changing-text" id="word2"></span>
+        </p>
+
+        <!-- Language Buttons -->
+        <div class="language-buttons">
+            <button class="language-button" onclick="window.location.href='ru'">Русский</button>
+            <button class="language-button" onclick="window.location.href='en'">English</button>
+        </div>
+        <div class="tag-cloud">
+            <span data-weight="7" onclick="window.location.href='ru#consulting'">IT Consulting</span>
+            <span data-weight="13" onclick="window.location.href='ru#outsorce'" >IT Outsource</span>
+            <span data-weight="5">Web Development & App Development</span>
+            <span data-weight="4">IP Telephony</span>           
+            <span data-weight="6">СКС Видео Наблюдение</span>
+            <span data-weight="9">Network & Servers</span>
+            <span data-weight="4">Optimization System</span>
+            
+        </div>
+        
+    </div>
+</div>
