@@ -11,6 +11,7 @@ namespace iOmniEYE.Services
 {
     public interface ITelegramBotService
     {
+
         Task SendRequestAsync(ClientRequest request);
         Task SendRequestToAdminAsync(ClientRequest request);
         Task SendRequestToAssignedAndGeneralAsync(ClientRequest request);
@@ -182,6 +183,14 @@ namespace iOmniEYE.Services
 
             if (telegramId != req.AssignedUser.TelegramId)
                 return;
+            if (req.Status == "Cancelled" || req.Status == "Closed" || req.Status == "Done")
+            {
+                await _botClient.SendTextMessageAsync(
+                    chatId: telegramId,
+                    text: $"Заявка #{req.Id} уже имеет финальный статус: {req.Status}. Дальнейшие изменения невозможны."
+                );
+                return;
+            }
 
             switch (command)
             {
@@ -210,9 +219,27 @@ namespace iOmniEYE.Services
                     req.Status = "Done";
                     break;
 
+                case "closed":
+                    req.Status = "Closed";
+                    break;
+
+                case "cancelled":
+                    req.Status = "Cancelled";
+                    req.AssignedUserId = null;
+                    await context.SaveChangesAsync();
+
+                    await SendRequestToAdminAsync(req);
+
+                    await _botClient.SendTextMessageAsync(
+                        chatId: telegramId,
+                        text: $"Вы отменили заявку #{req.Id}. Она возвращена админу для повторного назначения."
+                    );
+                    return;
+
                 default:
                     return;
             }
+
 
             await context.SaveChangesAsync();
 
@@ -243,7 +270,7 @@ namespace iOmniEYE.Services
                 return;
             }
 
-            foreach (var req in user.AssignedRequests)
+            foreach (var req in user.AssignedRequests.Where(r => r.Status != "Closed" && r.Status != "Cancelled" && r.Status != "Done"))
             {
                 var msg = $"Заявка #{req.Id}\n" +
                           $"От: {req.ClientName}\n" +
