@@ -6,6 +6,7 @@ using iOmniEYE.Data;
 using iOmniEYE.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Azure.Core;
 
 namespace iOmniEYE.Services
 {
@@ -115,7 +116,7 @@ namespace iOmniEYE.Services
             {
          new[] { InlineKeyboardButton.WithCallbackData("✅ Принять", $"accept_{request.Id}") },
     new[] { InlineKeyboardButton.WithCallbackData("❌ Отклонить", $"reject_{request.Id}") },
-    new[] { InlineKeyboardButton.WithCallbackData("⏳ В работе", $"inprogress_{request.Id}") },
+    
     new[] { InlineKeyboardButton.WithCallbackData("✔️ Завершена", $"done_{request.Id}") }
     });
 
@@ -285,25 +286,62 @@ namespace iOmniEYE.Services
                 return;
             }
 
-            if (user.AssignedRequests == null || !user.AssignedRequests.Any())
+            List<ClientRequest> requestsToShow;
+
+            if (telegramId == AdminChatId)
             {
-                await _botClient.SendTextMessageAsync(telegramId, "У вас нет назначенных заявок.");
+                // Админ видит все заявки со статусом "New" и свои активные заявки
+                requestsToShow = await context.ClientRequests
+                    .Where(r => r.Status == "New" || r.AssignedUserId == user.Id)
+                    .ToListAsync();
+            }
+            else
+            {
+                // Обычный пользователь видит только свои активные заявки
+                requestsToShow = user.AssignedRequests
+                    .Where(r => r.Status != "Closed" && r.Status != "Cancelled" && r.Status != "Done")
+                    .ToList();
+            }
+
+            if (!requestsToShow.Any())
+            {
+                await _botClient.SendTextMessageAsync(telegramId, "У вас нет активных заявок.");
                 return;
             }
 
-            foreach (var req in user.AssignedRequests.Where(r => r.Status != "Closed" && r.Status != "Cancelled" && r.Status != "Done"))
+            // Получаем список всех пользователей для кнопок назначения
+            var allUsers = await context.CrmUsers.ToListAsync();
+
+            foreach (var req in requestsToShow)
             {
                 var msg = $"Заявка #{req.Id}\n" +
                           $"От: {req.ClientName}\n" +
                           $"Сообщение: {req.Message}\n" +
                           $"Статус: {req.Status}";
 
-                var buttons = new InlineKeyboardMarkup(new[]
+                InlineKeyboardMarkup buttons = null;
+
+                if (req.Status == "New" && telegramId == AdminChatId)
                 {
-                    new[] { InlineKeyboardButton.WithCallbackData("В работе", $"inprogress_{req.Id}") },
-                    new[] { InlineKeyboardButton.WithCallbackData("Закрыта", $"closed_{req.Id}") },
-                    new[] { InlineKeyboardButton.WithCallbackData("Отменена", $"cancelled_{req.Id}") }
-                });
+                    // Для админа и "New" — кнопки с именами всех пользователей
+                    var userButtons = allUsers
+                        .Select(u => new[] {
+                    InlineKeyboardButton.WithCallbackData(u.DisplayName, $"assign_{req.Id}_{u.Id}")
+                        })
+                        .ToArray();
+
+                    buttons = new InlineKeyboardMarkup(userButtons);
+                }
+                else if (req.Status != "Closed" && req.Status != "Cancelled" && req.Status != "Done")
+                {
+                    // Стандартные кнопки управления
+                    buttons = new InlineKeyboardMarkup(new[]
+                    {
+                new[] { InlineKeyboardButton.WithCallbackData("❌ Отклонить", $"reject_{req.Id}") },
+                new[] { InlineKeyboardButton.WithCallbackData("⏳ В работе", $"inprogress_{req.Id}") },
+                new[] { InlineKeyboardButton.WithCallbackData("✔️ Завершена", $"done_{req.Id}") }
+            });
+                }
 
                 await _botClient.SendTextMessageAsync(
                     chatId: telegramId,
