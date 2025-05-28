@@ -113,24 +113,45 @@ namespace iOmniEYE.Services
 
             var buttons = new InlineKeyboardMarkup(new[]
             {
-                new[] { InlineKeyboardButton.WithCallbackData("Принять", $"accept_{request.Id}") },
-                new[] { InlineKeyboardButton.WithCallbackData("Отклонить", $"reject_{request.Id}") },
-                new[] { InlineKeyboardButton.WithCallbackData("В работе", $"inprogress_{request.Id}") },
-                new[] { InlineKeyboardButton.WithCallbackData("Завершена", $"done_{request.Id}") }
-            });
+         new[] { InlineKeyboardButton.WithCallbackData("✅ Принять", $"accept_{request.Id}") },
+    new[] { InlineKeyboardButton.WithCallbackData("❌ Отклонить", $"reject_{request.Id}") },
+    new[] { InlineKeyboardButton.WithCallbackData("⏳ В работе", $"inprogress_{request.Id}") },
+    new[] { InlineKeyboardButton.WithCallbackData("✔️ Завершена", $"done_{request.Id}") }
+    });
 
-            await _botClient.SendTextMessageAsync(
-                chatId: assignedUser.TelegramId,
-                text: message,
-                replyMarkup: buttons
-            );
+            if (assignedUser.TelegramId == GeneralChatId)
+            {
+                // Если назначено в общий чат - отправляем туда сообщение с кнопками
+                await _botClient.SendTextMessageAsync(
+                    chatId: GeneralChatId,
+                    text: message,
+                    replyMarkup: buttons
+                );
+            }
+            else
+            {
+                // Назначенному пользователю - сообщение с кнопками
+                await _botClient.SendTextMessageAsync(
+                    chatId: assignedUser.TelegramId,
+                    text: message,
+                    replyMarkup: buttons
+                );
 
-            await _botClient.SendTextMessageAsync(
-                chatId: GeneralChatId,
-                text: message,
-                replyMarkup: buttons
-            );
+                // Админу отправляем уведомление с ID и именем назначенного пользователя
+                await _botClient.SendTextMessageAsync(
+                    chatId: AdminChatId,
+                    text: $"Заявка #{request.Id} назначена пользователю с ID {assignedUser.Id} и именем {assignedUser.DisplayName}"
+                );
+
+                // В общий чат - только уведомление без кнопок
+                await _botClient.SendTextMessageAsync(
+                    chatId: GeneralChatId,
+                    text: $"[Общий чат]\n{message}"
+                );
+            }
         }
+
+
 
         public async Task HandleCallbackQueryAsync(string callbackData, long telegramId)
         {
