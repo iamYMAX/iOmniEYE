@@ -5,14 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OmniEye - Комплексные IT Решения</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site2.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/grotem_style.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/iOmniEYE.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
     
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body class="bg-gray-900 text-gray-100 grotem-body">
+            <script>
+              (function() {
+                const theme = localStorage.getItem('themePreference');
+                if (theme === 'dark') {
+                  document.body.classList.add('theme-dark');
+                } else {
+                  document.body.classList.remove('theme-dark'); // Explicitly remove if light is preferred
+                }
+              })();
+            </script>
     <!-- Navbar -->
     <header class="bg-gray-800 text-white py-2 fixed top-0 w-full z-50">
         <div class="container mx-auto flex justify-between items-center px-4">
@@ -47,7 +58,7 @@
                     </div>
                 </div>
                 <a href="#about" class="mx-2 text-sm sm:text-base hover:text-burgundy">О Нас</a>
-               
+                <button id="themeSwitcherButton" class="mx-2 text-sm sm:text-base hover:text-burgundy" style="background: none; border: none; cursor: pointer; padding: 0.5rem;">Switch to Dark Mode</button>
             </nav>
         </div>
     </header>
@@ -98,6 +109,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site2.js" asp-append-version="true"></script>
     <script src="~/js/site3.js" asp-append-version="true"></script>
+    <script src="~/js/theme_switcher.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

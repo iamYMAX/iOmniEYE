@@ -1,0 +1,1069 @@
+/* CSS Custom Properties for Theming */
+:root {
+    /* Light Theme (Default) */
+    --theme-bg-color: #FFFFFF;
+    --theme-text-color: #212529;
+    --theme-accent-color: #00BFA5;
+    --theme-accent-hover-color: #008c7a;
+    --theme-card-bg-color: #F8F9FA; /* Light gray for cards */
+    --theme-border-color: #DEE2E6; /* Light border color */
+    --theme-form-bg-color: #FFFFFF;
+    --theme-form-text-color: #212529;
+    --theme-form-border-color: #CED4DA;
+    --theme-form-focus-border-color: #00BFA5;
+    --theme-form-focus-shadow-color: rgba(0, 191, 165, 0.25);
+    --theme-header-bg-color: #FFFFFF; /* Light header */
+    --theme-header-text-color: #212529;
+    --theme-footer-bg-color: #F8F9FA; /* Light footer */
+    --theme-footer-text-color: #6C757D; /* Muted footer text */
+    --theme-footer-icon-fill: #6C757D;
+    --theme-subtle-overlay-color: rgba(0, 0, 0, 0.5); /* For things like banner text background */
+    --theme-code-bg-color: #e9ecef;
+    --theme-code-text-color: #212529;
+    --theme-caret-color: #212529; /* For typing animation cursor */
+}
+
+.theme-dark {
+    /* Dark Theme Overrides */
+    --theme-bg-color: #1A1A1A;
+    --theme-text-color: #E0E0E0;
+    --theme-accent-color: #00BFA5;
+    --theme-accent-hover-color: #00DBC2; /* Lighter accent for dark bg */
+    --theme-card-bg-color: #2C2C2C;
+    --theme-border-color: #444444;
+    --theme-form-bg-color: #2C2C2C;
+    --theme-form-text-color: #E0E0E0;
+    --theme-form-border-color: #444444;
+    /* --theme-form-focus-border-color remains #00BFA5 */
+    /* --theme-form-focus-shadow-color can remain rgba(0, 191, 165, 0.25) or be adjusted if needed */
+    --theme-header-bg-color: #1F1F1F;
+    --theme-header-text-color: #E0E0E0;
+    --theme-footer-bg-color: #1F1F1F;
+    --theme-footer-text-color: #A0A0A0;
+    --theme-footer-icon-fill: #A0A0A0;
+    --theme-subtle-overlay-color: rgba(0, 0, 0, 0.7); /* Stronger overlay for dark */
+    --theme-code-bg-color: #2C2C2C;
+    --theme-code-text-color: #E0E0E0;
+    --theme-caret-color: #E0E0E0;
+}
+
+/* Basic Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px; /* Base font size */
+    scroll-behavior: smooth;
+}
+
+/* Updated body to use CSS variables */
+body.grotem-body {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: var(--theme-bg-color);
+    color: var(--theme-text-color);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+body.grotem-body h1,
+body.grotem-body h2,
+body.grotem-body h3,
+body.grotem-body h4,
+body.grotem-body h5,
+body.grotem-body h6 {
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    color: var(--theme-text-color); /* Updated to use variable */
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--theme-text-color); /* Ensure paragraphs also use theme text color */
+}
+
+body.grotem-body a {
+    color: var(--theme-accent-color);
+    text-decoration: none;
+}
+
+body.grotem-body a:hover {
+    text-decoration: underline;
+    color: var(--theme-accent-hover-color);
+}
+
+/* Basic Container - No color changes needed here */
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* Renamed .dark-card to .content-card and using variables */
+.content-card {
+    background-color: var(--theme-card-bg-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--theme-border-color);
+    color: var(--theme-text-color);
+}
+
+/* Buttons updated to use variables */
+.btn-grotem-primary {
+    background-color: var(--theme-accent-color);
+    color: var(--theme-bg-color); /* Contrasting text color */
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 500;
+    border: 1px solid var(--theme-accent-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-grotem-primary:hover {
+    background-color: var(--theme-accent-hover-color);
+    border-color: var(--theme-accent-hover-color);
+    color: var(--theme-bg-color); /* Contrasting text color */
+    text-decoration: none;
+}
+
+.btn-grotem-secondary {
+    background-color: transparent;
+    color: var(--theme-accent-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 500;
+    border: 1px solid var(--theme-accent-color);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-grotem-secondary:hover {
+    background-color: var(--theme-accent-color);
+    color: var(--theme-bg-color); /* Contrasting text color */
+    text-decoration: none;
+}
+
+/* Forms updated to use variables */
+body.grotem-body .form-control {
+    background-color: var(--theme-form-bg-color);
+    color: var(--theme-form-text-color);
+    border: 1px solid var(--theme-form-border-color);
+    border-radius: 4px;
+}
+
+body.grotem-body .form-control:focus {
+    background-color: var(--theme-form-bg-color); /* Or slightly different shade if desired */
+    color: var(--theme-form-text-color);
+    border-color: var(--theme-form-focus-border-color);
+    box-shadow: 0 0 0 0.2rem var(--theme-form-focus-shadow-color);
+}
+
+body.grotem-body label {
+    color: var(--theme-text-color);
+}
+
+/* Header/Navbar Styling updated to use variables */
+body.grotem-body header.bg-gray-800 {
+    background-color: var(--theme-header-bg-color) !important;
+    color: var(--theme-header-text-color) !important;
+}
+
+body.grotem-body header.bg-gray-800 a.navbar-brand,
+body.grotem-body header.bg-gray-800 nav a {
+    color: var(--theme-header-text-color);
+}
+
+body.grotem-body header.bg-gray-800 nav a:hover,
+body.grotem-body header.bg-gray-800 a.navbar-brand:hover {
+    color: var(--theme-accent-color);
+}
+
+/* Footer Styling updated to use variables */
+body.grotem-body footer.bg-gray-800 {
+    background-color: var(--theme-footer-bg-color) !important;
+    color: var(--theme-footer-text-color) !important;
+}
+
+body.grotem-body footer.bg-gray-800 .social-links a svg {
+    fill: var(--theme-footer-icon-fill);
+}
+
+body.grotem-body footer.bg-gray-800 .social-links a:hover svg {
+    fill: var(--theme-accent-color);
+}
+
+body.grotem-body footer.text-muted {
+    color: var(--theme-footer-text-color) !important;
+}
+
+/* Specific component styles updated to use variables */
+body.grotem-body .service-card {
+    background-color: var(--theme-card-bg-color);
+    border: 1px solid var(--theme-border-color);
+    color: var(--theme-text-color);
+    background-image: none !important;
+}
+
+body.grotem-body .service-card::before {
+    /* Using currentColor with opacity for the icon */
+    color: currentColor;
+    opacity: 0.1; /* Adjust as needed for subtlety */
+    background-color: transparent;
+    /* Ensure other properties from original site2.css like position, font-family are still in effect or added if needed */
+}
+
+body.grotem-body .service-card h3,
+body.grotem-body .service-card p {
+    color: var(--theme-text-color);
+}
+
+body.grotem-body .service-details {
+    background: var(--theme-subtle-overlay-color);
+    color: var(--theme-text-color);
+}
+
+/* Typing animation container */
+body.grotem-body .typing-container {
+    border-right-color: var(--theme-caret-color); /* Cursor color */
+}
+
+@keyframes caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--theme-caret-color); }
+}
+
+/* Banner text adjustments */
+body.grotem-body #banner .bg-black.bg-opacity-50 {
+    background-color: var(--theme-subtle-overlay-color);
+}
+
+body.grotem-body #banner h2,
+body.grotem-body #banner p {
+    color: #FFFFFF; /* Explicitly white for max contrast on banners */
+}
+
+/* Add any other specific component styles here, refactoring to use variables */
+/* For example, if there are styles for code blocks, tables, etc. */
+pre, code {
+    background-color: var(--theme-code-bg-color);
+    color: var(--theme-code-text-color);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+pre {
+    padding: 1em;
+    overflow: auto;
+}
+
+/* Theme Switcher Button */
+#themeSwitcherButton {
+    background-color: var(--theme-card-bg-color); /* Use card background for some contrast */
+    color: var(--theme-text-color);
+    border: 1px solid var(--theme-border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#themeSwitcherButton:hover {
+    background-color: var(--theme-accent-color);
+    color: var(--theme-bg-color); /* Text color that contrasts with accent */
+    border-color: var(--theme-accent-color);
+}
+
+/* Adjustments for header context if needed - the button is placed inside a nav */
+/* This ensures it uses themed properties even if nav has hardcoded Tailwind colors */
+header nav #themeSwitcherButton {
+     background-color: var(--theme-header-bg-color);
+     color: var(--theme-header-text-color);
+     border: 1px solid var(--theme-accent-color); /* Give it an accent border in header */
+}
+header nav #themeSwitcherButton:hover {
+    background-color: var(--theme-accent-color);
+    color: var(--theme-header-bg-color); /* Or a color that contrasts well with accent */
+}
+
+/* --- Refinements for ru.cshtml and en.cshtml --- */
+
+/* General Section Styling */
+section {
+    padding-top: 3rem; /* Consistent top/bottom padding for sections */
+    padding-bottom: 3rem;
+}
+
+/* Override Tailwind's default container padding if needed, or ensure our .container is used consistently */
+/* .container class from base style should handle max-width and centering. */
+
+/* Banner Section */
+#banner {
+    min-height: 60vh; /* Adjust as needed */
+    display: flex; /* For centering content */
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    position: relative; /* For overlay */
+}
+#banner .bg-black.bg-opacity-50 { /* This is the overlay div */
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    background-color: var(--theme-subtle-overlay-color);
+}
+#banner h2, #banner p { /* Ensure text on banner is always light for contrast */
+    color: #FFFFFF;
+}
+#banner h2 {
+    font-size: 2.5rem; /* Example size */
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+#banner p {
+    font-size: 1.2rem;
+}
+
+/* Home Section (Welcome Text & Typing Animation) */
+#home, #section-2 { /* section-2 seems similar to home */
+    text-align: center;
+}
+#home h1, #home h2, #section-2 h1, #section-2 h2 {
+    color: var(--theme-text-color);
+    margin-bottom: 1rem;
+}
+#home .typing-container, #section-2 .typing-container {
+    font-size: 1.5rem; /* Adjust typing text size */
+    color: var(--theme-accent-color); /* Make typing text accent color */
+    display: inline-block; /* Ensure proper layout */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    min-height: 2.5em; /* Ensure space for text */
+}
+/* Ensure caret animation uses theme variable (already done in previous step) */
+
+/* Services Section (#services) */
+#services h2.text-center { /* Assuming h2 is used for section title */
+    margin-bottom: 2rem;
+    font-size: 2.25rem;
+    color: var(--theme-text-color);
+}
+
+/* Service Card Refinements */
+.service-card { /* Target the existing class used in ru.cshtml and en.cshtml */
+    background-color: var(--theme-card-bg-color);
+    color: var(--theme-text-color);
+    border: 1px solid var(--theme-border-color);
+    border-radius: 8px; /* Consistent border radius */
+    padding: 1.5rem;
+    margin-bottom: 1.5rem; /* Consistent margin */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Subtle shadow, more visible in light theme */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* For consistent card height in a row if using flexbox for layout */
+    display: flex;
+    flex-direction: column;
+    position: relative; /* For service-details positioning */
+    overflow: hidden; /* To contain service-details */
+}
+
+.theme-dark .service-card {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Darker shadow for dark theme */
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.theme-dark .service-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.service-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--theme-text-color);
+    margin-bottom: 0.75rem;
+}
+
+.service-card p { /* Main description paragraph */
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Allow p to grow to push details down or manage space */
+}
+
+/* Service Card Icons (using ::before from site2.css) */
+.service-card::before {
+    font-family: "Font Awesome 6 Free"; /* Make sure this is still loaded */
+    font-weight: 900; /* Solid icons often look better for this style */
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem; /* Position to top right */
+    font-size: 2rem; /* Adjust icon size */
+    color: var(--theme-accent-color); /* Use accent color for icons */
+    opacity: 0.7; /* Slightly transparent */
+    z-index: 0;
+    /* Removed background-color: transparent from previous step, ensure it's not needed */
+}
+
+
+/* Service Details Popup (on hover) */
+.service-details {
+    position: absolute;
+    bottom: 0; /* Start from bottom */
+    left: 0;
+    right: 0;
+    background-color: var(--theme-card-bg-color); /* Use card bg for seamless look */
+    border-top: 1px solid var(--theme-border-color);
+    color: var(--theme-text-color);
+    padding: 1rem;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    height: 100%; /* Cover the whole card */
+    overflow-y: auto;
+    transform: translateY(100%); /* Initially hidden below */
+    opacity: 0;
+    z-index: 1; /* Above ::before icon */
+}
+
+.service-card:hover .service-details {
+    transform: translateY(0); /* Slide in from bottom */
+    opacity: 1;
+}
+
+.service-details h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--theme-accent-color); /* Accent for sub-heading */
+    margin-bottom: 0.5rem;
+}
+.service-details p, .service-details ul {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+.service-details ul {
+    list-style-position: inside;
+    padding-left: 0.5rem;
+}
+.service-details a {
+    color: var(--theme-accent-color);
+    font-weight: 500;
+}
+.service-details a:hover {
+    color: var(--theme-accent-hover-color);
+}
+
+
+/* Outsource Section (#outsorce on ru.cshtml) & Consulting (#consulting) */
+#outsorce, #consulting {
+    /* General styling for these text-heavy sections */
+}
+#outsorce h2, #consulting h2 { /* Section titles */
+    margin-bottom: 2rem;
+    font-size: 2.25rem;
+    color: var(--theme-text-color);
+    text-align: center;
+}
+#outsorce section, #consulting section { /* Sub-sections within outsource/consulting */
+    padding-top: 1rem; /* Less padding for nested sections */
+    padding-bottom: 1rem;
+}
+#outsorce .bg-gray-800, #consulting .bg-gray-800 { /* Targeting existing Tailwind classes */
+    background-color: var(--theme-card-bg-color) !important; /* Use card bg */
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--theme-border-color);
+}
+#outsorce h3, #outsorce h4, #consulting h3, #consulting h4 { /* Sub-headings within these sections */
+    color: var(--theme-accent-color);
+    margin-bottom: 0.75rem;
+}
+#outsorce ul, #consulting ul {
+    list-style: disc;
+    list-style-position: inside;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+#outsorce li, #consulting li {
+    margin-bottom: 0.5rem;
+}
+
+/* About Us Section (#about) */
+#about h2.text-center {
+    margin-bottom: 1rem;
+    font-size: 2.25rem;
+    color: var(--theme-text-color);
+}
+#about p.text-lg.text-center { /* Main description */
+    margin-bottom: 2rem;
+    font-size: 1.1rem; /* Slightly larger for emphasis */
+    color: var(--theme-text-color);
+}
+#about h3.text-2xl { /* "Наши Преимущества" */
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    color: var(--theme-text-color);
+}
+#about .bg-gray-700 { /* Cards for advantages */
+    background-color: var(--theme-card-bg-color) !important;
+    color: var(--theme-text-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem; /* Ensure spacing if they stack on mobile */
+    border: 1px solid var(--theme-border-color);
+    height: 100%; /* For consistent height */
+}
+#about .bg-gray-700 h4 {
+    color: var(--theme-accent-color);
+    font-size: 1.25rem;
+}
+
+/* Social Panel (Alpine.js component in ru.cshtml) */
+.social-panel-fixed-button {
+    background-color: var(--theme-accent-color) !important; /* Make it accent */
+    border-radius: 50% 0 0 50%; /* Style as a tab */
+    padding: 0.5rem !important; /* Adjust padding */
+    writing-mode: vertical-rl;
+    transform: translateY(-50%) rotate(0deg); /* Reset rotation if not needed */
+    right: 0px; /* Attach to right edge */
+    top: 70%; /* Adjust vertical position */
+    /* Remove pulse animation for now, or restyle it */
+}
+.social-panel-fixed-button .social-panel-pulse-wrapper,
+.social-panel-fixed-button .social-panel-pulse-circle,
+.social-panel-fixed-button .social-panel-pulse-text {
+    animation: none; /* Disable pulse for now */
+    transform: none; /* Reset transforms */
+    width: auto; height: auto; background: none;
+}
+.social-panel-fixed-button svg {
+    fill: var(--theme-bg-color); /* Icon color to contrast with accent */
+    width: 24px; height: 24px;
+}
+
+.social-panel-popup {
+    background-color: var(--theme-card-bg-color) !important;
+    border: 1px solid var(--theme-border-color) !important;
+    border-radius: 8px;
+    padding: 1rem !important;
+    gap: 1rem !important;
+    right: 60px; /* Position next to button */
+    top: 70%;
+    transform: translateY(-50%);
+}
+.social-panel-icon-link svg {
+    fill: var(--theme-text-color) !important; /* Themed icon color */
+    width: 30px; height: 30px;
+}
+.social-panel-icon-link:hover svg {
+    fill: var(--theme-accent-color) !important;
+}
+
+/* Remove conflicting Tailwind color classes if `!important` is not enough or for cleanup */
+/* e.g. .text-white, .text-gray-100, .bg-gray-700, .bg-gray-800 when used on elements */
+/* that should now be controlled by the theme variables. This part is context-dependent */
+/* and hard to specify without seeing the rendered page with new CSS. */
+
+/* Example of removing a conflicting Tailwind class effect if it was on body */
+body.grotem-body.bg-gray-900 {
+    background-color: var(--theme-bg-color) !important;
+}
+body.grotem-body.text-gray-100 {
+    color: var(--theme-text-color) !important;
+}
+
+/* Styles for Index.cshtml (Language Selector Page) */
+
+/* Ensure .content on Index.cshtml is centered and uses theme colors */
+.page-index-content { /* Add this class to the main div in Index.cshtml if not already targetable */
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.page-index-content .display-4 { /* Main IOmniEYE title */
+    font-size: 3rem; /* Adjust size as needed */
+    font-weight: 700;
+    color: var(--theme-text-color);
+    margin-bottom: 1.5rem;
+    background-color: transparent !important; /* Remove previous background from site.css */
+}
+
+.page-index-content .main-text {
+    font-size: 1.5rem;
+    color: var(--theme-text-color);
+    margin-bottom: 2rem;
+    background-color: transparent !important; /* Remove previous background from site.css */
+}
+
+.page-index-content .changing-text { /* The spans that get dynamically updated */
+    color: var(--theme-accent-color);
+    font-weight: 600;
+}
+
+/* Language Buttons */
+.language-buttons {
+    display: flex;
+    gap: 1.5rem; /* Increased gap */
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.language-button { /* This class is on the buttons on Index.cshtml */
+    /* Apply btn-grotem-primary styles */
+    background-color: var(--theme-accent-color);
+    color: var(--theme-bg-color); /* Text color that contrasts with accent */
+    padding: 0.75rem 2rem; /* Larger padding */
+    border-radius: 8px; /* More rounded */
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600; /* Bolder text */
+    font-size: 1.1rem; /* Larger font */
+    border: 1px solid var(--theme-accent-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.theme-dark .language-button { /* Ensure text color contrasts in dark mode */
+     color: #FFFFFF; /* Or a very light gray if accent is dark */
+}
+
+
+.language-button:hover {
+    background-color: var(--theme-accent-hover-color);
+    border-color: var(--theme-accent-hover-color);
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+     color: var(--theme-bg-color); /* Ensure text color remains correct on hover */
+}
+ .theme-dark .language-button:hover {
+     color: #FFFFFF;
+ }
+
+
+/* Tag Cloud */
+.tag-cloud {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.tag-cloud span {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.3rem;
+    background-color: var(--theme-card-bg-color);
+    color: var(--theme-text-color);
+    border-radius: 20px; /* Pill shape */
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    border: 1px solid var(--theme-border-color);
+}
+
+.tag-cloud span:hover {
+    background-color: var(--theme-accent-color);
+    color: var(--theme-bg-color); /* Text color contrasting with accent */
+    border-color: var(--theme-accent-color);
+    transform: scale(1.05);
+}
+.theme-dark .tag-cloud span:hover {
+    color: #FFFFFF; /* Or a very light gray if accent is dark */
+}
+
+/* Style for the theme switcher button in the simple _Layout.cshtml header */
+/* This is basic; can be refined if the header structure becomes more complex */
+#_LayoutSimpleHeader { /* Assuming we wrap the button in a div with this ID for styling */
+    text-align: right;
+    padding: 1rem;
+    border-bottom: 1px solid var(--theme-border-color);
+}
+
+/* Styles for Support.cshtml (Form Page) */
+
+/* General page structure */
+.page-support-content { /* Add this class to a wrapper div in Support.cshtml if needed */
+    max-width: 700px; /* Max width for the form container */
+    margin: 2rem auto; /* Center it with some top/bottom margin */
+    padding: 2rem;
+    background-color: var(--theme-card-bg-color);
+    border-radius: 8px;
+    border: 1px solid var(--theme-border-color);
+}
+.theme-dark .page-support-content {
+     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.theme-light .page-support-content {
+     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+
+.page-support-content h4 { /* Page title "Техническая поддержка. Форма заявки" */
+    text-align: center;
+    font-size: 1.75rem;
+    color: var(--theme-text-color);
+    margin-bottom: 2rem;
+}
+
+/* Form elements are largely covered by existing .form-control styles in grotem_style.css */
+/* Ensure labels, inputs, textareas use theme variables. */
+.page-support-content .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.page-support-content .form-control { /* Specificity for support page if needed */
+    background-color: var(--theme-form-bg-color);
+    color: var(--theme-form-text-color);
+    border: 1px solid var(--theme-form-border-color);
+    padding: 0.75rem; /* Ensure decent padding */
+}
+.page-support-content .form-control:focus {
+    border-color: var(--theme-form-focus-border-color);
+    box-shadow: 0 0 0 0.2rem var(--theme-form-focus-shadow-color);
+}
+ .page-support-content label {
+    display: block; /* Make labels block for better spacing */
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--theme-text-color);
+}
+
+.page-support-content .btn-primary { /* Submit button */
+    /* Apply .btn-grotem-primary styles */
+    background-color: var(--theme-accent-color);
+    color: var(--theme-bg-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 500;
+    border: 1px solid var(--theme-accent-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    width: 100%; /* Make button full width */
+    font-size: 1.1rem;
+}
+.theme-dark .page-support-content .btn-primary {
+    color: #FFFFFF;
+}
+
+.page-support-content .btn-primary:hover {
+    background-color: var(--theme-accent-hover-color);
+    border-color: var(--theme-accent-hover-color);
+    color: var(--theme-bg-color);
+}
+.theme-dark .page-support-content .btn-primary:hover {
+    color: #FFFFFF;
+}
+
+
+/* Validation Tooltips (from site.css) */
+.tooltip-wrapper {
+    position: relative;
+    display: block; /* Make it block to contain form elements properly */
+}
+
+.tooltip-popup {
+    position: absolute;
+    background-color: var(--theme-accent-color); /* Use accent for error indication */
+    color: #FFFFFF; /* White text on accent */
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    bottom: 100%; /* Position above the input */
+    left: 0;
+    margin-bottom: 5px; /* Space from input */
+}
+.tooltip-wrapper.show-tooltip .tooltip-popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.tooltip-popup::after { /* Triangle for tooltip */
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 15px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--theme-accent-color) transparent transparent transparent;
+}
+
+/* "Back to home" button (.back-to-home from site.css) */
+.back-to-home {
+    position: fixed;
+    top: 20px; /* Position to top left */
+    left: -80px; /* Initially hidden */
+    transform: none; /* Reset transform from site.css */
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: left 0.4s ease;
+    z-index: 999;
+    background-color: var(--theme-card-bg-color);
+    padding: 0.5rem;
+    border-radius: 0 50px 50px 0; /* Rounded tab shape */
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+.theme-dark .back-to-home {
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.back-to-home:hover {
+    left: 0; /* Slide in */
+}
+
+.back-circle { /* The circle part of the button */
+    width: 40px; /* Smaller */
+    height: 40px;
+    min-width: 40px;
+    background-color: var(--theme-accent-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none; /* Remove previous shadow */
+    animation: none; /* Remove previous pulse */
+    backdrop-filter: none;
+}
+
+.back-to-home .arrow {
+    font-size: 24px; /* Adjust arrow size */
+    font-weight: bold;
+    color: var(--theme-bg-color); /* Contrast with accent */
+    opacity: 1;
+    animation: none; /* Remove rotation animation */
+    transform: none;
+    position: static; /* Reset absolute positioning */
+}
+/* Hide extra arrows if they were part of the old animation */
+.back-to-home .arrow.a2, .back-to-home .arrow.a3 {
+    display: none;
+}
+.back-to-home .arrow.a1 {
+    display: inline;
+}
+
+
+.back-label {
+    margin-left: 10px;
+    white-space: nowrap;
+    font-weight: 500;
+    color: var(--theme-text-color);
+    opacity: 0;
+    transition: opacity 0.3s ease 0.1s; /* Delayed opacity transition */
+    font-size: 1rem;
+}
+.back-to-home:hover .back-label {
+    opacity: 1;
+}
+
+/* Success Popup Message */
+.popup-message { /* Class from _Layout4.cshtml */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--theme-accent-color); /* Use accent for success */
+    color: #FFFFFF; /* White text */
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    font-size: 1rem;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+    visibility: hidden; /* Start hidden */
+}
+.popup-message.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* --- Responsive Refinements --- */
+
+@media (max-width: 991px) { /* Tablets and below */
+    /* Adjust container padding for more space if needed */
+    .container {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    /* Example: Header Navigation - if nav links are too crowded */
+    /* This assumes a simple nav structure. Complex navs might need JS for a hamburger menu. */
+    header nav a, header nav #themeSwitcherButton {
+        font-size: 0.85rem; /* Slightly smaller text in nav */
+        margin-left: 0.5rem !important; /* Adjust spacing */
+        margin-right: 0.5rem !important;
+    }
+     header nav #themeSwitcherButton {
+        padding: 0.4rem 0.8rem; /* Smaller button */
+    }
+
+
+    /* Service cards - ensure they stack nicely */
+    /* If they are in a flex container, ensure flex-wrap: wrap is set */
+    /* If in a grid, adjust grid-template-columns */
+    /* For now, just ensure min-width if they are inline-block or similar */
+    .service-card {
+        min-width: 80%; /* Or width: 100% if they should stack */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #services .flex-wrap > div[class*="sm:w-1/2"], /* Targeting Tailwind columns */
+    #services .flex-wrap > div[class*="md:w-1/3"] {
+        width: 100% !important; /* Force stack on smaller screens */
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+     #about .flex-wrap > div[class*="sm:w-1/2"],
+     #about .flex-wrap > div[class*="md:w-1/3"] {
+         width: 100% !important;
+         padding-left: 0.5rem !important;
+         padding-right: 0.5rem !important;
+     }
+
+
+    .page-index-content .display-4 { font-size: 2.5rem; }
+    .page-index-content .main-text { font-size: 1.25rem; }
+    .language-button { font-size: 1rem; padding: 0.6rem 1.5rem; }
+
+    .page-support-content {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    .page-support-content h4 { font-size: 1.5rem; }
+}
+
+@media (max-width: 767px) { /* Mobile phones */
+    html {
+        font-size: 15px; /* Slightly reduce base font for mobile */
+    }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+
+    #banner h2 { font-size: 2rem; }
+    #banner p { font-size: 1.1rem; }
+
+    /* Further reduce nav item size or implement hamburger menu (latter needs JS) */
+    header nav a, header nav #themeSwitcherButton {
+        /* If a hamburger menu isn't implemented, links might need to wrap or be very small */
+    }
+
+    .social-panel-fixed-button {
+        /* May need to adjust position or size for mobile */
+        top: 85%;
+        padding: 0.4rem !important;
+    }
+    .social-panel-fixed-button svg {
+        width: 20px; height: 20px;
+    }
+    .social-panel-popup {
+        right: 50px; /* Adjust to prevent overlap */
+        top: 85%;
+    }
+}
+
+/* General Polish */
+/* body.grotem-body is already smoothed from global html or body rule, this is redundant if so */
+
+/* Ensure images are responsive by default if not already handled by Bootstrap/Tailwind */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Removes bottom space under images */
+}
+
+/* Consistent focus outline for accessibility, using theme variables */
+*:focus-visible {
+    outline: 2px solid var(--theme-accent-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--theme-bg-color), 0 0 0 6px var(--theme-accent-color); /* More prominent */
+}
+/* For browsers not supporting focus-visible, provide a fallback (optional) */
+/* *:focus { ... } */
+
+
+/* Remove default outline when focus-visible is supported */
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Clean up hover effects on header nav links that might have old Tailwind classes */
+header.bg-gray-800 nav a.hover\:text-burgundy:hover { /* Target specific Tailwind class */
+    color: var(--theme-accent-color) !important; /* Override with theme accent */
+}

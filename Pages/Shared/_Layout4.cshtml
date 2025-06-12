@@ -5,18 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - IOmniEYE</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/grotem_style.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/iOmniEYE.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
     
 
 </head>
 @RenderSection("Scripts", required: false)
-<body>
-
+<body class="grotem-body">
+            <script>
+              (function() {
+                const theme = localStorage.getItem('themePreference');
+                if (theme === 'dark') {
+                  document.body.classList.add('theme-dark');
+                } else {
+                  document.body.classList.remove('theme-dark'); // Explicitly remove if light is preferred
+                }
+              })();
+            </script>
     <header>
-      
+        <div style="text-align: right; padding: 1rem;" id="_LayoutSimpleHeader"> <!-- Re-using ID from _Layout.cshtml for consistent styling -->
+            <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer;">Switch Theme</button>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -31,7 +43,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <div class="cashtag">6671</div>
+    <script src="~/js/theme_switcher.js" asp-append-version="true"></script>
     <div id="successPopup" class="popup-message">✅ Заявка успешно отправлена!</div>
 
 </body>
