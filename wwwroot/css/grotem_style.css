@@ -1193,3 +1193,5 @@ body:not(.theme-dark) .service-details a {
 body:not(.theme-dark) .service-details a:hover {
     color: var(--theme-accent-hover-color, #008c7a) !important;
 }
+
+[end of wwwroot/css/grotem_style.css]

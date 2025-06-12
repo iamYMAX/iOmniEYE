@@ -1,148 +1,160 @@
-﻿// Тексты для баннера
+﻿// Banner text cycling logic - This section needs to be reviewed for multilingual compatibility.
+// For now, the original banner cycling is commented out as static banner title/subtitle are translated
+// via data-translate-key by language_init.js. If cycling different messages is still desired,
+// bannerTexts needs to be populated from translations[currentLang] and this logic possibly moved
+// or called from language_init.js after language selection.
+
+/*
 const bannerTexts = [
     {
-        headline: "Ваш сильный IT-партнер",
-        subtext: "Мы предоставляем комплексные IT-решения, адаптированные под потребности вашего бизнеса."
+        headline_key: "banner_cycle_headline1", // Example key
+        subtext_key: "banner_cycle_subtext1"    // Example key
     },
-    {
-        headline: "Раскрытие вашего взгляда, на сложные вещи.",
-        subtext: "Мы предлагаем передовые IT-услуги, которые улучшают операции вашего бизнеса и повышают безопасность."
-    },
-    {
-        headline: "Полнота IT-решений",
-        subtext: "От разработки программного обеспечения до интеграции умного дома — мы охватываем все ваши IT-потребности."
-    },
-    {
-        headline: "Ваш запрос в сфере IT, наш опыт",
-        subtext: "Доверьтесь OmniEye для надежных и инновационных IT-решений."
-    }
+    // Add more keyed objects if cycling is desired
 ];
-
-
 let currentIndex = 0;
-
 function updateBannerText() {
     const headlineElement = document.getElementById('banner-text');
     const subtextElement = document.getElementById('banner-subtext');
-
-    // Ensure elements exist before trying to manipulate them
     if (!headlineElement || !subtextElement) return;
 
-    headlineElement.classList.remove('banner-text'); // Used for CSS animation reset, if any
-    subtextElement.classList.remove('banner-text');
+    const currentLang = localStorage.getItem('languagePreference') || 'ru';
+    if (typeof translations !== 'undefined' && translations[currentLang]) {
+        const currentTranslations = translations[currentLang];
+        const headline = currentTranslations[bannerTexts[currentIndex].headline_key] || "Default Headline";
+        const subtext = currentTranslations[bannerTexts[currentIndex].subtext_key] || "Default Subtext";
 
-    setTimeout(() => {
-        // Check if translations object and current language are available for banner
-        const currentLang = localStorage.getItem('languagePreference') || 'ru'; // Assume 'ru' if not set
-        if (typeof translations !== 'undefined' && translations[currentLang] && translations[currentLang][bannerTexts[currentIndex].headline_key] && translations[currentLang][bannerTexts[currentIndex].subtext_key]) {
-            headlineElement.textContent = translations[currentLang][bannerTexts[currentIndex].headline_key];
-            subtextElement.textContent = translations[currentLang][bannerTexts[currentIndex].subtext_key];
-        } else {
-            // Fallback to original hardcoded texts if translation not found
-            // This part needs to be adapted if bannerTexts itself should be multilingual via keys
-            // For now, let's assume bannerTexts are dynamic based on some other mechanism or pre-translated
-            // Or, if banner_title and banner_subtitle are static keys, those should be used.
-            // The current banner implementation seems to be more complex than simple key lookup.
-            // For now, let's stick to the original banner text update logic if translation keys for cycling texts are not yet defined.
-             headlineElement.textContent = bannerTexts[currentIndex].headline; // Fallback
-             subtextElement.textContent = bannerTexts[currentIndex].subtext; // Fallback
-        }
+        headlineElement.style.opacity = 0;
+        subtextElement.style.opacity = 0;
 
-        headlineElement.classList.add('banner-text');
-        subtextElement.classList.add('banner-text');
-    }, 200);
-
+        setTimeout(() => {
+            headlineElement.textContent = headline;
+            subtextElement.textContent = subtext;
+            headlineElement.style.opacity = 1;
+            subtextElement.style.opacity = 1;
+        }, 500); // Match CSS transition for opacity if any
+    }
     currentIndex = (currentIndex + 1) % bannerTexts.length;
 }
-
-// Removing setInterval and initial call as banner text will be handled by translation logic or needs refactoring for multilingual cycling.
-// setInterval(updateBannerText, 7000);
-// updateBannerText();
-
+// if (bannerTexts.length > 0) {
+//     setInterval(updateBannerText, 7000);
+//     updateBannerText(); // Initial call
+// }
+*/
 
 // Typing animation settings
 const typingSpeed = 60;
 const erasingSpeed = 10;
 const newTextDelay = 3000;
 
-let typingInstance1;
-let typingInstance2;
+// Store timeout IDs globally to clear them on re-initialization
+let typingTimeout1;
+let erasingTimeout1;
+let typingTimeout2;
+let erasingTimeout2;
 
-// Global functions for typing animation
-function type(element, texts, index = 0, charIndex = 0) {
+let currentTypewriterInstance1 = null;
+let currentTypewriterInstance2 = null;
+
+
+// Global functions for typing animation (if not using Typewriter.js)
+function type(element, texts, index = 0, charIndex = 0, timeoutVar) {
     if (charIndex < texts[index].length) {
         element.textContent += texts[index].charAt(charIndex);
         charIndex++;
-        setTimeout(() => type(element, texts, index, charIndex), typingSpeed);
+        // Store timeout ID
+        if (element.id === 'typing-text') typingTimeout1 = setTimeout(() => type(element, texts, index, charIndex, typingTimeout1), typingSpeed);
+        else if (element.id === 'typing-text-2') typingTimeout2 = setTimeout(() => type(element, texts, index, charIndex, typingTimeout2), typingSpeed);
     } else {
-        setTimeout(() => erase(element, texts, index, charIndex), newTextDelay);
+        // Store timeout ID
+        if (element.id === 'typing-text') erasingTimeout1 = setTimeout(() => erase(element, texts, index, charIndex, erasingTimeout1), newTextDelay);
+        else if (element.id === 'typing-text-2') erasingTimeout2 = setTimeout(() => erase(element, texts, index, charIndex, erasingTimeout2), newTextDelay);
     }
 }
 
-function erase(element, texts, index, charIndex) {
+function erase(element, texts, index, charIndex, timeoutVar) {
     if (charIndex > 0) {
         element.textContent = texts[index].substring(0, charIndex - 1);
         charIndex--;
-        setTimeout(() => erase(element, texts, index, charIndex), erasingSpeed);
+        // Store timeout ID
+        if (element.id === 'typing-text') erasingTimeout1 = setTimeout(() => erase(element, texts, index, charIndex, erasingTimeout1), erasingSpeed);
+        else if (element.id === 'typing-text-2') erasingTimeout2 = setTimeout(() => erase(element, texts, index, charIndex, erasingTimeout2), erasingSpeed);
     } else {
         index = Math.floor(Math.random() * texts.length);
-        setTimeout(() => type(element, texts, index, 0), typingSpeed); // Start typing next text from charIndex 0
+        // Store timeout ID
+        if (element.id === 'typing-text') typingTimeout1 = setTimeout(() => type(element, texts, index, 0, typingTimeout1), typingSpeed);
+        else if (element.id === 'typing-text-2') typingTimeout2 = setTimeout(() => type(element, texts, index, 0, typingTimeout2), typingSpeed);
     }
 }
 
-
 function initTypingAnimation(currentLang) {
     if (typeof translations === 'undefined' || !currentLang || !translations[currentLang]) {
-        console.error("Translations or current language not available for typing animation.");
+        console.error("Translations or current language not available for typing animation. currentLang:", currentLang);
         return;
     }
 
     const currentTranslations = translations[currentLang];
 
-    const textBlocks1 = [
-        currentTranslations.home_typing_part1 || "Default text 1 part 1...",
-        currentTranslations.home_typing_part2 || "Default text 1 part 2...",
-        currentTranslations.home_typing_part3 || "Default text 1 part 3...",
-        currentTranslations.home_typing_part4 || "Default text 1 part 4..."
-    ];
+    const textBlocks1_keys = ['home_typing_part1', 'home_typing_part2', 'home_typing_part3', 'home_typing_part4'];
+    const textBlocks2_keys = ['section2_typing_part1', 'section2_typing_part2'];
 
-    const textBlocks2 = [
-        currentTranslations.section2_typing_part1 || "Default text 2 part 1...",
-        currentTranslations.section2_typing_part2 || "Default text 2 part 2..."
-    ];
+    const textBlocks1 = textBlocks1_keys.map(key => currentTranslations[key] || `Missing: ${key}`).filter(text => text && text !== `Missing: ${key}`);
+    const textBlocks2 = textBlocks2_keys.map(key => currentTranslations[key] || `Missing: ${key}`).filter(text => text && text !== `Missing: ${key}`);
 
-    const typingTextElement = document.getElementById('typing-text');
+    const typingTextElement1 = document.getElementById('typing-text');
     const typingTextElement2 = document.getElementById('typing-text-2');
 
-    if (typingTextElement) {
-        typingTextElement.textContent = ''; // Clear previous animation content
-        // Stop any ongoing timeouts for this element to prevent conflicts
-        clearTimeout(typingInstance1); // Assuming typingInstance1 holds the timeout ID
-        const randomIndex1 = Math.floor(Math.random() * textBlocks1.length);
-        typingInstance1 = setTimeout(() => type(typingTextElement, textBlocks1, randomIndex1, 0), newTextDelay / 2); // Start typing
+    // Stop and clear previous animation for #typing-text
+    clearTimeout(typingTimeout1);
+    clearTimeout(erasingTimeout1);
+    if (currentTypewriterInstance1 && typeof currentTypewriterInstance1.stop === 'function') {
+        currentTypewriterInstance1.stop();
+    }
+    if (typingTextElement1) {
+        typingTextElement1.innerHTML = '';
     }
 
+    if (textBlocks1.length > 0 && typingTextElement1) {
+        if (typeof Typewriter !== 'undefined') {
+            currentTypewriterInstance1 = new Typewriter(typingTextElement1, {
+                strings: textBlocks1,
+                autoStart: true,
+                loop: true,
+                delay: 75,
+                deleteSpeed: 50
+            });
+        } else {
+            console.warn("Typewriter library not found, using fallback startTypingEffect for #typing-text.");
+            const randomIndex1 = Math.floor(Math.random() * textBlocks1.length);
+            typingTimeout1 = setTimeout(() => type(typingTextElement1, textBlocks1, randomIndex1, 0, typingTimeout1), newTextDelay / 2);
+        }
+    }
+
+    // Stop and clear previous animation for #typing-text-2
+    clearTimeout(typingTimeout2);
+    clearTimeout(erasingTimeout2);
+    if (currentTypewriterInstance2 && typeof currentTypewriterInstance2.stop === 'function') {
+        currentTypewriterInstance2.stop();
+    }
     if (typingTextElement2) {
-        typingTextElement2.textContent = ''; // Clear previous animation content
-        clearTimeout(typingInstance2); // Assuming typingInstance2 holds the timeout ID
-        const randomIndex2 = Math.floor(Math.random() * textBlocks2.length);
-        typingInstance2 = setTimeout(() => type(typingTextElement2, textBlocks2, randomIndex2, 0), newTextDelay / 2); // Start typing
+        typingTextElement2.innerHTML = '';
+    }
+
+    if (textBlocks2.length > 0 && typingTextElement2) {
+        if (typeof Typewriter !== 'undefined') {
+            currentTypewriterInstance2 = new Typewriter(typingTextElement2, {
+                strings: textBlocks2,
+                autoStart: true,
+                loop: true,
+                delay: 75,
+                deleteSpeed: 50
+            });
+        } else {
+            console.warn("Typewriter library not found, using fallback startTypingEffect for #typing-text-2.");
+            const randomIndex2 = Math.floor(Math.random() * textBlocks2.length);
+            typingTimeout2 = setTimeout(() => type(typingTextElement2, textBlocks2, randomIndex2, 0, typingTimeout2), newTextDelay / 2);
+        }
     }
 }
-
 // The original DOMContentLoaded listener that started the typing is removed.
 // initTypingAnimation will be called from language_init.js when language is set/changed.
-
-// Note: The banner text cycling (updateBannerText and setInterval) might need to be
-// integrated with the translation system as well if its texts are static and keyed.
-// For now, its direct translation is not handled here, assuming banner_title and banner_subtitle are static.
-// If bannerTexts array needs to be dynamic:
-// 1. Key each headline/subtext pair in translations.js.
-// 2. Rebuild bannerTexts array inside applyTranslations or a dedicated function using currentLang.
-// 3. Restart the setInterval for updateBannerText if language changes.
-// This part is more complex and depends on how banner content is expected to behave with translations.
-// The current `updateBannerText` function was simplified to highlight this dependency.
-// A proper solution would involve making `bannerTexts` multilingual.
-// For now, the original banner cycling is commented out to avoid conflicts with static translated title/subtitle.
-// The main banner title/subtitle in HTML should have data-translate-key and will be translated by applyTranslations.
-// The cycling text was an additional feature that needs its own translation strategy.
