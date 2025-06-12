@@ -75,13 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Настройки для разных разрешений
         if (screenWidth < 480) { // Мобильные устройства
-            return 3.2;
+            return 2.0;
         } else if (screenWidth < 768) { // Планшеты
-            return 3.7;
-        } else if (screenWidth > 1900) { // Планшеты
-            return 8;
+            return 2.2;
+        } else if (screenWidth > 1900) { // Планшеты // User comment says "Планшеты" but it means Large Desktops
+            return 4.0;
         } else { // Десктопы
-            return 4;
+            return 2.5;
         }
     }
 

@@ -197,6 +197,49 @@ document.addEventListener('DOMContentLoaded', function() {
     // Typing animation initialization is now handled by language_init.js
     // console.log('[SITE2_JS DOMContentLoaded] DOM fully loaded and parsed.');
 
+    // Banner Text Cycling Logic
+    const bannerTexts = [
+        { headline_key: "banner_cycle_headline1", subtext_key: "banner_cycle_subtext1" },
+        { headline_key: "banner_cycle_headline2", subtext_key: "banner_cycle_subtext2" },
+        { headline_key: "banner_cycle_headline3", subtext_key: "banner_cycle_subtext3" },
+        { headline_key: "banner_cycle_headline4", subtext_key: "banner_cycle_subtext4" }
+    ];
+    let currentIndex = 0;
+    function updateBannerText() {
+        const headlineElement = document.getElementById('banner-text');
+        const subtextElement = document.getElementById('banner-subtext');
+        if (!headlineElement || !subtextElement) return;
+
+        const currentLang = localStorage.getItem('languagePreference') || 'ru';
+        if (typeof translations !== 'undefined' && translations[currentLang]) {
+            const currentTranslations = translations[currentLang];
+            // Ensure bannerTexts[currentIndex] is valid before trying to access its properties
+            if (bannerTexts[currentIndex] && bannerTexts[currentIndex].headline_key && bannerTexts[currentIndex].subtext_key) {
+                const headline = currentTranslations[bannerTexts[currentIndex].headline_key] || "Default Headline"; // Fallback
+                const subtext = currentTranslations[bannerTexts[currentIndex].subtext_key] || "Default Subtext";   // Fallback
+
+                headlineElement.style.opacity = 0;
+                subtextElement.style.opacity = 0;
+
+                setTimeout(() => {
+                    headlineElement.textContent = headline;
+                    subtextElement.textContent = subtext;
+                    headlineElement.style.opacity = 1;
+                    subtextElement.style.opacity = 1;
+                }, 500); // Match CSS transition for opacity if any (if one is added later)
+            } else {
+                console.error("Error with bannerTexts array or currentIndex:", bannerTexts, currentIndex);
+            }
+        }
+        currentIndex = (currentIndex + 1) % bannerTexts.length;
+    }
+
+    if (bannerTexts.length > 0) {
+        setInterval(updateBannerText, 7000); // Time in milliseconds
+        updateBannerText(); // Initial call to set the first text
+    }
+    // End of Banner Text Cycling Logic
+
     function handleBannerInteractions() {
         const banner = document.getElementById('banner');
         if (!banner) {

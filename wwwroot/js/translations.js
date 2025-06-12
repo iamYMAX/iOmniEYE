@@ -154,7 +154,15 @@ const translations = {
         "about_adv_advanced_title": "Передовые технологии",
         "about_adv_advanced_desc": "Мы используем новейшие технологии для предоставления решений, которые не только соответствуют, но и превосходят отраслевые стандарты.",
         "about_mission_text": "В iOmniEye мы стремимся стать вашим надежным партнером в мире IT. Наша цель — не просто решать текущие задачи, но и помогать вашему бизнесу готовиться к будущим вызовам. С нашим опытом и внимательным подходом мы делаем сложные технологии простыми и доступными, чтобы вы могли сосредоточиться на главном — развитии вашего бизнеса.",
-        "about_future_text": "Будь то защита ваших данных, автоматизация бизнес-процессов или интеграция умных технологий в вашу повседневную жизнь, OmniEye обладает видением и опытом, чтобы сделать это реальностью."
+        "about_future_text": "Будь то защита ваших данных, автоматизация бизнес-процессов или интеграция умных технологий в вашу повседневную жизнь, OmniEye обладает видением и опытом, чтобы сделать это реальностью.",
+        "banner_cycle_headline1": "Ваш сильный IT-партнер",
+        "banner_cycle_subtext1": "Мы предоставляем комплексные IT-решения, адаптированные под потребности вашего бизнеса.",
+        "banner_cycle_headline2": "Раскрытие вашего взгляда, на сложные вещи.",
+        "banner_cycle_subtext2": "Мы предлагаем передовые IT-услуги, которые улучшают операции вашего бизнеса и повышают безопасность.",
+        "banner_cycle_headline3": "Полнота IT-решений",
+        "banner_cycle_subtext3": "От разработки программного обеспечения до интеграции умного дома — мы охватываем все ваши IT-потребности.",
+        "banner_cycle_headline4": "Ваш запрос в сфере IT, наш опыт",
+        "banner_cycle_subtext4": "Доверьтесь OmniEye для надежных и инновационных IT-решений."
     },
     en: {
         // --- NAVIGATION (Example) ---
@@ -310,6 +318,14 @@ const translations = {
         "about_adv_expert_team_title": "Expert Team", // Added from en.cshtml
         "about_adv_expert_team_desc": "Our team of highly skilled professionals brings deep expertise and a wealth of experience to every project.", // Added from en.cshtml
         "about_mission_text": "At OmniEye, we aim to be your trusted partner in IT. We are dedicated to providing solutions that not only solve current problems but also prepare your business for future challenges. With our all-seeing perspective, we help you navigate the complexities of technology.",
-        "about_future_text": "Whether it's securing your data, automating your business processes, or integrating smart technologies into your daily life, OmniEye has the vision and the expertise to make it happen."
+        "about_future_text": "Whether it's securing your data, automating your business processes, or integrating smart technologies into your daily life, OmniEye has the vision and the expertise to make it happen.",
+        "banner_cycle_headline1": "Your Strong IT Partner",
+        "banner_cycle_subtext1": "We provide comprehensive IT solutions tailored to your business needs.",
+        "banner_cycle_headline2": "Expanding your perspective on complex matters.",
+        "banner_cycle_subtext2": "We offer advanced IT services that improve your business operations and enhance security.",
+        "banner_cycle_headline3": "Completeness of IT Solutions",
+        "banner_cycle_subtext3": "From software development to smart home integration – we cover all your IT needs.",
+        "banner_cycle_headline4": "Your IT request, our expertise",
+        "banner_cycle_subtext4": "Trust OmniEye for reliable and innovative IT solutions."
     }
 };
