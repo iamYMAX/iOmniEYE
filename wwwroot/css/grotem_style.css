@@ -525,6 +525,8 @@ section {
     color: var(--theme-accent-color); /* Use accent color for icons */
     opacity: 0.7; /* Slightly transparent */
     z-index: 0;
+    display: inline-block; /* Added for better animation compatibility */
+    content: attr(data-icon); /* Crucial for displaying the icon */
     /* Removed background-color: transparent from previous step, ensure it's not needed */
 }
 
@@ -1029,6 +1031,30 @@ body.grotem-body.text-gray-100 {
     #banner h2 { font-size: 2rem; }
     #banner p { font-size: 1.1rem; }
 
+    #banner {
+        height: auto; /* Allow banner height to adjust to content */
+        min-height: 60vh; /* Or a specific smaller vh, or even 'auto' if content allows */
+        padding-top: 4rem; /* Add some padding if height is auto */
+        padding-bottom: 4rem;
+    }
+
+    #banner .bg-black.bg-opacity-50 { /* The inner content box of the banner */
+        padding: 1.5rem; /* Reduce padding from p-8 (2rem) */
+    }
+
+    #banner h2, #banner #banner-text { /* Already targeted, ensure font size is small enough */
+        font-size: 1.8rem; /* Further reduce from 2rem if needed */
+    }
+
+    #banner p, #banner #banner-subtext { /* Already targeted, ensure font size is small enough */
+        font-size: 1rem; /* Further reduce from 1.1rem if needed */
+    }
+
+    #home {
+        padding-top: 2rem; /* Reduce top padding if banner is shorter */
+        padding-bottom: 2rem;
+    }
+
     /* Further reduce nav item size or implement hamburger menu (latter needs JS) */
     header nav a, header nav #themeSwitcherButton {
         /* If a hamburger menu isn't implemented, links might need to wrap or be very small */
@@ -1045,6 +1071,40 @@ body.grotem-body.text-gray-100 {
     .social-panel-popup {
         right: 50px; /* Adjust to prevent overlap */
         top: 85%;
+    }
+}
+
+@media (max-width: 480px) {
+    #banner {
+        min-height: 50vh; /* Even smaller */
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    #banner .bg-black.bg-opacity-50 {
+        padding: 1rem; /* Further reduce padding */
+    }
+
+    #banner h2, #banner #banner-text {
+        font-size: 1.5rem;
+    }
+
+    #banner p, #banner #banner-subtext {
+        font-size: 0.9rem;
+    }
+
+    #home h2 { /* Welcome to */
+        font-size: 1.25rem;
+    }
+    #home h1 { /* IOmniEYE */
+        font-size: 2rem;
+    }
+    #home .typing-container {
+        font-size: 1rem;
+        min-height: 2em;
+    }
+    #home p.mt-4.text-lg { /* Initial text below typing */
+        font-size: 0.9rem;
     }
 }
 
