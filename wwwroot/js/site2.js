@@ -192,3 +192,75 @@ function initTypingAnimation(currentLang) {
 }
 // The original DOMContentLoaded listener that started the typing is removed.
 // initTypingAnimation will be called from language_init.js when language is set/changed.
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Typing animation initialization is now handled by language_init.js
+    // console.log('[SITE2_JS DOMContentLoaded] DOM fully loaded and parsed.');
+
+    function handleBannerInteractions() {
+        const banner = document.getElementById('banner');
+        if (!banner) {
+            // console.log('[BANNER_INTERACTIONS] Banner element not found. Exiting.');
+            return;
+        }
+        // console.log('[BANNER_INTERACTIONS] Banner element found.');
+
+        const shrunkHeight = '30vh'; // Target height when shrunk
+        const initialHeight = '100vh'; // Initial full height, ensure it matches CSS
+        const scrollThreshold = 50; // Pixels to scroll before shrinking
+        let isBannerShrunk = false;
+
+        // Optional: Check initial state if needed, though CSS should handle it.
+        // console.log(`[BANNER_INTERACTIONS] Initial banner height: ${getComputedStyle(banner).height}`);
+
+        function shrinkBanner() {
+            if (!isBannerShrunk) {
+                // console.log('[BANNER_INTERACTIONS] Shrinking banner.');
+                banner.style.height = shrunkHeight;
+                banner.style.minHeight = shrunkHeight;
+                banner.classList.add('banner-shrunk');
+                isBannerShrunk = true;
+
+                // Optional: Remove scroll listener if it should only shrink once and not restore
+                // window.removeEventListener('scroll', handleScroll);
+                // console.log('[BANNER_INTERACTIONS] Banner shrunk and scroll listener potentially removed.');
+            } else {
+                // console.log('[BANNER_INTERACTIONS] Banner already shrunk. No action taken.');
+            }
+        }
+
+        function handleScroll() {
+            // console.log(`[BANNER_INTERACTIONS] Scroll event: window.scrollY = ${window.scrollY}`);
+            if (window.scrollY > scrollThreshold && !isBannerShrunk) {
+                // console.log('[BANNER_INTERACTIONS] Scroll threshold passed. Calling shrinkBanner.');
+                shrinkBanner();
+            }
+            // Optional: Logic to restore banner height if scrolled back to top
+            // else if (window.scrollY <= 0 && isBannerShrunk) {
+            //     console.log('[BANNER_INTERACTIONS] Scrolled to top. Restoring banner.');
+            //     banner.style.height = initialHeight;
+            //     banner.style.minHeight = initialHeight;
+            //     banner.classList.remove('banner-shrunk');
+            //     isBannerShrunk = false;
+            //     console.log('[BANNER_INTERACTIONS] Banner restored.');
+            // }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        // console.log('[BANNER_INTERACTIONS] Scroll event listener added.');
+
+        const tags = document.querySelectorAll('#banner .tag-cloud span');
+        // console.log(`[BANNER_INTERACTIONS] Found ${tags.length} tags.`);
+        tags.forEach(tag => {
+            tag.addEventListener('click', function() {
+                // console.log('[BANNER_INTERACTIONS] Tag clicked. Calling shrinkBanner.');
+                shrinkBanner();
+            });
+        });
+        if (tags.length > 0) {
+            // console.log('[BANNER_INTERACTIONS] Click event listeners added to tags.');
+        }
+    }
+
+    handleBannerInteractions();
+});

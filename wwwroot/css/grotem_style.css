@@ -417,13 +417,15 @@ section {
 
 /* Banner Section */
 #banner {
-    min-height: 60vh; /* Adjust as needed */
+    min-height: 100vh; /* Adjust as needed */
+    height: 100vh;
     display: flex; /* For centering content */
     align-items: center;
     justify-content: center;
     background-size: cover;
     background-position: center;
     position: relative; /* For overlay */
+    transition: height 0.5s ease-in-out, min-height 0.5s ease-in-out; /* Added transition */
 }
 #banner .bg-black.bg-opacity-50 { /* This is the overlay div */
     padding: 2rem;
