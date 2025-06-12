@@ -27,8 +27,8 @@
     /* Dark Theme Overrides */
     --theme-bg-color: #1A1A1A;
     --theme-text-color: #E0E0E0;
-    --theme-accent-color: #00BFA5;
-    --theme-accent-hover-color: #00DBC2; /* Lighter accent for dark bg */
+    --theme-accent-color: #FFC107; /* Amber */
+    --theme-accent-hover-color: #E0A800; /* Darker Amber for hover */
     --theme-card-bg-color: #2C2C2C;
     --theme-border-color: #444444;
     --theme-form-bg-color: #2C2C2C;
@@ -279,10 +279,65 @@ body.grotem-body .service-card p {
     color: var(--theme-text-color);
 }
 
-body.grotem-body .service-details {
-    background: var(--theme-subtle-overlay-color);
-    color: var(--theme-text-color);
+/* Service Details Popup (on hover) - Base styles */
+.service-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--theme-card-bg-color); /* Default background */
+    border-top: 1px solid var(--theme-border-color);
+    color: var(--theme-text-color); /* Default text color */
+    padding: 1rem;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    height: 100%;
+    overflow-y: auto;
+    transform: translateY(100%);
+    opacity: 0;
+    z-index: 1;
 }
+
+.service-card:hover .service-details {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Explicitly set text colors for elements within .service-details */
+.service-details h4,
+.service-details p,
+.service-details ul,
+.service-details li {
+    color: var(--theme-text-color); /* Ensures text color is from the current theme */
+}
+
+.service-details a {
+    color: var(--theme-accent-color);
+}
+.service-details a:hover {
+    color: var(--theme-accent-hover-color);
+}
+
+/* Readability Fix: Force specific colors for .service-details in light theme */
+body:not(.theme-dark) .service-details {
+    background-color: #FFFFFF; /* Force a very light background for light theme */
+    border-top: 1px solid var(--theme-border-color, #DEE2E6); /* Ensure border uses light theme var */
+    color: #212529; /* Force dark text for light theme */
+}
+
+body:not(.theme-dark) .service-details h4,
+body:not(.theme-dark) .service-details p,
+body:not(.theme-dark) .service-details ul,
+body:not(.theme-dark) .service-details li {
+    color: #212529 !important; /* Force dark text, overriding potential Tailwind classes */
+}
+
+body:not(.theme-dark) .service-details a {
+    color: var(--theme-accent-color, #00BFA5) !important; /* Force accent color for links */
+}
+body:not(.theme-dark) .service-details a:hover {
+    color: var(--theme-accent-hover-color, #008c7a) !important;
+}
+
 
 /* Typing animation container */
 body.grotem-body .typing-container {
@@ -469,52 +524,6 @@ section {
     opacity: 0.7; /* Slightly transparent */
     z-index: 0;
     /* Removed background-color: transparent from previous step, ensure it's not needed */
-}
-
-
-/* Service Details Popup (on hover) */
-.service-details {
-    position: absolute;
-    bottom: 0; /* Start from bottom */
-    left: 0;
-    right: 0;
-    background-color: var(--theme-card-bg-color); /* Use card bg for seamless look */
-    border-top: 1px solid var(--theme-border-color);
-    color: var(--theme-text-color);
-    padding: 1rem;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    height: 100%; /* Cover the whole card */
-    overflow-y: auto;
-    transform: translateY(100%); /* Initially hidden below */
-    opacity: 0;
-    z-index: 1; /* Above ::before icon */
-}
-
-.service-card:hover .service-details {
-    transform: translateY(0); /* Slide in from bottom */
-    opacity: 1;
-}
-
-.service-details h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--theme-accent-color); /* Accent for sub-heading */
-    margin-bottom: 0.5rem;
-}
-.service-details p, .service-details ul {
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-.service-details ul {
-    list-style-position: inside;
-    padding-left: 0.5rem;
-}
-.service-details a {
-    color: var(--theme-accent-color);
-    font-weight: 500;
-}
-.service-details a:hover {
-    color: var(--theme-accent-hover-color);
 }
 
 
@@ -1066,4 +1075,121 @@ img {
 /* Clean up hover effects on header nav links that might have old Tailwind classes */
 header.bg-gray-800 nav a.hover\:text-burgundy:hover { /* Target specific Tailwind class */
     color: var(--theme-accent-color) !important; /* Override with theme accent */
+}
+
+/* --- Footer Social Icon Sizing Correction for _Layout.cshtml context --- */
+
+/*
+       The footer in _Layout.cshtml has a structure like:
+       <footer class="border-top footer text-muted">
+           <section id="contact" class="py-16 bg-gray-800"> <!-- This bg-gray-800 is now themed -->
+               <div class="container mx-auto text-center">
+                   <h2 class="text-3xl font-bold">Follow &amp; Contact Us</h2>
+                   <div class="social-links mt-7">
+                       <a href="..." target="_blank" aria-label="...">
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">...</svg>
+                       </a>
+                       ...
+                   </div>
+               </div>
+           </section>
+       </footer>
+       The 'fill="white"' will be overridden by theme variable '--theme-footer-icon-fill'.
+    */
+
+/* General styling for social links in any footer to ensure consistency */
+footer .social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem; /* Spacing between icons */
+    margin-top: 1rem; /* Space from "Follow & Contact Us" title */
+}
+
+footer .social-links a {
+    display: inline-block; /* Needed for width/height to take effect on <a> if not already */
+    line-height: 0; /* Prevents extra space if SVG is smaller than line height */
+}
+
+footer .social-links svg {
+    width: 32px;  /* Desired width */
+    height: 32px; /* Desired height */
+    max-width: 100%; /* Ensure it doesn't overflow its 'a' tag if 'a' is constrained */
+    max-height: 100%;
+    fill: var(--theme-footer-icon-fill); /* Ensure it uses the theme variable */
+}
+
+footer .social-links a:hover svg {
+    fill: var(--theme-accent-color); /* Standard hover effect */
+}
+
+/* If the issue is very specific to _Layout.cshtml's footer structure vs _Layout2/3's footer,
+       and they behave differently despite similar class names, we might need a more specific selector.
+       However, the above should target any footer using this .social-links structure.
+       The previous dark theme implementation already had:
+       body.grotem-body footer.bg-gray-800 .social-links a svg {
+           fill: var(--theme-footer-icon-fill);
+       }
+       body.grotem-body footer.bg-gray-800 .social-links a:hover svg {
+           fill: var(--theme-accent-color);
+       }
+       The new rules above are more generic for `footer .social-links svg` and should
+       not conflict but rather complement by adding size constraints.
+    */
+/* --- Readability Fix for .service-details in Light Theme --- */
+
+/* Ensure the base .service-details uses the main card background and text color by default */
+/* This rule was already present, but re-confirming its variable usage. */
+.service-details {
+    background-color: var(--theme-card-bg-color);
+    color: var(--theme-text-color);
+    /* other properties like padding, border-top, etc., should remain as previously defined */
+}
+
+/* Explicitly set text colors for elements within .service-details to ensure they inherit correctly */
+/* This is redundant if the parent .service-details already sets var(--theme-text-color)
+   and these elements are standard block elements without overriding classes.
+   However, it acts as a safeguard. */
+.service-details h4,
+.service-details p,
+.service-details ul,
+.service-details li {
+    color: var(--theme-text-color);
+}
+
+/* Links within service-details should use accent color */
+/* This was also likely covered, but explicit check. */
+.service-details a {
+    color: var(--theme-accent-color);
+}
+.service-details a:hover {
+    color: var(--theme-accent-hover-color);
+}
+
+/*
+  The following rules with `body:not(.theme-dark)` are aggressive overrides.
+  They are intended to ensure that IF there are conflicting Tailwind classes
+  (e.g., `text-white`) directly on elements INSIDE `.service-details` in the CSHTML,
+  these CSS rules will force the light theme's text readability.
+  Ideally, such conflicting classes in CSHTML should be removed.
+*/
+
+body:not(.theme-dark) .service-details {
+    background-color: #FFFFFF; /* Force a very light background for light theme */
+    /* border-top: 1px solid var(--theme-border-color, #DEE2E6); /* Border is already defined */
+    color: #212529; /* Force dark text for light theme */
+}
+
+body:not(.theme-dark) .service-details h4,
+body:not(.theme-dark) .service-details p,
+body:not(.theme-dark) .service-details ul,
+body:not(.theme-dark) .service-details li {
+    color: #212529 !important; /* Force dark text, overriding potential Tailwind classes */
+}
+
+body:not(.theme-dark) .service-details a {
+    color: var(--theme-accent-color, #00BFA5) !important; /* Force accent color for links */
+}
+body:not(.theme-dark) .service-details a:hover {
+    color: var(--theme-accent-hover-color, #008c7a) !important;
 }
