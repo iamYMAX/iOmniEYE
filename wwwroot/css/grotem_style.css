@@ -1195,4 +1195,90 @@ body:not(.theme-dark) .service-details a:hover {
     color: var(--theme-accent-hover-color, #008c7a) !important;
 }
 
-[end of wwwroot/css/grotem_style.css]
+/* --- Icon Animations --- */
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes vibrate {
+    0% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px) rotate(-1deg); }
+    40% { transform: translate(-1px, -1px) rotate(-1deg); }
+    60% { transform: translate(1px, 1px) rotate(1deg); }
+    80% { transform: translate(1px, -1px) rotate(1deg); }
+    100% { transform: translate(0) rotate(0); }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+}
+
+/* Add a wiggle animation for the wrench icon */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+/* Apply Animations to Service Card Icons on Hover */
+
+/* Gear Icon (Разработка программного обеспечения) - Spin Animation */
+.service-card:hover[data-icon=""]::before {
+    animation: spin 2s linear infinite;
+}
+
+/* Phone Icon (Телефония и видеосвязь) - Vibrate Animation */
+.service-card:hover[data-icon=""]::before { /* xf095 is  */
+    animation: vibrate 0.5s linear infinite;
+}
+
+/* Chart Icon (Оптимизация производительности) - Pulse Animation */
+.service-card:hover[data-icon=""]::before { /* xf135 is  */
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Users Icon (Настройка сети и серверов) - Pulse Animation */
+.service-card:hover[data-icon=""]::before { /* xf233 is  */
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Globe Icon (Веб-решения) - Pulse Animation (or spin slowly) */
+.service-card:hover[data-icon=""]::before { /* xf0ac is  */
+    animation: pulse 1.8s ease-in-out infinite; /* Slower pulse for globe */
+}
+
+/* Wrench Icon (Удаленная IT-поддержка) - Wiggle Animation */
+.service-card:hover[data-icon=""]::before { /* xf0ad is  */
+    animation: wiggle 1s ease-in-out infinite;
+}
+
+/* Ensure other icons are not affected if not targeted */
+/* The ::before element already exists, these rules just add 'animation' on hover. */
+
+/* Adjust existing .service-card::before if necessary to ensure proper animation behavior. */
+/* For example, ensure 'display: inline-block;' or 'display: block;' if transform issues occur. */
+/* The existing styles for .service-card::before are:
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: var(--theme-accent-color);
+    opacity: 0.7;
+    z-index: 0;
+   These should be fine, but good to keep in mind.
+*/
