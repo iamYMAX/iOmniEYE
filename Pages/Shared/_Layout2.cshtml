@@ -57,8 +57,13 @@
                         <a href="Support" class="block px-3 py-2 hover:bg-burgundy text-sm sm:text-base">Написать в техподдержку</a>
                     </div>
                 </div>
-                <a href="#about" class="mx-2 text-sm sm:text-base hover:text-burgundy">О Нас</a>
-                <button id="themeSwitcherButton" class="mx-2 text-sm sm:text-base hover:text-burgundy" style="background: none; border: none; cursor: pointer; padding: 0.5rem;">Switch to Dark Mode</button>
+                <a href="#about" class="mx-2 text-sm sm:text-base hover:text-burgundy" data-translate-key="nav_about_us">О Нас</a>
+                <button id="themeSwitcherButton" class="mx-2 text-sm sm:text-base hover:text-burgundy" style="background: none; border: none; cursor: pointer; padding: 0.5rem;" data-translate-key="nav_theme_switch_dark">Switch to Dark Mode</button>
+                <div id="headerLanguageSwitcher" class="inline-block ml-4">
+                    <button class="language-button-header" data-lang="ru" data-translate-key="nav_lang_ru">RU</button>
+                    <span style="color: var(--theme-header-text-color); margin: 0 0.25rem;">/</span>
+                    <button class="language-button-header" data-lang="en" data-translate-key="nav_lang_en">EN</button>
+                </div>
             </nav>
         </div>
     </header>
@@ -107,6 +112,8 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/translations.js" asp-append-version="true"></script>
+    <script src="~/js/language_init.js" asp-append-version="true"></script>
     <script src="~/js/site2.js" asp-append-version="true"></script>
     <script src="~/js/site3.js" asp-append-version="true"></script>
     <script src="~/js/theme_switcher.js" asp-append-version="true"></script>
