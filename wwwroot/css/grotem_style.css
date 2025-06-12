@@ -63,7 +63,7 @@ html {
 
 /* Updated body to use CSS variables */
 body.grotem-body {
-    font-family: 'Inter', 'Roboto', sans-serif;
+    font-family: 'Montserrat', 'Inter', 'Roboto', sans-serif;
     line-height: 1.6;
     background-color: var(--theme-bg-color);
     color: var(--theme-text-color);
@@ -728,23 +728,22 @@ body.grotem-body.text-gray-100 {
     display: inline-block;
     padding: 0.5rem 1rem;
     margin: 0.3rem;
-    background-color: var(--theme-card-bg-color);
-    color: var(--theme-text-color);
-    border-radius: 20px; /* Pill shape */
+    background-color: #8D021F; /* Bordeaux */
+    color: #FFFFFF; /* White text */
+    border-radius: 20px;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    border: 1px solid var(--theme-border-color);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+    border: 1px solid #8D021F; /* Border same as background */
+    /* text-transform: uppercase; */
+    /* letter-spacing: 0.5px; */
 }
 
 .tag-cloud span:hover {
-    background-color: var(--theme-accent-color);
-    color: var(--theme-bg-color); /* Text color contrasting with accent */
-    border-color: var(--theme-accent-color);
-    transform: scale(1.05);
-}
-.theme-dark .tag-cloud span:hover {
-    color: #FFFFFF; /* Or a very light gray if accent is dark */
+    background-color: #B02A37; /* Lighter Bordeaux */
+    color: #FFFFFF; /* White text */
+    border-color: #B02A37; /* Border same as hover background */
+    transform: scale(1.05); /* Keep existing transform */
 }
 
 /* Style for the theme switcher button in the simple _Layout.cshtml header */

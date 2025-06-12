@@ -101,38 +101,3 @@ document.addEventListener("DOMContentLoaded", () => {
     // Обновляем размеры при изменении размера окна
     window.addEventListener('resize', updateTagSizes);
 });
-document.addEventListener("DOMContentLoaded", () => {
-    const tags = document.querySelectorAll('.tag-cloud');
-
-    // Функция для расчета коэффициента масштабирования
-    function calculateScaleFactor() {
-        const screenWidth = window.innerWidth;
-
-        // Настройки для разных разрешений
-        if (screenWidth < 480) { // Мобильные устройства
-            return 3;
-        } else if (screenWidth < 768) { // Планшеты
-            return 3.7;
-        } else if (screenWidth > 1900) { // Планшеты
-            return 8;
-        } else { // Десктопы
-            return 4;
-        }
-    }
-
-    // Функция для обновления размера шрифта
-    function updateTagSizes() {
-        const scaleFactor = calculateScaleFactor();
-
-        tags.forEach(tag => {
-            const weight = tag.getAttribute('margin-top');
-            tag.style.fontSize = `${weight * scaleFactor}%`;
-        });
-    }
-
-    // Вызываем функцию при загрузке страницы
-    updateTagSizes();
-
-    // Обновляем размеры при изменении размера окна
-    window.addEventListener('resize', updateTagSizes);
-});
