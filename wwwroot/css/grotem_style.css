@@ -831,7 +831,29 @@ body.grotem-body.text-gray-100 {
     font-size: 1.1rem;
 }
 .theme-dark .page-support-content .btn-primary {
-    color: #FFFFFF;
+    background-color: rgba(141, 2, 31, 0.8) !important; /* Bordeaux with 80% opacity */
+    color: #FFFFFF !important; /* White text */
+    border-color: #8D021F !important; /* Opaque Bordeaux border */
+
+    /* Carry over layout properties from .page-support-content .btn-primary if not overridden by .btn or .btn-primary defaults */
+    padding: 0.75rem 1.5rem; /* From general .page-support-content .btn-primary */
+    border-width: 1px;       /* Explicitly set */
+    border-style: solid;     /* Explicitly set */
+    border-radius: 6px;      /* From general .page-support-content .btn-primary */
+    width: 100%;             /* From general .page-support-content .btn-primary */
+    font-size: 1.1rem;       /* From general .page-support-content .btn-primary */
+    text-decoration: none;   /* From general .btn-grotem-primary, good default */
+    display: inline-block;   /* From general .btn-grotem-primary, good default */
+    font-weight: 500;        /* From general .btn-grotem-primary, good default */
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Standard transition */
+}
+
+.theme-dark .page-support-content .btn-primary:hover,
+.theme-dark .page-support-content .btn-primary:focus {
+    background-color: rgba(141, 2, 31, 0.95) !important; /* More opaque Bordeaux on hover/focus */
+    color: #FFFFFF !important;
+    border-color: #700118 !important; /* Slightly darker opaque Bordeaux for border */
+    outline: none; /* Remove default focus outline if any */
 }
 
 .page-support-content .btn-primary:hover {
