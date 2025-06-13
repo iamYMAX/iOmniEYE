@@ -14,13 +14,18 @@
     --theme-form-focus-shadow-color: rgba(0, 191, 165, 0.25);
     --theme-header-bg-color: #FFFFFF; /* Light header */
     --theme-header-text-color: #212529;
-    --theme-footer-bg-color: #F8F9FA; /* Light footer */
-    --theme-footer-text-color: #6C757D; /* Muted footer text */
-    --theme-footer-icon-fill: #6C757D;
+    --theme-footer-bg-color: #343a40;       /* Dark footer background */
+    --theme-footer-text-color: #FFFFFF;     /* White footer text */
+    --theme-footer-icon-fill: #FFFFFF;      /* White footer icons */
     --theme-subtle-overlay-color: rgba(0, 0, 0, 0.5); /* For things like banner text background */
     --theme-code-bg-color: #e9ecef;
     --theme-code-text-color: #212529;
     --theme-caret-color: #212529; /* For typing animation cursor */
+}
+
+/* Ensure footer h2 title is white in light theme with new dark footer BG */
+:root footer #contact h2 {
+    color: #FFFFFF;
 }
 
 .theme-dark {

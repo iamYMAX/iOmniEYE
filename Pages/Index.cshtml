@@ -114,8 +114,11 @@
 <section id="services" class="py-16" >
     <div class="container mx-auto">
         <h2 class="text-3xl text-center" data-translate-key="services_section_title">Наши услуги</h2>
-
-        <div class="mt-8 flex flex-wrap justify-center">
+       <button id="toggleServicesBtn" class="btn-collapse-elegant" aria-expanded="true" aria-controls="services-content-wrapper">
+           <span class="btn-collapse-text" data-text-hide="Скрыть Услуги" data-text-show="Показать Услуги">Скрыть Услуги</span>
+           <span class="btn-collapse-icon">▼</span>
+       </button>
+        <div id="services-content-wrapper" class="mt-8 flex flex-wrap justify-center collapsible-content-wrapper">
             <!-- Performance Optimization -->
             <div class="w-full sm:w-1/2 md:w-1/3 p-4">
                 <div class="service-card" data-icon="&#xf135;" style=" background-image: url(' /resource/optimized.jpg');">
@@ -250,7 +253,11 @@
 <section id="outsorce" class="py-16">
     <div class="container mx-auto">
         <h2 class="text-3xl text-center" data-translate-key="outsource_section_title">Удаленная поддержка(Outsorce)</h2>
-        <div class="mt-8">
+        <button id="toggleOutsorceBtn" class="btn-collapse-elegant" aria-expanded="true" aria-controls="outsorce-content-wrapper">
+            <span class="btn-collapse-text" data-text-hide="Скрыть детали поддержки" data-text-show="Показать детали поддержки">Скрыть детали поддержки</span>
+            <span class="btn-collapse-icon">▼</span>
+        </button>
+        <div id="outsorce-content-wrapper" class="mt-8 collapsible-content-wrapper">
 
                              <!-- Описание услуги -->
                     <section class="shadow-lg rounded-lg p-8 mb-12">

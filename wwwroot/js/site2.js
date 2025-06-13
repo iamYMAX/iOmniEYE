@@ -307,3 +307,103 @@ document.addEventListener('DOMContentLoaded', function() {
 
     handleBannerInteractions();
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const servicesToggleButton = document.getElementById('toggleServicesBtn');
+    const servicesContent = document.getElementById('services-content-wrapper');
+
+    if (servicesToggleButton && servicesContent) {
+        const textSpan = servicesToggleButton.querySelector('.btn-collapse-text');
+        const showText = textSpan.getAttribute('data-text-show');
+        const hideText = textSpan.getAttribute('data-text-hide');
+
+        // Function to set initial state
+        function setInitialServicesState() {
+            const isCollapsed = localStorage.getItem('servicesCollapsed') === 'true';
+            servicesContent.classList.toggle('collapsed', isCollapsed);
+            servicesToggleButton.setAttribute('aria-expanded', !isCollapsed);
+            textSpan.textContent = isCollapsed ? showText : hideText;
+        }
+
+        // Set initial state on page load
+        setInitialServicesState();
+
+        servicesToggleButton.addEventListener('click', function () {
+            const isCurrentlyExpanded = servicesToggleButton.getAttribute('aria-expanded') === 'true';
+
+            servicesContent.classList.toggle('collapsed', isCurrentlyExpanded);
+            servicesToggleButton.setAttribute('aria-expanded', !isCurrentlyExpanded);
+            textSpan.textContent = isCurrentlyExpanded ? showText : hideText;
+
+            localStorage.setItem('servicesCollapsed', isCurrentlyExpanded);
+        });
+    }
+
+    const outsourceToggleButton = document.getElementById('toggleOutsorceBtn');
+    const outsourceContent = document.getElementById('outsorce-content-wrapper');
+
+    if (outsourceToggleButton && outsourceContent) {
+        const textSpanOutsource = outsourceToggleButton.querySelector('.btn-collapse-text');
+        const showTextOutsource = textSpanOutsource.getAttribute('data-text-show');
+        const hideTextOutsource = textSpanOutsource.getAttribute('data-text-hide');
+
+        // Function to set initial state for Outsource section
+        function setInitialOutsorceState() {
+            const isCollapsed = localStorage.getItem('outsorceCollapsed') === 'true';
+            outsourceContent.classList.toggle('collapsed', isCollapsed);
+            outsourceToggleButton.setAttribute('aria-expanded', !isCollapsed);
+            textSpanOutsource.textContent = isCollapsed ? showTextOutsource : hideTextOutsource;
+        }
+
+        // Set initial state on page load
+        setInitialOutsorceState();
+
+        outsourceToggleButton.addEventListener('click', function () {
+            const isCurrentlyExpanded = outsourceToggleButton.getAttribute('aria-expanded') === 'true';
+
+            outsourceContent.classList.toggle('collapsed', isCurrentlyExpanded);
+            outsourceToggleButton.setAttribute('aria-expanded', !isCurrentlyExpanded);
+            textSpanOutsource.textContent = isCurrentlyExpanded ? showTextOutsource : hideTextOutsource;
+
+            localStorage.setItem('outsorceCollapsed', isCurrentlyExpanded);
+        });
+    }
+
+    const pricingToggleButton = document.getElementById('togglePricingBtn');
+    const pricingContent = document.getElementById('pricing-policy-content');
+
+    if (pricingToggleButton && pricingContent) {
+        const textSpanPricing = pricingToggleButton.querySelector('.btn-collapse-text');
+        const showTextPricing = textSpanPricing.getAttribute('data-text-show');
+        const hideTextPricing = textSpanPricing.getAttribute('data-text-hide');
+
+        // Function to set initial state for Pricing Policy
+        function setInitialPricingState() {
+            // Default to collapsed (hidden)
+            let isCollapsed = localStorage.getItem('pricingPolicyCollapsed');
+            if (isCollapsed === null) { // If no stored state, default to collapsed
+                isCollapsed = 'true';
+                localStorage.setItem('pricingPolicyCollapsed', 'true');
+            } else {
+                isCollapsed = isCollapsed === 'true';
+            }
+
+            pricingContent.classList.toggle('collapsed', isCollapsed);
+            pricingToggleButton.setAttribute('aria-expanded', !isCollapsed);
+            textSpanPricing.textContent = isCollapsed ? showTextPricing : hideTextPricing;
+        }
+
+        // Set initial state on page load
+        setInitialPricingState();
+
+        pricingToggleButton.addEventListener('click', function () {
+            const isCurrentlyExpanded = pricingToggleButton.getAttribute('aria-expanded') === 'true';
+
+            pricingContent.classList.toggle('collapsed', isCurrentlyExpanded);
+            pricingToggleButton.setAttribute('aria-expanded', !isCurrentlyExpanded);
+            textSpanPricing.textContent = isCurrentlyExpanded ? showTextPricing : hideTextPricing;
+
+            localStorage.setItem('pricingPolicyCollapsed', isCurrentlyExpanded);
+        });
+    }
+});
