@@ -24,155 +24,34 @@
 }
 
 .theme-dark {
-    /* Dark Theme Overrides */
-    --theme-bg-color: #1A1A1A;
-    --theme-text-color: #E0E0E0;
-    --theme-accent-color: #FFC107; /* Amber */
-    --theme-accent-hover-color: #E0A800; /* Darker Amber for hover */
-    --theme-card-bg-color: #2C2C2C;
-    --theme-border-color: #444444;
-    --theme-form-bg-color: #2C2C2C;
-    --theme-form-text-color: #E0E0E0;
-    --theme-form-border-color: #444444;
-    /* --theme-form-focus-border-color remains #00BFA5 */
-    /* --theme-form-focus-shadow-color can remain rgba(0, 191, 165, 0.25) or be adjusted if needed */
-    --theme-header-bg-color: #1F1F1F;
-    --theme-header-text-color: #E0E0E0;
-    --theme-footer-bg-color: #1F1F1F;
-    --theme-footer-text-color: #A0A0A0;
-    --theme-footer-icon-fill: #A0A0A0;
-    --theme-subtle-overlay-color: rgba(0, 0, 0, 0.7); /* Stronger overlay for dark */
-    --theme-code-bg-color: #2C2C2C;
-    --theme-code-text-color: #E0E0E0;
-    --theme-caret-color: #E0E0E0;
-}
+    --theme-bg-color: #000000;                        /* Black page background */
+    --theme-text-color: #FFFFFF;                      /* White text */
 
-/* --- Ubuntu Window Style for Service Cards (Dark Theme) - Revised --- */
+    --theme-accent-color: #FFFFFF;                    /* White accent */
+    --theme-accent-hover-color: #DDDDDD;              /* Light grey for accent hover */
 
-.theme-dark .service-card {
-    position: relative;
-    padding-top: 35px; /* Make space for the h3 to become the title bar */
-    background-color: rgba(40, 44, 52, 0.8); /* MODIFIED */
-    border: 1px solid rgba(60, 66, 78, 0.8); /* MODIFIED */
-    box-shadow: none; /* Remove existing box-shadow for a flatter appearance */
-    border-bottom-left-radius: 8px; /* Ensure all corners are rounded if not already */
-    border-bottom-right-radius: 8px;
-    /* border-top-left-radius and border-top-right-radius are handled by the h3 (title bar) */
-    padding-bottom: calc(22px + 1.5rem);
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    font-family: 'Lora', serif; /* ADDED - default for card text */
-}
+    --theme-card-bg-color: #181818;                   /* Very dark grey for cards */
+    --theme-border-color: #333333;                    /* Dark grey borders for cards/elements */
 
-/* --- Ubuntu Window Style for Service Cards (Dark Theme) - Card Body & Appearance --- */
+    --theme-form-bg-color: #101010;                   /* Dark background for forms */
+    --theme-form-text-color: #FFFFFF;                 /* White text in forms */
+    --theme-form-border-color: #333333;               /* Dark grey border for form fields */
+    --theme-form-focus-border-color: #FFFFFF;         /* White border on focus for forms */
+    --theme-form-focus-shadow-color: rgba(255, 255, 255, 0.25); /* White shadow on focus */
 
-/* Ensure text within the card body is readable */
-.theme-dark .service-card p,
-.theme-dark .service-card .service-details p, /* For the hover details */
-.theme-dark .service-card .service-details h4,
-.theme-dark .service-card .service-details ul,
-.theme-dark .service-card .service-details li {
-    color: #D5D8DC; /* MODIFIED */
-    font-family: 'Lora', serif; /* ENSURE */
-}
-.theme-dark .service-card .service-details h4 {
-    font-weight: 700; /* Bolder for h4 titles in details */
-}
+    --theme-header-bg-color: #080808;                 /* Slightly off-black for header */
+    --theme-header-text-color: #FFFFFF;               /* White text in header */
 
-.theme-dark .service-card .service-details a {
-    color: var(--theme-accent-color); /* Should already be amber for dark theme */
-}
+    --theme-footer-bg-color: #080808;                 /* Slightly off-black for footer */
+    --theme-footer-text-color: #AAAAAA;               /* Lighter grey for footer text */
+    --theme-footer-icon-fill: #AAAAAA;                /* Lighter grey for footer icons */
 
-/* Style H3 to become the title bar */
-.theme-dark .service-card h3 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 35px;
-    background-color: rgba(50, 56, 66, 0.85); /* MODIFIED */
-    color: #EAECEE; /* MODIFIED */
-    font-family: 'Lora', serif; /* ENSURE */
-    font-weight: 700; /* ENSURE */
-    text-align: center; /* Center the title text part */
-    margin: 0; /* Reset default h3 margin */
-    padding: 0 70px; /* Padding to make space for controls on left & menu on right */
-    line-height: 35px; /* Vertically center text */
-    border-top-left-radius: 8px; /* Match card's border radius */
-    border-top-right-radius: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    z-index: 10; /* Ensure h3 is above the main card icon if it overlaps */
-}
+    --theme-subtle-overlay-color: rgba(255, 255, 255, 0.05); /* Very subtle light overlay for dark elements on dark */
 
-/* Mock Window Controls (using ::before on h3) */
-.theme-dark .service-card h3::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0px; /* Aligned to the left of the h3 (which is the title bar) */
-    bottom: 0;
-    width: 70px; /* Width for the controls area */
-    background-image:
-        radial-gradient(circle at center, #FF7060 6px, transparent 6.5px),
-        radial-gradient(circle at center, #FFD070 6px, transparent 6.5px),
-        radial-gradient(circle at center, #60E070 6px, transparent 6.5px);
-    background-repeat: no-repeat;
-    background-position:
-        12px center,
-        32px center,
-        52px center;
-    background-size: 12px 12px;
-}
+    --theme-code-bg-color: #1E1E1E;                   /* Dark grey for code blocks */
+    --theme-code-text-color: #FFFFFF;                 /* White text for code */
 
-/* Mock Menu Text (using ::after on h3) */
-.theme-dark .service-card h3::after {
-    content: "Файл  Вид  ?";
-    position: absolute;
-    top: 0;
-    right: 15px; /* Aligned to the right of the h3 (title bar) */
-    line-height: 35px; /* Match h3 line-height */
-    color: #9098A0; /* MODIFIED */
-    font-size: 0.8rem;
-    font-family: 'Lora', serif; /* ENSURE */
-}
-
-/* Remove Mock Menu Text specifically from cards in the #services section */
-.theme-dark #services .service-card h3::after {
-    content: ""; /* Override to remove the text */
-}
-
-/* Reposition .service-card::before (FontAwesome Icon) in dark theme */
-.theme-dark .service-card::before {
-    top: calc(35px + 1.5rem); /* Position below the new h3 title bar */
-    color: var(--theme-accent-color); /* This should pick up dark theme's accent */
-    z-index: 1; /* Keep it above general card content, but below h3 title bar if any overlap issues */
-    opacity: 0.9; /* Make icon more opaque */
-}
-
-/* Ensure the hidden .service-details popup also fits the theme if it's ever shown */
-.theme-dark .service-card .service-details {
-    background-color: rgba(40, 44, 52, 0.85); /* MODIFIED */
-    border-top: 1px solid rgba(60, 66, 78, 0.8); /* MODIFIED */
-    /* Text colors inside are handled by the generic rules above */
-}
-
-/* --- Ubuntu Window Style for Service Cards (Dark Theme) - Mock Status Bar --- */
-
-.theme-dark .service-card::after {
-    content: ""; /* Empty content, it's purely decorative */
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 22px; /* Height of the status bar */
-    background-color: rgba(36, 40, 48, 0.8); /* MODIFIED */
-    border-bottom-left-radius: 8px; /* Match card's border radius */
-    border-bottom-right-radius: 8px;
-    z-index: 1; /* Above the main card background but below content if it were to overlap */
-    border-top: 1px solid rgba(50, 56, 66, 0.8); /* MODIFIED */
-    display: block;
+    --theme-caret-color: #FFFFFF;                     /* White caret for typing animations */
 }
 
 /* Basic Reset */
@@ -653,8 +532,6 @@ section {
     color: var(--theme-accent-color); /* Use accent color for icons */
     opacity: 0.7; /* Slightly transparent */
     z-index: 0;
-    display: inline-block; /* Added for better animation compatibility */
-    content: attr(data-icon); /* Crucial for displaying the icon */
     /* Removed background-color: transparent from previous step, ensure it's not needed */
 }
 
@@ -1159,30 +1036,6 @@ body.grotem-body.text-gray-100 {
     #banner h2 { font-size: 2rem; }
     #banner p { font-size: 1.1rem; }
 
-    #banner {
-        height: auto; /* Allow banner height to adjust to content */
-        min-height: 60vh; /* Or a specific smaller vh, or even 'auto' if content allows */
-        padding-top: 4rem; /* Add some padding if height is auto */
-        padding-bottom: 4rem;
-    }
-
-    #banner .bg-black.bg-opacity-50 { /* The inner content box of the banner */
-        padding: 1.5rem; /* Reduce padding from p-8 (2rem) */
-    }
-
-    #banner h2, #banner #banner-text { /* Already targeted, ensure font size is small enough */
-        font-size: 1.8rem; /* Further reduce from 2rem if needed */
-    }
-
-    #banner p, #banner #banner-subtext { /* Already targeted, ensure font size is small enough */
-        font-size: 1rem; /* Further reduce from 1.1rem if needed */
-    }
-
-    #home {
-        padding-top: 2rem; /* Reduce top padding if banner is shorter */
-        padding-bottom: 2rem;
-    }
-
     /* Further reduce nav item size or implement hamburger menu (latter needs JS) */
     header nav a, header nav #themeSwitcherButton {
         /* If a hamburger menu isn't implemented, links might need to wrap or be very small */
@@ -1199,40 +1052,6 @@ body.grotem-body.text-gray-100 {
     .social-panel-popup {
         right: 50px; /* Adjust to prevent overlap */
         top: 85%;
-    }
-}
-
-@media (max-width: 480px) {
-    #banner {
-        min-height: 50vh; /* Even smaller */
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-    }
-
-    #banner .bg-black.bg-opacity-50 {
-        padding: 1rem; /* Further reduce padding */
-    }
-
-    #banner h2, #banner #banner-text {
-        font-size: 1.5rem;
-    }
-
-    #banner p, #banner #banner-subtext {
-        font-size: 0.9rem;
-    }
-
-    #home h2 { /* Welcome to */
-        font-size: 1.25rem;
-    }
-    #home h1 { /* IOmniEYE */
-        font-size: 2rem;
-    }
-    #home .typing-container {
-        font-size: 1rem;
-        min-height: 2em;
-    }
-    #home p.mt-4.text-lg { /* Initial text below typing */
-        font-size: 0.9rem;
     }
 }
 
@@ -1383,90 +1202,4 @@ body:not(.theme-dark) .service-details a:hover {
     color: var(--theme-accent-hover-color, #008c7a) !important;
 }
 
-/* --- Icon Animations --- */
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes vibrate {
-    0% { transform: translate(0); }
-    20% { transform: translate(-1px, 1px) rotate(-1deg); }
-    40% { transform: translate(-1px, -1px) rotate(-1deg); }
-    60% { transform: translate(1px, 1px) rotate(1deg); }
-    80% { transform: translate(1px, -1px) rotate(1deg); }
-    100% { transform: translate(0) rotate(0); }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.7;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 0.7;
-    }
-}
-
-/* Add a wiggle animation for the wrench icon */
-@keyframes wiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(5deg); }
-  75% { transform: rotate(-5deg); }
-}
-
-/* Apply Animations to Service Card Icons on Hover */
-
-/* Gear Icon (Разработка программного обеспечения) - Spin Animation */
-.service-card:hover[data-icon=""]::before {
-    animation: spin 2s linear infinite;
-}
-
-/* Phone Icon (Телефония и видеосвязь) - Vibrate Animation */
-.service-card:hover[data-icon=""]::before { /* xf095 is  */
-    animation: vibrate 0.5s linear infinite;
-}
-
-/* Chart Icon (Оптимизация производительности) - Pulse Animation */
-.service-card:hover[data-icon=""]::before { /* xf135 is  */
-    animation: pulse 1.5s ease-in-out infinite;
-}
-
-/* Users Icon (Настройка сети и серверов) - Pulse Animation */
-.service-card:hover[data-icon=""]::before { /* xf233 is  */
-    animation: pulse 1.5s ease-in-out infinite;
-}
-
-/* Globe Icon (Веб-решения) - Pulse Animation (or spin slowly) */
-.service-card:hover[data-icon=""]::before { /* xf0ac is  */
-    animation: pulse 1.8s ease-in-out infinite; /* Slower pulse for globe */
-}
-
-/* Wrench Icon (Удаленная IT-поддержка) - Wiggle Animation */
-.service-card:hover[data-icon=""]::before { /* xf0ad is  */
-    animation: wiggle 1s ease-in-out infinite;
-}
-
-/* Ensure other icons are not affected if not targeted */
-/* The ::before element already exists, these rules just add 'animation' on hover. */
-
-/* Adjust existing .service-card::before if necessary to ensure proper animation behavior. */
-/* For example, ensure 'display: inline-block;' or 'display: block;' if transform issues occur. */
-/* The existing styles for .service-card::before are:
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    font-size: 2rem;
-    color: var(--theme-accent-color);
-    opacity: 0.7;
-    z-index: 0;
-   These should be fine, but good to keep in mind.
-*/
+[end of wwwroot/css/grotem_style.css]
