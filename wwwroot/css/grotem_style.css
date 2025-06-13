@@ -52,8 +52,8 @@
 .theme-dark .service-card {
     position: relative;
     padding-top: 35px; /* Make space for the h3 to become the title bar */
-    background-color: rgba(44, 44, 48, 0.95); /* Main window content area background */
-    border: 1px solid #38383c; /* Subtle border, slightly lighter than title bar or window bg */
+    background-color: #1A2B40; /* MODIFIED */
+    border: 1px solid #304860; /* MODIFIED */
     box-shadow: none; /* Remove existing box-shadow for a flatter appearance */
     border-bottom-left-radius: 8px; /* Ensure all corners are rounded if not already */
     border-bottom-right-radius: 8px;
@@ -61,6 +61,7 @@
     padding-bottom: calc(22px + 1.5rem);
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    font-family: 'Lora', serif; /* ADDED - default for card text */
 }
 
 /* --- Ubuntu Window Style for Service Cards (Dark Theme) - Card Body & Appearance --- */
@@ -71,7 +72,11 @@
 .theme-dark .service-card .service-details h4,
 .theme-dark .service-card .service-details ul,
 .theme-dark .service-card .service-details li {
-    color: #cccccc; /* Light grey text for content */
+    color: #E0E8F0; /* MODIFIED/Ensure */
+    font-family: 'Lora', serif; /* ADDED */
+}
+.theme-dark .service-card .service-details h4 {
+    font-weight: 700; /* Bolder for h4 titles in details */
 }
 
 .theme-dark .service-card .service-details a {
@@ -85,10 +90,10 @@
     left: 0;
     right: 0;
     height: 35px;
-    background-color: #2a2a2e; /* Ubuntu title bar dark grey */
-    color: #eeeeee; /* Light text color */
-    font-size: 0.9rem;
-    font-weight: 600;
+    background-color: #253854; /* MODIFIED */
+    color: #F0F8FF; /* MODIFIED */
+    font-family: 'Lora', serif; /* ADDED (or override if card has it) */
+    font-weight: 700; /* Lora might need explicit bold for titles */
     text-align: center; /* Center the title text part */
     margin: 0; /* Reset default h3 margin */
     padding: 0 70px; /* Padding to make space for controls on left & menu on right */
@@ -110,9 +115,9 @@
     bottom: 0;
     width: 70px; /* Width for the controls area */
     background-image:
-        radial-gradient(circle at center, #FF5F57 6px, transparent 6.5px),
-        radial-gradient(circle at center, #FFBD2E 6px, transparent 6.5px),
-        radial-gradient(circle at center, #28C940 6px, transparent 6.5px);
+        radial-gradient(circle at center, #FF7060 6px, transparent 6.5px),  /* MODIFIED */
+        radial-gradient(circle at center, #FFD070 6px, transparent 6.5px),  /* MODIFIED */
+        radial-gradient(circle at center, #60E070 6px, transparent 6.5px);  /* MODIFIED */
     background-repeat: no-repeat;
     background-position:
         12px center,
@@ -128,9 +133,9 @@
     top: 0;
     right: 15px; /* Aligned to the right of the h3 (title bar) */
     line-height: 35px; /* Match h3 line-height */
-    color: #bbbbbb;
+    color: #A0B0C0; /* MODIFIED - lighter, more fitting for blue theme */
     font-size: 0.8rem;
-    font-family: 'Ubuntu', sans-serif; /* Optional */
+    font-family: 'Lora', serif; /* ADDED */
 }
 
 /* Remove Mock Menu Text specifically from cards in the #services section */
@@ -148,8 +153,8 @@
 
 /* Ensure the hidden .service-details popup also fits the theme if it's ever shown */
 .theme-dark .service-card .service-details {
-    background-color: rgba(50, 50, 54, 0.95); /* Slightly different background for the details popup */
-    border-top: 1px solid #38383c;
+    background-color: #1F304A; /* MODIFIED - was rgba(50, 50, 54, 0.95) */
+    border-top: 1px solid #304860; /* MODIFIED */
     /* Text colors inside are handled by the generic rules above */
 }
 
@@ -162,11 +167,11 @@
     left: 0;
     right: 0;
     height: 22px; /* Height of the status bar */
-    background-color: #26262a; /* Slightly different dark grey for the status bar, similar to title bar or a bit darker */
+    background-color: #20304A; /* MODIFIED */
     border-bottom-left-radius: 8px; /* Match card's border radius */
     border-bottom-right-radius: 8px;
     z-index: 1; /* Above the main card background but below content if it were to overlap */
-    border-top: 1px solid #333337; /* A subtle top border for separation */
+    border-top: 1px solid #304860; /* MODIFIED */
     display: block;
 }
 
