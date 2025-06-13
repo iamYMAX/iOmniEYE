@@ -47,6 +47,124 @@
     --theme-caret-color: #E0E0E0;
 }
 
+/* --- Ubuntu Window Style for Service Cards (Dark Theme) - Revised --- */
+
+.theme-dark .service-card {
+    position: relative;
+    padding-top: 35px; /* Make space for the h3 to become the title bar */
+    background-color: #353535; /* Main window content area background */
+    border: 1px solid #4a4a4a; /* Subtle border, slightly lighter than title bar or window bg */
+    box-shadow: none; /* Remove existing box-shadow for a flatter appearance */
+    border-bottom-left-radius: 8px; /* Ensure all corners are rounded if not already */
+    border-bottom-right-radius: 8px;
+    /* border-top-left-radius and border-top-right-radius are handled by the h3 (title bar) */
+    padding-bottom: calc(22px + 1.5rem);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* --- Ubuntu Window Style for Service Cards (Dark Theme) - Card Body & Appearance --- */
+
+/* Ensure text within the card body is readable */
+.theme-dark .service-card p,
+.theme-dark .service-card .service-details p, /* For the hover details */
+.theme-dark .service-card .service-details h4,
+.theme-dark .service-card .service-details ul,
+.theme-dark .service-card .service-details li {
+    color: #cccccc; /* Light grey text for content */
+}
+
+.theme-dark .service-card .service-details a {
+    color: var(--theme-accent-color); /* Should already be amber for dark theme */
+}
+
+/* Style H3 to become the title bar */
+.theme-dark .service-card h3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 35px;
+    background-color: #2d2d2d; /* Ubuntu title bar dark grey */
+    color: #eeeeee; /* Light text color */
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center; /* Center the title text part */
+    margin: 0; /* Reset default h3 margin */
+    padding: 0 70px; /* Padding to make space for controls on left & menu on right */
+    line-height: 35px; /* Vertically center text */
+    border-top-left-radius: 8px; /* Match card's border radius */
+    border-top-right-radius: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 10; /* Ensure h3 is above the main card icon if it overlaps */
+}
+
+/* Mock Window Controls (using ::before on h3) */
+.theme-dark .service-card h3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0px; /* Aligned to the left of the h3 (which is the title bar) */
+    bottom: 0;
+    width: 70px; /* Width for the controls area */
+    background-image:
+        radial-gradient(circle at center, #FF5F57 6px, transparent 6.5px),
+        radial-gradient(circle at center, #FFBD2E 6px, transparent 6.5px),
+        radial-gradient(circle at center, #28C940 6px, transparent 6.5px);
+    background-repeat: no-repeat;
+    background-position:
+        12px center,
+        32px center,
+        52px center;
+    background-size: 12px 12px;
+}
+
+/* Mock Menu Text (using ::after on h3) */
+.theme-dark .service-card h3::after {
+    content: "Файл  Вид  ?";
+    position: absolute;
+    top: 0;
+    right: 15px; /* Aligned to the right of the h3 (title bar) */
+    line-height: 35px; /* Match h3 line-height */
+    color: #bbbbbb;
+    font-size: 0.8rem;
+    font-family: 'Ubuntu', sans-serif; /* Optional */
+}
+
+/* Reposition .service-card::before (FontAwesome Icon) in dark theme */
+.theme-dark .service-card::before {
+    top: calc(35px + 1.5rem); /* Position below the new h3 title bar */
+    color: var(--theme-accent-color); /* This should pick up dark theme's accent */
+    z-index: 1; /* Keep it above general card content, but below h3 title bar if any overlap issues */
+    opacity: 0.9; /* Make icon more opaque */
+}
+
+/* Ensure the hidden .service-details popup also fits the theme if it's ever shown */
+.theme-dark .service-card .service-details {
+    background-color: #383838; /* Slightly different background for the details popup */
+    border-top: 1px solid #4a4a4a;
+    /* Text colors inside are handled by the generic rules above */
+}
+
+/* --- Ubuntu Window Style for Service Cards (Dark Theme) - Mock Status Bar --- */
+
+.theme-dark .service-card::after {
+    content: ""; /* Empty content, it's purely decorative */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 22px; /* Height of the status bar */
+    background-color: #2b2b2b; /* Slightly different dark grey for the status bar, similar to title bar or a bit darker */
+    border-bottom-left-radius: 8px; /* Match card's border radius */
+    border-bottom-right-radius: 8px;
+    z-index: 1; /* Above the main card background but below content if it were to overlap */
+    border-top: 1px solid #454545; /* A subtle top border for separation */
+    display: block;
+}
+
 /* Basic Reset */
 *,
 *::before,
