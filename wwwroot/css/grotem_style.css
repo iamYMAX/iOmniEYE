@@ -523,18 +523,17 @@ section {
 
 /* Service Card Icons (using ::before from site2.css) */
 .service-card::before {
-    font-family: "Font Awesome 6 Free"; /* Make sure this is still loaded */
-    font-weight: 900; /* Solid icons often look better for this style */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
     position: absolute;
     top: 1.5rem;
-    right: 1.5rem; /* Position to top right */
-    font-size: 2rem; /* Adjust icon size */
-    color: var(--theme-accent-color); /* Use accent color for icons */
-    opacity: 0.7; /* Slightly transparent */
+    right: 1.5rem;
+    font-size: 2rem;
+    color: var(--theme-accent-color);
+    opacity: 0.7;
     z-index: 0;
-    display: inline-block; /* ADDED */
-    content: attr(data-icon); /* ADDED */
-    /* Removed background-color: transparent from previous step, ensure it's not needed */
+    display: inline-block;
+    content: attr(data-icon);
 }
 
 
@@ -1035,8 +1034,33 @@ body.grotem-body.text-gray-100 {
     h2 { font-size: 1.75rem; }
     h3 { font-size: 1.5rem; }
 
-    #banner h2 { font-size: 2rem; }
-    #banner p { font-size: 1.1rem; }
+    /* #banner h2 { font-size: 2rem; } */
+    /* #banner p { font-size: 1.1rem; } */
+
+    #banner {
+        height: auto !important;
+        min-height: 0 !important;
+        padding-top: 5rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    #banner .bg-black.bg-opacity-50 {
+        padding: 1.5rem !important;
+    }
+
+    #banner h2, #banner #banner-text {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    #banner p, #banner #banner-subtext {
+        font-size: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    #home {
+        padding-top: 3rem !important;
+        padding-bottom: 2rem; /* Retained from previous version seen in Turn 14's output */
+    }
 
     /* Further reduce nav item size or implement hamburger menu (latter needs JS) */
     header nav a, header nav #themeSwitcherButton {
@@ -1055,6 +1079,45 @@ body.grotem-body.text-gray-100 {
         right: 50px; /* Adjust to prevent overlap */
         top: 85%;
     }
+}
+
+@media (max-width: 480px) {
+    #banner {
+        /* min-height: 50vh; */ /* Effectively overridden by auto height from 767px rule if not specified here */
+        padding-top: 4rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    #banner .bg-black.bg-opacity-50 {
+        padding: 1rem !important;
+    }
+
+    #banner h2, #banner #banner-text {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    #banner p, #banner #banner-subtext {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    #home h2 { /* Welcome to */
+        font-size: 1.25rem;
+    }
+    #home h1 { /* IOmniEYE */
+        font-size: 2rem;
+    }
+    #home .typing-container {
+        font-size: 1rem;
+        min-height: 2em;
+    }
+    #home p.mt-4.text-lg { /* Initial text below typing */
+        font-size: 0.9rem;
+    }
+    #home {
+         padding-top: 2rem !important;
+     }
 }
 
 /* General Polish */
@@ -1266,5 +1329,11 @@ body:not(.theme-dark) .service-details a:hover {
 .service-card:hover[data-icon=""]::before { /* Wrench (Remote Support) xf0ad */
     animation: wiggle 1s ease-in-out infinite;
 }
+
+[end of wwwroot/css/grotem_style.css]
+
+[end of wwwroot/css/grotem_style.css]
+
+[end of wwwroot/css/grotem_style.css]
 
 [end of wwwroot/css/grotem_style.css]
