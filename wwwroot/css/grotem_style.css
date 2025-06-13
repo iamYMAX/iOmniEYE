@@ -52,8 +52,8 @@
 .theme-dark .service-card {
     position: relative;
     padding-top: 35px; /* Make space for the h3 to become the title bar */
-    background-color: #1A2B40; /* MODIFIED */
-    border: 1px solid #304860; /* MODIFIED */
+    background-color: rgba(40, 44, 52, 0.8); /* MODIFIED */
+    border: 1px solid rgba(60, 66, 78, 0.8); /* MODIFIED */
     box-shadow: none; /* Remove existing box-shadow for a flatter appearance */
     border-bottom-left-radius: 8px; /* Ensure all corners are rounded if not already */
     border-bottom-right-radius: 8px;
@@ -72,8 +72,8 @@
 .theme-dark .service-card .service-details h4,
 .theme-dark .service-card .service-details ul,
 .theme-dark .service-card .service-details li {
-    color: #E0E8F0; /* MODIFIED/Ensure */
-    font-family: 'Lora', serif; /* ADDED */
+    color: #D5D8DC; /* MODIFIED */
+    font-family: 'Lora', serif; /* ENSURE */
 }
 .theme-dark .service-card .service-details h4 {
     font-weight: 700; /* Bolder for h4 titles in details */
@@ -90,10 +90,10 @@
     left: 0;
     right: 0;
     height: 35px;
-    background-color: #253854; /* MODIFIED */
-    color: #F0F8FF; /* MODIFIED */
-    font-family: 'Lora', serif; /* ADDED (or override if card has it) */
-    font-weight: 700; /* Lora might need explicit bold for titles */
+    background-color: rgba(50, 56, 66, 0.85); /* MODIFIED */
+    color: #EAECEE; /* MODIFIED */
+    font-family: 'Lora', serif; /* ENSURE */
+    font-weight: 700; /* ENSURE */
     text-align: center; /* Center the title text part */
     margin: 0; /* Reset default h3 margin */
     padding: 0 70px; /* Padding to make space for controls on left & menu on right */
@@ -115,9 +115,9 @@
     bottom: 0;
     width: 70px; /* Width for the controls area */
     background-image:
-        radial-gradient(circle at center, #FF7060 6px, transparent 6.5px),  /* MODIFIED */
-        radial-gradient(circle at center, #FFD070 6px, transparent 6.5px),  /* MODIFIED */
-        radial-gradient(circle at center, #60E070 6px, transparent 6.5px);  /* MODIFIED */
+        radial-gradient(circle at center, #FF7060 6px, transparent 6.5px),
+        radial-gradient(circle at center, #FFD070 6px, transparent 6.5px),
+        radial-gradient(circle at center, #60E070 6px, transparent 6.5px);
     background-repeat: no-repeat;
     background-position:
         12px center,
@@ -133,9 +133,9 @@
     top: 0;
     right: 15px; /* Aligned to the right of the h3 (title bar) */
     line-height: 35px; /* Match h3 line-height */
-    color: #A0B0C0; /* MODIFIED - lighter, more fitting for blue theme */
+    color: #9098A0; /* MODIFIED */
     font-size: 0.8rem;
-    font-family: 'Lora', serif; /* ADDED */
+    font-family: 'Lora', serif; /* ENSURE */
 }
 
 /* Remove Mock Menu Text specifically from cards in the #services section */
@@ -153,8 +153,8 @@
 
 /* Ensure the hidden .service-details popup also fits the theme if it's ever shown */
 .theme-dark .service-card .service-details {
-    background-color: #1F304A; /* MODIFIED - was rgba(50, 50, 54, 0.95) */
-    border-top: 1px solid #304860; /* MODIFIED */
+    background-color: rgba(40, 44, 52, 0.85); /* MODIFIED */
+    border-top: 1px solid rgba(60, 66, 78, 0.8); /* MODIFIED */
     /* Text colors inside are handled by the generic rules above */
 }
 
@@ -167,11 +167,11 @@
     left: 0;
     right: 0;
     height: 22px; /* Height of the status bar */
-    background-color: #20304A; /* MODIFIED */
+    background-color: rgba(36, 40, 48, 0.8); /* MODIFIED */
     border-bottom-left-radius: 8px; /* Match card's border radius */
     border-bottom-right-radius: 8px;
     z-index: 1; /* Above the main card background but below content if it were to overlap */
-    border-top: 1px solid #304860; /* MODIFIED */
+    border-top: 1px solid rgba(50, 56, 66, 0.8); /* MODIFIED */
     display: block;
 }
 
