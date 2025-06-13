@@ -532,6 +532,8 @@ section {
     color: var(--theme-accent-color); /* Use accent color for icons */
     opacity: 0.7; /* Slightly transparent */
     z-index: 0;
+    display: inline-block; /* ADDED */
+    content: attr(data-icon); /* ADDED */
     /* Removed background-color: transparent from previous step, ensure it's not needed */
 }
 
@@ -1200,6 +1202,69 @@ body:not(.theme-dark) .service-details a {
 }
 body:not(.theme-dark) .service-details a:hover {
     color: var(--theme-accent-hover-color, #008c7a) !important;
+}
+
+/* --- Icon Animations --- */
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes vibrate {
+    0% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px) rotate(-1deg); }
+    40% { transform: translate(-1px, -1px) rotate(-1deg); }
+    60% { transform: translate(1px, 1px) rotate(1deg); }
+    80% { transform: translate(1px, -1px) rotate(1deg); }
+    100% { transform: translate(0) rotate(0); }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7; /* Match base icon opacity */
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.7; /* Match base icon opacity */
+    }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+/* Apply Animations to Service Card Icons on Hover */
+
+.service-card:hover[data-icon=""]::before { /* Gear (Software Development) */
+    animation: spin 2s linear infinite;
+}
+
+.service-card:hover[data-icon=""]::before { /* Phone (Telephony) xf095 */
+    animation: vibrate 0.5s linear infinite;
+}
+
+.service-card:hover[data-icon=""]::before { /* Chart (Performance Optimization) xf135 */
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.service-card:hover[data-icon=""]::before { /* Users (Network Setup) xf233 */
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.service-card:hover[data-icon=""]::before { /* Globe (Web Solutions) xf0ac */
+    animation: pulse 1.8s ease-in-out infinite;
+}
+
+.service-card:hover[data-icon=""]::before { /* Wrench (Remote Support) xf0ad */
+    animation: wiggle 1s ease-in-out infinite;
 }
 
 [end of wwwroot/css/grotem_style.css]
