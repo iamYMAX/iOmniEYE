@@ -52,8 +52,8 @@
 .theme-dark .service-card {
     position: relative;
     padding-top: 35px; /* Make space for the h3 to become the title bar */
-    background-color: #353535; /* Main window content area background */
-    border: 1px solid #4a4a4a; /* Subtle border, slightly lighter than title bar or window bg */
+    background-color: rgba(44, 44, 48, 0.95); /* Main window content area background */
+    border: 1px solid #38383c; /* Subtle border, slightly lighter than title bar or window bg */
     box-shadow: none; /* Remove existing box-shadow for a flatter appearance */
     border-bottom-left-radius: 8px; /* Ensure all corners are rounded if not already */
     border-bottom-right-radius: 8px;
@@ -85,7 +85,7 @@
     left: 0;
     right: 0;
     height: 35px;
-    background-color: #2d2d2d; /* Ubuntu title bar dark grey */
+    background-color: #2a2a2e; /* Ubuntu title bar dark grey */
     color: #eeeeee; /* Light text color */
     font-size: 0.9rem;
     font-weight: 600;
@@ -133,6 +133,11 @@
     font-family: 'Ubuntu', sans-serif; /* Optional */
 }
 
+/* Remove Mock Menu Text specifically from cards in the #services section */
+.theme-dark #services .service-card h3::after {
+    content: ""; /* Override to remove the text */
+}
+
 /* Reposition .service-card::before (FontAwesome Icon) in dark theme */
 .theme-dark .service-card::before {
     top: calc(35px + 1.5rem); /* Position below the new h3 title bar */
@@ -143,8 +148,8 @@
 
 /* Ensure the hidden .service-details popup also fits the theme if it's ever shown */
 .theme-dark .service-card .service-details {
-    background-color: #383838; /* Slightly different background for the details popup */
-    border-top: 1px solid #4a4a4a;
+    background-color: rgba(50, 50, 54, 0.95); /* Slightly different background for the details popup */
+    border-top: 1px solid #38383c;
     /* Text colors inside are handled by the generic rules above */
 }
 
@@ -157,11 +162,11 @@
     left: 0;
     right: 0;
     height: 22px; /* Height of the status bar */
-    background-color: #2b2b2b; /* Slightly different dark grey for the status bar, similar to title bar or a bit darker */
+    background-color: #26262a; /* Slightly different dark grey for the status bar, similar to title bar or a bit darker */
     border-bottom-left-radius: 8px; /* Match card's border radius */
     border-bottom-right-radius: 8px;
     z-index: 1; /* Above the main card background but below content if it were to overlap */
-    border-top: 1px solid #454545; /* A subtle top border for separation */
+    border-top: 1px solid #333337; /* A subtle top border for separation */
     display: block;
 }
 
