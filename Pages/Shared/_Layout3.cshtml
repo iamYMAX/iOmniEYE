@@ -24,6 +24,13 @@
                 }
               })();
             </script>
+    <div id="sidePanelControls"> <!-- This ID is for the panel's CSS styling -->
+        <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer;">Switch Theme</button> <!-- Basic styling preserved -->
+        <div id="headerLanguageSwitcher"> <!-- This ID is for the language_init.js script -->
+            <button class="language-button-header" data-lang="ru">RU</button>
+            <button class="language-button-header" data-lang="en">EN</button>
+        </div>
+    </div>
     <!-- Navbar -->
     <header class="bg-gray-800 text-white py-4 fixed top-0 w-full z-50">
         <div class="container mx-auto flex justify-between items-center">
@@ -49,7 +56,6 @@
 
                 <a href="#about" class="mx-3 text-sm sm:text-base hover:text-burgundy">About Us</a>
                 <a href="#contact" class="mx-3 text-sm sm:text-base hover:text-burgundy">Contact US</a>
-                <button id="themeSwitcherButton" class="mx-3" style="background: none; border: none; color: inherit; cursor: pointer; padding: 0.5rem;">Switch to Dark Mode</button>
             </nav>
         </div>
     </header>

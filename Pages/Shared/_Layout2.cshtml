@@ -24,6 +24,13 @@
                 }
               })();
             </script>
+    <div id="sidePanelControls"> <!-- This ID is for the panel's CSS styling -->
+        <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer;">Switch Theme</button> <!-- Basic styling preserved, specific CSS will enhance -->
+        <div id="headerLanguageSwitcher"> <!-- This ID is for the language_init.js script to find these buttons -->
+            <button class="language-button-header" data-lang="ru">RU</button>
+            <button class="language-button-header" data-lang="en">EN</button>
+        </div>
+    </div>
     <!-- Navbar -->
     <header class="bg-gray-800 text-white py-2 fixed top-0 w-full z-50">
         <div class="container mx-auto flex justify-between items-center px-4">
@@ -59,12 +66,6 @@
                 </div>
                 <a class="mx-2 text-sm sm:text-base hover:text-burgundy" asp-page="/Support" data-translate-key="nav_write_to_support">Написать в тех поддержку</a>
                 <a href="#about" class="mx-2 text-sm sm:text-base hover:text-burgundy" data-translate-key="nav_about_us">О Нас</a>
-                <button id="themeSwitcherButton" class="mx-2 text-sm sm:text-base hover:text-burgundy" style="background: none; border: none; cursor: pointer; padding: 0.5rem;" data-translate-key="nav_theme_switch_dark">Switch to Dark Mode</button>
-                <div id="headerLanguageSwitcher" class="inline-block ml-4">
-                    <button class="language-button-header" data-lang="ru" data-translate-key="nav_lang_ru">RU</button>
-                    <span style="color: var(--theme-header-text-color); margin: 0 0.25rem;">/</span>
-                    <button class="language-button-header" data-lang="en" data-translate-key="nav_lang_en">EN</button>
-                </div>
             </nav>
         </div>
     </header>

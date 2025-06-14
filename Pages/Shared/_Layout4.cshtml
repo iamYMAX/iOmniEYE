@@ -26,9 +26,16 @@
                 }
               })();
             </script>
+    <div id="sidePanelControls"> <!-- For CSS styling -->
+        <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer;">Switch Theme</button> <!-- Basic styling -->
+        <div id="headerLanguageSwitcher"> <!-- For language_init.js -->
+            <button class="language-button-header" data-lang="ru">RU</button>
+            <button class="language-button-header" data-lang="en">EN</button>
+        </div>
+    </div>
     <header>
         <div style="text-align: right; padding: 1rem;" id="_LayoutSimpleHeader"> <!-- Re-using ID from _Layout.cshtml for consistent styling -->
-            <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer;">Switch Theme</button>
+
         </div>
     </header>
     <div class="container">
