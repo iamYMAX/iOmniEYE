@@ -1,37 +1,364 @@
-#call-icon-container {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px; /* Increased size to accommodate padding and icon */
-    height: 60px; /* Increased size to accommodate padding and icon */
-    background-color: #007bff; /* Example color, can be changed */
+
+/* Обёртка для круга и текста */
+.pulse-wrapper {
+    position: relative;
+    width: 80px; /* регулируй под текст */
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Пульсирующий фон */
+.pulse-circle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: red;
     border-radius: 50%;
+    animation: pulse 1.5s infinite;
+    z-index: 0;
+}
+
+/* Текст поверх круга */
+.pulse-text {
+    position: relative;
+    font-size: 14px;
+    text-align: center;
+    z-index: 1;
+    animation: textPulse 1.5s infinite;
+    transform: rotate(90deg); /* Замените угол на нужный */
+}
+/* Анимация текста — меняет цвет */
+@keyframes textPulse {
+    0% {
+        color: black;
+    }
+
+    50% {
+        color: white;
+        transform: rotate(90deg); /* Замените угол на нужный */
+    }
+
+    100% {
+        color: black;
+    }
+}
+/* Анимация пульсации */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(2);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+
+/* Панель — абсолютная относительно окна, справа от кнопки */
+.popup-panel {
+    position: fixed;
+    top: 90%;
+    left: auto; /* ширина кнопки + отступ */
+    right: 78px;
+    transform: translateY(-50%);
+    /*background: white;border-radius: 0 6px 6px 0;border: 1px solid #ccc;*/
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    z-index: 999;
+}
+
+.icon-link svg {
+    width: 40px;
+    height: 40px;
+    fill: currentColor;
+    transition: color 0.3s;
+}
+
+.icon-link:hover {
+    color: #0077ff;
+}
+
+
+
+
+.back-to-home {
+    position: fixed;
+    top: 50%;
+    left: -80px; /* спрятано наполовину */
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: left 0.4s ease;
+    z-index: 9999;
+}
+
+    .back-to-home:hover {
+        left: 0;
+    }
+
+.back-circle {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    position: relative;
+    animation: backPulse 2s infinite;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    z-index: 1000;
-    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
-    animation: pulse-ring 2s infinite;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    transition: background 0.3s;
+    overflow: visible;
 }
 
-#call-icon-container svg {
-    fill: white; /* Icon color */
-    width: 30px; /* Adjust icon size within the container */
-    height: 30px; /* Adjust icon size within the container */
+.back-to-home:hover .back-circle {
+    background: rgba(255, 255, 255, 0.15);
 }
 
-@keyframes pulse-ring {
+.back-label {
+    margin-left: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    font-size: 30px;
+}
+
+.back-to-home:hover .back-label {
+    opacity: 1;
+}
+
+/* Пульсация круга */
+@keyframes backPulse {
     0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
     }
+
     70% {
-        transform: scale(1.1); /* Ring effect part 1 */
-        box-shadow: 0 0 0 15px rgba(0, 123, 255, 0); /* Ring effect part 2 */
+        box-shadow: 0 0 0 40px rgba(255, 255, 255, 0);
     }
+
     100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
     }
+}
+
+/* Стрелки - вращение вокруг центра круга по дуге */
+.arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 82px;
+    font-weight: bold;
+    color: white;
+    opacity: 0;
+    transform-origin: center center; /* центр вращения — центр круга + радиус вниз */
+    animation-timing-function: linear;
+}
+
+/* Каждая стрелка со своей задержкой */
+.a1 {
+    animation: rotateArrow 2.4s linear infinite;
+    animation-delay: 0s;
+}
+
+.a2 {
+    animation: rotateArrow 2.4s linear infinite;
+    animation-delay: 0.8s;
+}
+
+.a3 {
+    animation: rotateArrow 2.4s linear infinite;
+    animation-delay: 1.6s;
+}
+
+/* Анимация вращения и пульсации прозрачности */
+@keyframes rotateArrow {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.popup-message {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #28a745;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    font-size: 16px;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+    .popup-message.show {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+@media (max-width: 768px) {
+
+
+    .back-to-home {
+        position: fixed;
+        top: 90%;
+        left: -80px; /* спрятано наполовину */
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: left 0.4s ease;
+        z-index: 9999;
+    }
+}
+.social-panel-fixed-button {
+    position: fixed;
+    top: 90%;
+    right: 0px;
+    transform: translateY(-50%) rotate(0deg);
+    writing-mode: vertical-rl;
+    background-color: rgba(128, 0, 0, 0.6);
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .social-panel-form {
+        padding: 0 1rem;
+    }
+
+    .social-panel-form-control {
+        width: 100%;
+        font-size: 1.4rem;
+    }
+
+    .social-panel-label {
+        font-size: 1.4rem;
+        background-color: rgba(0, 0, 128, 0.5);
+    }
+
+    .social-panel-tooltip-wrapper {
+        width: 100%;
+    }
+}
+
+.social-panel-pulse-wrapper {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-panel-pulse-circle {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(128, 0, 0, 1);
+    border-radius: 100%;
+    animation: social-panel-pulse 1.5s infinite;
+    z-index: 0;
+}
+
+.social-panel-pulse-text {
+    position: relative;
+    font-size: 26px;
+    text-align: center;
+    z-index: 1;
+    animation: social-panel-textPulse 1.5s infinite;
+    transform: rotate(95deg);
+}
+
+@keyframes social-panel-textPulse {
+    0% {
+        color: black;
+    }
+
+    50% {
+        color: white;
+        transform: rotate(90deg);
+    }
+
+    100% {
+        color: black;
+    }
+}
+
+@keyframes social-panel-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(2);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.social-panel-popup {
+    
+    
+    right: 90px;
+    transform: translateY(-50%);
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 999;
+}
+
+.social-panel-icon-link svg {
+    width: 40px;
+    height: 40px;
+    fill: currentColor;
+    transition: color 0.3s;
+}
+
+.social-panel-icon-link:hover {
+    color: #0077ff;
 }

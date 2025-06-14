@@ -3,7 +3,7 @@
     /* Light Theme (Default) */
     --theme-bg-color: #FFFFFF;
     --theme-text-color: #212529;
-    --theme-accent-color: #00BFA5;
+    --theme-accent-color: #080808;
     --theme-accent-hover-color: #008c7a;
     --theme-card-bg-color: #F8F9FA; /* Light gray for cards */
     --theme-border-color: #DEE2E6; /* Light border color */
@@ -609,7 +609,7 @@ section {
 
 /* Social Panel (Alpine.js component in ru.cshtml) */
 .social-panel-fixed-button {
-    background-color: #FF4500 !important; /* Make it accent */
+    
     border-radius: 50% 0 0 50%; /* Style as a tab */
     padding: 0.5rem !important; /* Adjust padding */
     writing-mode: vertical-rl;
@@ -644,7 +644,7 @@ section {
 }
 
 .social-panel-popup {
-    background-color: var(--theme-card-bg-color) !important;
+    background-color: rgba(255, 69, 0, 0.5);
     border: 1px solid var(--theme-border-color) !important;
     border-radius: 8px;
     padding: 1rem !important;
