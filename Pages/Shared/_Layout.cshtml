@@ -22,17 +22,10 @@
                 }
               })();
             </script>
-            <div id="edgeControlPanel">
-                <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer; color: white; padding: 5px 8px;">Switch Theme</button>
-                <div id="headerLanguageSwitcher" style="display: flex; gap: 5px;"> <!-- This inner div keeps lang buttons grouped -->
-                    <button class="language-button-header" data-lang="ru" style="color: white; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 5px 8px; border-radius: 4px;">RU</button>
-                    <button class="language-button-header" data-lang="en" style="color: white; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 5px 8px; border-radius: 4px;">EN</button>
-                </div>
-            </div>
    
     <header>
         <div id="_LayoutSimpleHeader" style="text-align: right; padding: 1rem;">
-
+            <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer;">Switch Theme</button>
         </div>
       
     </header>
@@ -85,6 +78,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/theme_switcher.js" asp-append-version="true"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
    
     
 </body>

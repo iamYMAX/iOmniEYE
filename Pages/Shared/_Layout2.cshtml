@@ -24,11 +24,26 @@
                 }
               })();
             </script>
-            <div id="edgeControlPanel">
-                <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer; color: white; padding: 5px 8px;">Switch Theme</button>
-                <div id="headerLanguageSwitcher" style="display: flex; gap: 5px;"> <!-- This inner div keeps lang buttons grouped -->
-                    <button class="language-button-header" data-lang="ru" style="color: white; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 5px 8px; border-radius: 4px;">RU</button>
-                    <button class="language-button-header" data-lang="en" style="color: white; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 5px 8px; border-radius: 4px;">EN</button>
+            <div id="settingsToggleContainer" x-data="{ open: false }" style="position: fixed; top: 50%; right: 10px; transform: translateY(-50%); z-index: 1050;">
+                <!-- Button using user's exact class structure -->
+                <button @@click="open = !open" aria-label="Открыть настройки" class="social-panel-fixed-button">
+                    <span class="social-panel-pulse-wrapper">
+                        <span class="social-panel-pulse-circle"></span>
+                        <span class="social-panel-pulse-text">
+                            <!-- Gear Icon SVG -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor"> <!-- currentColor should pick up button's text color -->
+                                <path d="M19.48 12.67a7.84 7.84 0 00-1.13-1.95l1.24-2.18a1 1 0 00-.75-1.69l-2.48-.33a1 1 0 00-1.1.39l-1.17 1.27a8.38 8.38 0 00-2.18 0l-1.17-1.27a1 1 0 00-1.1-.39l-2.48.33a1 1 0 00-.75 1.69l1.24 2.18a7.84 7.84 0 00-1.13 1.95 7.84 7.84 0 001.13 1.95l-1.24 2.18a1 1 0 00.75 1.69l2.48.33a1 1 0 001.1-.39l1.17-1.27a8.38 8.38 0 002.18 0l1.17 1.27a1 1 0 001.1.39l2.48-.33a1 1 0 00-.75-1.69l-1.24-2.18a7.84 7.84 0 001.13-1.95zM12 15.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z"/>
+                            </svg>
+                        </span>
+                    </span>
+                </button>
+                <!-- Collapsible Panel -->
+                <div id="collapsibleControlsPanel" x-show="open" @@click.outside="open = false" style="position: absolute; right: calc(100% + 10px); /* Position to the left of the button */ top: 50%; transform: translateY(-50%); background-color: rgba(0,0,0,0.85); padding: 1rem; border-radius: 8px; box-shadow: -3px 3px 10px rgba(0,0,0,0.3); color: white; width: auto; min-width: 180px;">
+                    <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer; color: white; padding: 8px 5px; display:block; width: 100%; text-align: left; margin-bottom:8px;">Switch Theme</button>
+                    <div id="headerLanguageSwitcher" style="display: flex; flex-direction: column; gap: 8px;">
+                        <button class="language-button-header" data-lang="ru" style="color: white; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 8px 5px; border-radius: 4px; text-align: left;">RU</button>
+                        <button class="language-button-header" data-lang="en" style="color: white; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 8px 5px; border-radius: 4px; text-align: left;">EN</button>
+                    </div>
                 </div>
             </div>
     <!-- Navbar -->
@@ -123,5 +138,6 @@
     <script src="~/js/theme_switcher.js" asp-append-version="true"></script>
     <link rel="stylesheet" href="~/css/call-icon.css" />
     @await RenderSectionAsync("Scripts", required: false)
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 </html>
