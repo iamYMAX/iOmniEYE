@@ -1,48 +1,48 @@
 ﻿// Тексты для баннера
-const bannerTexts = [
-    {
-        headline: "Your All-Seeing IT Partner",
-        subtext: "At OmniEye, we provide comprehensive IT solutions tailored to your business needs."
-    },
-    {
-        headline: "Empowering Your Vision",
-        subtext: "We offer advanced IT services that enhance your business operations and security."
-    },
-    {
-        headline: "Complete IT Solutions",
-        subtext: "From software development to smart home integration, we cover all your IT needs."
-    },
-    {
-        headline: "Your IT, Our Expertise",
-        subtext: "Trust OmniEye for reliable and innovative IT solutions."
-    }
-];
+// const bannerTexts = [
+//     {
+//         headline: "Your All-Seeing IT Partner",
+//         subtext: "At OmniEye, we provide comprehensive IT solutions tailored to your business needs."
+//     },
+//     {
+//         headline: "Empowering Your Vision",
+//         subtext: "We offer advanced IT services that enhance your business operations and security."
+//     },
+//     {
+//         headline: "Complete IT Solutions",
+//         subtext: "From software development to smart home integration, we cover all your IT needs."
+//     },
+//     {
+//         headline: "Your IT, Our Expertise",
+//         subtext: "Trust OmniEye for reliable and innovative IT solutions."
+//     }
+// ];
 
-let currentIndex = 0;
+// let currentIndex = 0;
 
-function updateBannerText() {
-    const headlineElement = document.getElementById('banner-text');
-    const subtextElement = document.getElementById('banner-subtext');
+// function updateBannerText() {
+//     const headlineElement = document.getElementById('banner-text');
+//     const subtextElement = document.getElementById('banner-subtext');
 
-    headlineElement.classList.remove('banner-text');
-    subtextElement.classList.remove('banner-text');
+//     headlineElement.classList.remove('banner-text');
+//     subtextElement.classList.remove('banner-text');
 
-    setTimeout(() => {
-        headlineElement.textContent = bannerTexts[currentIndex].headline;
-        subtextElement.textContent = bannerTexts[currentIndex].subtext;
+//     setTimeout(() => {
+//         headlineElement.textContent = bannerTexts[currentIndex].headline;
+//         subtextElement.textContent = bannerTexts[currentIndex].subtext;
 
-        headlineElement.classList.add('banner-text');
-        subtextElement.classList.add('banner-text');
-    }, 200); // Задержка перед изменением текста
+//         headlineElement.classList.add('banner-text');
+//         subtextElement.classList.add('banner-text');
+//     }, 200); // Задержка перед изменением текста
 
-    currentIndex = (currentIndex + 1) % bannerTexts.length;
-}
+//     currentIndex = (currentIndex + 1) % bannerTexts.length;
+// }
 
-// Меняем текст каждые 5 секунд
-setInterval(updateBannerText, 5000);
+// // Меняем текст каждые 5 секунд
+// setInterval(updateBannerText, 5000);
 
-// Инициализация первого текста
-updateBannerText();
+// // Инициализация первого текста
+// updateBannerText();
 
 // Тексты для анимации печатающегося текста
 const typingTexts = [
