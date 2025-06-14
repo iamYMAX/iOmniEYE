@@ -132,7 +132,7 @@ body.grotem-body a {
 }
 
 body.grotem-body a:hover {
-    text-decoration: underline;
+    text-decoration: none;
     color: var(--theme-accent-hover-color);
 }
 
