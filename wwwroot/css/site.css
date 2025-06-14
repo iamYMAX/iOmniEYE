@@ -28,17 +28,13 @@ body {
 
 .social-links a {
     margin: 0 5px;
-    color: white;
+    color: #000000;
     text-decoration: none;
     font-size: 24px;
     display: inline-block;
     width: 40px;
     height: 40px;
    
-}
-
-body.scrolled .social-links a {
-    color: #000000;
 }
 
 .mt-8 {
