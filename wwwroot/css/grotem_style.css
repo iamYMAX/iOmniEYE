@@ -71,6 +71,10 @@
 html {
     font-size: 16px; /* Base font size */
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 /* Updated body to use CSS variables */
@@ -82,6 +86,9 @@ body.grotem-body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 /* Headings */
@@ -1093,7 +1100,7 @@ body.grotem-body.text-gray-100 {
     #banner {
         height: auto !important;
         min-height: 0 !important;
-        padding-top: 5rem !important;
+        padding-top: 6.5rem !important;
         padding-bottom: 3rem !important;
     }
 
@@ -1126,7 +1133,8 @@ body.grotem-body.text-gray-100 {
         padding: 0.4rem !important;
     }
     .social-panel-fixed-button svg {
-        width: 20px; height: 20px;
+        width: 20px !important;
+        height: 20px !important;
     }
     .social-panel-popup {
         right: 50px; /* Adjust to prevent overlap */
@@ -1137,7 +1145,7 @@ body.grotem-body.text-gray-100 {
 @media (max-width: 480px) {
     #banner {
         /* min-height: 50vh; */ /* Effectively overridden by auto height from 767px rule if not specified here */
-        padding-top: 4rem !important;
+        padding-top: 5.5rem !important;
         padding-bottom: 2rem !important;
     }
 

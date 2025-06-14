@@ -5,6 +5,7 @@
 @{
     Layout = "_Layout4";
 }
+
 <style>
     body {
         /* background-color: #121212; Тёмный фон, чтобы белый текст был виден */
@@ -13,12 +14,11 @@
         margin-top: 4%;
     }
 </style>
-
 <h2>Спасибо за вашу заявку!</h2>
 <p>Мы свяжемся с вами в ближайшее время.</p>
 
 
-<a href="/" class="back-to-home" aria-label="Вернуться на главную">
+<a href="/ru" class="back-to-home" aria-label="Вернуться на главную">
     <div class="back-circle">
         <span class="arrow a1">&lt;</span>
         <span class="arrow a2">&lt;</span>
@@ -30,16 +30,17 @@
 
 
 <div x-data="{ open: false }">
-    <button @@click="open = !open" aria-label="Открыть соцсети" class="social-panel-fixed-button">
-        <span class="social-panel-pulse-wrapper">
-            <span class="social-panel-pulse-circle"></span>
-            <span class="social-panel-pulse-text">
+    <button @@click="open = !open" aria-label="Открыть соцсети" class="fixed-button vertical-text">
+        <span class="pulse-wrapper">
+            <span class="pulse-circle"></span>
+            <span class="pulse-text">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
                     <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.05-.24 11.72 11.72 0 003.68.59 1 1 0 011 1v3.5a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.68 1 1 0 01-.24 1.05l-2.23 2.23z" />
                 </svg>
             </span>
         </span>
     </button>
+
 
     <div x-show="open" @@click.outside="open = false" x-cloak
          class="popup-panel"
