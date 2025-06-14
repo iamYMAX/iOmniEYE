@@ -362,3 +362,118 @@
 .social-panel-icon-link:hover {
     color: #0077ff;
 }
+back-to-home {
+    position: fixed;
+    top: 50%;
+    left: -80px; /* спрятано наполовину */
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: left 0.4s ease;
+    z-index: 9999;
+}
+
+.back-to-home:hover {
+    left: 0;
+}
+
+.back-circle {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    position: relative;
+    animation: backPulse 2s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    transition: background 0.3s;
+    overflow: visible;
+}
+
+.back-to-home:hover .back-circle {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.back-label {
+    margin-left: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    font-size: 30px;
+}
+
+.back-to-home:hover .back-label {
+    opacity: 1;
+}
+
+/* Пульсация круга */
+@keyframes backPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
+    }
+
+    70% {
+        box-shadow: 0 0 0 40px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+/* Стрелки - вращение вокруг центра круга по дуге */
+.arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 82px;
+    font-weight: bold;
+    color: white;
+    opacity: 0;
+    transform-origin: center center; /* центр вращения — центр круга + радиус вниз */
+    animation-timing-function: linear;
+}
+
+/* Каждая стрелка со своей задержкой */
+.a1 {
+    animation: rotateArrow 2.4s linear infinite;
+    animation-delay: 0s;
+}
+
+.a2 {
+    animation: rotateArrow 2.4s linear infinite;
+    animation-delay: 0.8s;
+}
+
+.a3 {
+    animation: rotateArrow 2.4s linear infinite;
+    animation-delay: 1.6s;
+}
+
+/* Анимация вращения и пульсации прозрачности */
+@keyframes rotateArrow {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
