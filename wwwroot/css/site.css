@@ -504,46 +504,49 @@ label {
 
 }
 
-/* Styles for the new fixed panel */
-#fixedControlsPanel {
+#edgeControlPanel {
     position: fixed;
     top: 50%;
     right: 0; /* Flush to the right edge */
     transform: translateY(-50%); /* Vertically center */
-    padding: 0.75rem; /* Adjusted padding slightly from 1rem */
-    background-color: rgba(0, 0, 0, 0.75); /* Darker, more opaque background */
+
+    display: flex;
+    flex-direction: row; /* Arrange items (theme button, lang switch div) horizontally */
+    align-items: center; /* Vertically align items within the horizontal panel */
+    gap: 12px; /* Space between theme button and the language switcher div, slightly increased */
+
+    padding: 0.6rem 0.8rem; /* Adjusted padding for a compact horizontal panel */
+    background-color: rgba(0, 0, 0, 0.75);
     border-radius: 8px 0 0 8px; /* Rounded on left, sharp on right edge */
     z-index: 1050; /* Ensure visibility above other elements */
-    display: flex;
-    flex-direction: column; /* Stack controls vertically */
-    gap: 8px; /* Spacing between theme button and language button group */
     color: white; /* Default text color for children */
-    min-width: 120px; /* Minimum width for the panel */
     box-shadow: -2px 0 5px rgba(0,0,0,0.2); /* Shadow on the left side */
 }
 
-/* Styling for buttons within the panel to ensure consistency */
-#fixedControlsPanel #themeSwitcherButton {
-    /* Inline styles already cover: background: none; border: none; cursor: pointer; color: white; display: block; width: 100%; text-align: left; padding: 5px 0; */
-    /* Add hover/focus or other states if desired */
+/* Styling for buttons within the edge panel */
+/* The inline styles on buttons provide a good base. These CSS rules can refine them or add states. */
+
+#edgeControlPanel #themeSwitcherButton {
+    /* Inline: background: none; border: none; cursor: pointer; color: white; padding: 5px 8px; */
+    /* No additional styles needed here unless overriding or adding focus states */
 }
 
-#fixedControlsPanel #themeSwitcherButton:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important; /* Subtle hover */
+#edgeControlPanel #themeSwitcherButton:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important; /* Hover effect */
 }
 
-#fixedControlsPanel .language-button-header {
-    /* Inline styles already cover: color: white; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 8px 5px; border-radius: 4px; display: block; width: 100%; text-align: left; margin-top: 5px; */
-    /* Add hover/active states */
+#edgeControlPanel .language-button-header {
+    /* Inline: color: white; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 5px 8px; border-radius: 4px; */
+    /* No additional base styles needed here unless overriding */
 }
 
-#fixedControlsPanel .language-button-header:hover {
-    background-color: rgba(255, 255, 255, 0.2) !important; /* Brighter hover */
-    border-color: rgba(255, 255, 255, 0.3) !important;
+#edgeControlPanel .language-button-header:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important; /* Hover effect */
+    border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-#fixedControlsPanel .language-button-header.active-lang {
-    background-color: rgba(0, 123, 255, 0.7) !important;
+#edgeControlPanel .language-button-header.active-lang {
+    background-color: rgba(0, 123, 255, 0.7) !important; /* Active state */
     border-color: rgba(0, 123, 255, 0.9) !important;
-    color: white !important; /* Ensure text is white on active */
+    color: white !important; /* Ensure text remains white */
 }

@@ -22,11 +22,11 @@
                 }
               })();
             </script>
-            <div id="fixedControlsPanel">
-                <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer; color: white; display: block; width: 100%; text-align: left; padding: 5px 0;">Switch Theme</button>
-                <div id="headerLanguageSwitcher" style="width: 100%;"> <!-- Ensure this div also takes full width for its children -->
-                    <button class="language-button-header" data-lang="ru" style="color: white; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 8px 5px; border-radius: 4px; display: block; width: 100%; text-align: left; margin-top: 5px;">RU</button>
-                    <button class="language-button-header" data-lang="en" style="color: white; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 8px 5px; border-radius: 4px; display: block; width: 100%; text-align: left; margin-top: 5px;">EN</button>
+            <div id="edgeControlPanel">
+                <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer; color: white; padding: 5px 8px;">Switch Theme</button>
+                <div id="headerLanguageSwitcher" style="display: flex; gap: 5px;"> <!-- This inner div keeps lang buttons grouped -->
+                    <button class="language-button-header" data-lang="ru" style="color: white; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 5px 8px; border-radius: 4px;">RU</button>
+                    <button class="language-button-header" data-lang="en" style="color: white; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 5px 8px; border-radius: 4px;">EN</button>
                 </div>
             </div>
    
