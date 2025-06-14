@@ -609,7 +609,7 @@ section {
 
 /* Social Panel (Alpine.js component in ru.cshtml) */
 .social-panel-fixed-button {
-    background-color: var(--theme-accent-color) !important; /* Make it accent */
+    background-color: #FF4500 !important; /* Make it accent */
     border-radius: 50% 0 0 50%; /* Style as a tab */
     padding: 0.5rem !important; /* Adjust padding */
     writing-mode: vertical-rl;
@@ -619,14 +619,27 @@ section {
     /* Remove pulse animation for now, or restyle it */
 }
 .social-panel-fixed-button .social-panel-pulse-wrapper,
-.social-panel-fixed-button .social-panel-pulse-circle,
 .social-panel-fixed-button .social-panel-pulse-text {
-    animation: none; /* Disable pulse for now */
-    transform: none; /* Reset transforms */
-    width: auto; height: auto; background: none;
+    animation: none; /* Disable pulse for now for wrapper and text */
+    transform: none; /* Reset transforms for wrapper and text */
+    /* width: auto; height: auto; background: none; -- Keep this for wrapper and text if they don't need specific dimensions/bg */
 }
+
+.social-panel-fixed-button .social-panel-pulse-circle {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 69, 0, 0.5); /* Semi-transparent OrangeRed */
+    border-radius: 50%;
+    position: absolute;
+    z-index: 0; /* Behind the icon/text */
+    /* Centering is handled by the flex wrapper: social-panel-pulse-wrapper */
+    animation: social-panel-pulse 1.5s infinite ease-in-out;
+}
+
 .social-panel-fixed-button svg {
     fill: var(--theme-bg-color); /* Icon color to contrast with accent */
+    position: relative; /* Ensure SVG (inside pulse-text or direct child) is above the circle */
+    z-index: 1;
     width: 24px; height: 24px;
 }
 
@@ -1355,6 +1368,21 @@ body:not(.theme-dark) .service-details a:hover {
 
 .service-card:hover[data-icon=""]::before { /* Wrench (Remote Support) xf0ad */
     animation: wiggle 1s ease-in-out infinite;
+}
+
+@keyframes social-panel-pulse {
+    0% {
+        transform: scale(0.7);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0.7);
+        opacity: 0.5;
+    }
 }
 
 /* --- Banner Text Restyling (Attempt) --- */
