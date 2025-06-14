@@ -258,14 +258,22 @@ body.grotem-body footer.bg-gray-800 {
     color: var(--theme-footer-text-color) !important;
 }
 
-body.grotem-body footer.bg-gray-800 .social-links a svg {
+body.grotem-body footer section.bg-gray-800 .social-links a svg {
     fill: var(--theme-footer-icon-fill);
 }
 
-body.grotem-body footer.bg-gray-800 .social-links a:hover svg {
+body.grotem-body footer section.bg-gray-800 .social-links a:hover svg {
     fill: var(--theme-accent-color);
 }
 
+/* This rule might also need adjustment if it refers to the same footer structure, but the task only specified the one above for icon fill.
+   For now, only changing what was explicitly requested.
+   If text-muted is inside the section, it would be:
+   body.grotem-body footer section.text-muted
+   But if it's on the footer tag itself, it remains.
+   The current footer structure is <footer class="border-top footer text-muted"> <section id="contact" class="py-16 bg-gray-800">
+   So, footer.text-muted is correct as it is.
+*/
 body.grotem-body footer.text-muted {
     color: var(--theme-footer-text-color) !important;
 }
