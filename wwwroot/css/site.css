@@ -392,7 +392,6 @@ label {
     margin-left: 10px;
     white-space: nowrap;
     font-weight: bold;
-    color: white;
     opacity: 0;
     transition: opacity 0.4s ease;
     font-size: 30px;
