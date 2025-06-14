@@ -1100,6 +1100,7 @@ body.grotem-body.text-gray-100 {
     #banner {
         height: auto !important;
         min-height: 0 !important;
+        padding-top: 6.5rem !important;
         padding-bottom: 3rem !important;
     }
 
@@ -1144,6 +1145,7 @@ body.grotem-body.text-gray-100 {
 @media (max-width: 480px) {
     #banner {
         /* min-height: 50vh; */ /* Effectively overridden by auto height from 767px rule if not specified here */
+        padding-top: 5.5rem !important;
         padding-bottom: 2rem !important;
     }
 
@@ -1440,9 +1442,4 @@ body.theme-dark .tooltip-popup::after {
 /* Light theme override for social media icons inside the side popup panel */
 body:not(.theme-dark) .social-panel-icon-link svg {
     fill: #FFFFFF !important; /* White icons in light theme */
-}
-
-/* Account for fixed header in _Layout2.cshtml */
-body.layout2-has-fixed-header {
-    padding-top: 5rem; /* Estimated height of the fixed header */
 }
