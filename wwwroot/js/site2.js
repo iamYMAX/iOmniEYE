@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         // console.log('[BANNER_INTERACTIONS] Banner element found.');
 
-        const shrunkHeight = '65vh'; // Target height when shrunk
+        const shrunkHeight = '75vh'; // Target height when shrunk
         const initialHeight = '100vh'; // Initial full height, ensure it matches CSS
         const scrollThreshold = 50; // Pixels to scroll before shrinking
         let isBannerShrunk = false;
