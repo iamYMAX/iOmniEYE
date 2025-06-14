@@ -1,0 +1,37 @@
+#call-icon-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px; /* Increased size to accommodate padding and icon */
+    height: 60px; /* Increased size to accommodate padding and icon */
+    background-color: #007bff; /* Example color, can be changed */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
+    animation: pulse-ring 2s infinite;
+}
+
+#call-icon-container svg {
+    fill: white; /* Icon color */
+    width: 30px; /* Adjust icon size within the container */
+    height: 30px; /* Adjust icon size within the container */
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
+    }
+    70% {
+        transform: scale(1.1); /* Ring effect part 1 */
+        box-shadow: 0 0 0 15px rgba(0, 123, 255, 0); /* Ring effect part 2 */
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+    }
+}
