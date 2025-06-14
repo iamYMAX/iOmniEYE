@@ -15,8 +15,8 @@ const translations = {
 
 
         // --- BANNER SECTION ---
-        "banner_title": "Надежная IT-поддержка – Без Головной Боли",
-        "banner_subtitle": "Установка, настройка и удаленное обслуживание вашего ПО и оборудования. Работаем, чтобы вы не отвлекались.",
+        "banner_title": "Удаленная IT-поддержка для SMB: Просто. Быстро. Эффективно.",
+        "banner_subtitle": "Снижайте расходы и повышайте производительность с нашей профессиональной удаленной IT-поддержкой для малого и среднего бизнеса.",
         "banner_lang_btn_ru": "Русский", // Language button on banner
         "banner_lang_btn_en": "English", // Language button on banner
 
@@ -155,14 +155,14 @@ const translations = {
         "about_adv_advanced_desc": "Мы используем новейшие технологии для предоставления решений, которые не только соответствуют, но и превосходят отраслевые стандарты.",
         "about_mission_text": "В iOmniEye мы стремимся стать вашим надежным партнером в мире IT. Наша цель — не просто решать текущие задачи, но и помогать вашему бизнесу готовиться к будущим вызовам. С нашим опытом и внимательным подходом мы делаем сложные технологии простыми и доступными, чтобы вы могли сосредоточиться на главном — развитии вашего бизнеса.",
         "about_future_text": "Будь то защита ваших данных, автоматизация бизнес-процессов или интеграция умных технологий в вашу повседневную жизнь, OmniEye обладает видением и опытом, чтобы сделать это реальностью.",
-        "banner_cycle_headline1": "IT-проблемы? Решим удаленно, быстро!",
-        "banner_cycle_subtext1": "Забудьте о простоях. Наша удаленная поддержка вернет вашу технику и ПО в строй.",
-        "banner_cycle_headline2": "Сложная установка? Доверьтесь профи!",
-        "banner_cycle_subtext2": "От настройки нового оборудования до установки ПО – мы сделаем это правильно с первого раза.",
-        "banner_cycle_headline3": "Ваша техника работает, вы – отдыхаете.",
-        "banner_cycle_subtext3": "Комплексная IT-поддержка: от установки до бесперебойной работы вашего оборудования и программ.",
-        "banner_cycle_headline4": "IT-проблемы? Решим удаленно, быстро!",
-        "banner_cycle_subtext4": "Забудьте о простоях. Наша удаленная поддержка вернет вашу технику и ПО в строй."
+        "banner_cycle_headline1": "IT-поддержка для вашего бизнеса – удаленно и надежно!",
+        "banner_cycle_subtext1": "Малый или средний бизнес? Получите экспертную IT-помощь без затрат на штатного специалиста.",
+        "banner_cycle_headline2": "Проблемы с IT? Решения на расстоянии одного клика!",
+        "banner_cycle_subtext2": "Быстрая удаленная диагностика и поддержка, чтобы ваш бизнес не останавливался.",
+        "banner_cycle_headline3": "Фокус на бизнесе, IT – наша забота!",
+        "banner_cycle_subtext3": "Эффективная удаленная IT-поддержка, созданная для нужд малого и среднего бизнеса.",
+        "banner_cycle_headline4": "IT-поддержка для вашего бизнеса – удаленно и надежно!",
+        "banner_cycle_subtext4": "Малый или средний бизнес? Получите экспертную IT-помощь без затрат на штатного специалиста."
     },
     en: {
         // --- NAVIGATION (Example) ---
@@ -178,8 +178,8 @@ const translations = {
         "nav_services_outsource": "IT Outsourcing/Support",
 
         // --- BANNER SECTION ---
-        "banner_title": "Reliable IT Support – Headache-Free",
-        "banner_subtitle": "Software and hardware installation, setup, and remote maintenance. We work so you don't have to worry.",
+        "banner_title": "Remote IT Support for SMBs: Simple. Fast. Effective.",
+        "banner_subtitle": "Reduce costs and boost productivity with our professional remote IT support for small and medium businesses.",
         "banner_lang_btn_ru": "Русский",
         "banner_lang_btn_en": "English",
 
@@ -319,13 +319,13 @@ const translations = {
         "about_adv_expert_team_desc": "Our team of highly skilled professionals brings deep expertise and a wealth of experience to every project.", // Added from en.cshtml
         "about_mission_text": "At OmniEye, we aim to be your trusted partner in IT. We are dedicated to providing solutions that not only solve current problems but also prepare your business for future challenges. With our all-seeing perspective, we help you navigate the complexities of technology.",
         "about_future_text": "Whether it's securing your data, automating your business processes, or integrating smart technologies into your daily life, OmniEye has the vision and the expertise to make it happen.",
-        "banner_cycle_headline1": "IT Troubles? Solved Remotely, Fast!",
-        "banner_cycle_subtext1": "Forget downtime. Our remote support gets your hardware and software back on track.",
-        "banner_cycle_headline2": "Complex Setup? Leave it to the Pros!",
-        "banner_cycle_subtext2": "From new hardware configuration to software installation – we get it right the first time.",
-        "banner_cycle_headline3": "Your Tech Works, You Relax.",
-        "banner_cycle_subtext3": "Full-service IT support: from setup to seamless operation of your hardware and software.",
-        "banner_cycle_headline4": "IT Troubles? Solved Remotely, Fast!",
-        "banner_cycle_subtext4": "Forget downtime. Our remote support gets your hardware and software back on track."
+        "banner_cycle_headline1": "IT Support for Your Business – Remote & Reliable!",
+        "banner_cycle_subtext1": "Small or medium business? Get expert IT help without the cost of an in-house specialist.",
+        "banner_cycle_headline2": "IT Problems? Solutions Just a Click Away!",
+        "banner_cycle_subtext2": "Fast remote diagnostics and support to keep your business running smoothly.",
+        "banner_cycle_headline3": "Focus on Your Business, We'll Handle the IT!",
+        "banner_cycle_subtext3": "Efficient remote IT support tailored for the needs of small and medium businesses.",
+        "banner_cycle_headline4": "IT Support for Your Business – Remote & Reliable!",
+        "banner_cycle_subtext4": "Small or medium business? Get expert IT help without the cost of an in-house specialist."
     }
 };
