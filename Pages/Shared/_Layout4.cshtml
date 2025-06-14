@@ -26,13 +26,6 @@
                 }
               })();
             </script>
-    <div id="sidePanelControls"> <!-- For CSS styling -->
-        <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer;">Switch Theme</button> <!-- Basic styling -->
-        <div id="headerLanguageSwitcher"> <!-- For language_init.js -->
-            <button class="language-button-header" data-lang="ru">RU</button>
-            <button class="language-button-header" data-lang="en">EN</button>
-        </div>
-    </div>
     <header>
         <div style="text-align: right; padding: 1rem;" id="_LayoutSimpleHeader"> <!-- Re-using ID from _Layout.cshtml for consistent styling -->
 
@@ -44,6 +37,15 @@
         </main>
     </div>
 
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;"> <!-- Wrapper for centering and spacing -->
+        <div id="footerControls" style="display: inline-flex; gap: 15px; align-items: center; padding: 1rem; background-color: rgba(0,0,0,0.65); border-radius: 8px; color: white;">
+            <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer; color: inherit; padding: 5px 10px;">Switch Theme</button>
+            <div id="headerLanguageSwitcher" style="display: flex; gap: 5px;">
+                <button class="language-button-header" data-lang="ru" style="color: inherit; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 4px;">RU</button>
+                <button class="language-button-header" data-lang="en" style="color: inherit; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 4px;">EN</button>
+            </div>
+        </div>
+    </div>
     
     @section Scripts {
         <partial name="_ValidationScriptsPartial" />

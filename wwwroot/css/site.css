@@ -504,38 +504,18 @@ label {
 
 }
 
-/* Side Panel Styles */
-#sidePanelControls {
-    position: fixed;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker for better visibility if needed */
-    border-radius: 8px 0 0 8px; /* Rounded corners on the left, sharp on the right edge */
-    z-index: 1050; /* Ensuring it's above most other elements, Bootstrap modals are often around 1040-1050 */
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Spacing between buttons */
-    /* Ensure previous button styling within the panel is not adversely affected */
+/* Footer Controls Button Styles */
+#footerControls #themeSwitcherButton:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important; /* Ensure high specificity for hover */
 }
 
-#sidePanelControls button {
-    width: 100%;
-    padding: 8px 12px;
-    color: white;
-    background-color: rgba(30, 30, 30, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+#footerControls .language-button-header:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important; /* Ensure high specificity */
+    border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-#sidePanelControls button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-#sidePanelControls .language-button-header.active-lang {
-    background-color: rgba(0, 123, 255, 0.5);
-    border-color: rgba(0, 123, 255, 0.8);
+#footerControls .language-button-header.active-lang {
+  background-color: rgba(0, 123, 255, 0.7) !important; /* Make it more prominent */
+  border-color: rgba(0, 123, 255, 0.9) !important;
+  color: white !important;
 }
