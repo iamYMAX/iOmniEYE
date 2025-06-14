@@ -101,3 +101,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // Обновляем размеры при изменении размера окна
     window.addEventListener('resize', updateTagSizes);
 });
+
+// Scroll detection for social icon color changes
+function updateScrollClass() {
+    const scrollThreshold = 50; // Pixels
+    if (window.scrollY > scrollThreshold) {
+        document.body.classList.add('scrolled');
+    } else {
+        document.body.classList.remove('scrolled');
+    }
+}
+
+window.addEventListener('scroll', updateScrollClass);
+document.addEventListener('DOMContentLoaded', updateScrollClass);

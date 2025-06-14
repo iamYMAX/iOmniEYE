@@ -28,7 +28,7 @@ body {
 
 .social-links a {
     margin: 0 5px;
-    color: #000000;
+    color: white;
     text-decoration: none;
     font-size: 24px;
     display: inline-block;
@@ -36,6 +36,11 @@ body {
     height: 40px;
    
 }
+
+body.scrolled .social-links a {
+    color: #000000;
+}
+
 .mt-8 {
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -48,9 +53,7 @@ body {
     width: 100%;
     height: 100%;
 }
-.social-links a {
-  
-}
+
 .main-text {
     font-size: 32px;
     color: white;
