@@ -504,18 +504,46 @@ label {
 
 }
 
-/* Footer Controls Button Styles */
-#footerControls #themeSwitcherButton:hover {
-    background-color: rgba(255, 255, 255, 0.2) !important; /* Ensure high specificity for hover */
+/* Styles for the new fixed panel */
+#fixedControlsPanel {
+    position: fixed;
+    top: 50%;
+    right: 0; /* Flush to the right edge */
+    transform: translateY(-50%); /* Vertically center */
+    padding: 0.75rem; /* Adjusted padding slightly from 1rem */
+    background-color: rgba(0, 0, 0, 0.75); /* Darker, more opaque background */
+    border-radius: 8px 0 0 8px; /* Rounded on left, sharp on right edge */
+    z-index: 1050; /* Ensure visibility above other elements */
+    display: flex;
+    flex-direction: column; /* Stack controls vertically */
+    gap: 8px; /* Spacing between theme button and language button group */
+    color: white; /* Default text color for children */
+    min-width: 120px; /* Minimum width for the panel */
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2); /* Shadow on the left side */
 }
 
-#footerControls .language-button-header:hover {
-    background-color: rgba(255, 255, 255, 0.3) !important; /* Ensure high specificity */
-    border-color: rgba(255, 255, 255, 0.4) !important;
+/* Styling for buttons within the panel to ensure consistency */
+#fixedControlsPanel #themeSwitcherButton {
+    /* Inline styles already cover: background: none; border: none; cursor: pointer; color: white; display: block; width: 100%; text-align: left; padding: 5px 0; */
+    /* Add hover/focus or other states if desired */
 }
 
-#footerControls .language-button-header.active-lang {
-  background-color: rgba(0, 123, 255, 0.7) !important; /* Make it more prominent */
-  border-color: rgba(0, 123, 255, 0.9) !important;
-  color: white !important;
+#fixedControlsPanel #themeSwitcherButton:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important; /* Subtle hover */
+}
+
+#fixedControlsPanel .language-button-header {
+    /* Inline styles already cover: color: white; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 8px 5px; border-radius: 4px; display: block; width: 100%; text-align: left; margin-top: 5px; */
+    /* Add hover/active states */
+}
+
+#fixedControlsPanel .language-button-header:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important; /* Brighter hover */
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+#fixedControlsPanel .language-button-header.active-lang {
+    background-color: rgba(0, 123, 255, 0.7) !important;
+    border-color: rgba(0, 123, 255, 0.9) !important;
+    color: white !important; /* Ensure text is white on active */
 }
