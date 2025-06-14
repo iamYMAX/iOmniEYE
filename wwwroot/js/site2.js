@@ -306,6 +306,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     handleBannerInteractions();
+
+    // New script for banner text and subtext modification
+    const bannerTitleElement = document.getElementById('banner-text');
+    const bannerSubtextElement = document.getElementById('banner-subtext');
+
+    if (bannerTitleElement) {
+        bannerTitleElement.textContent = 'IOmniEYE';
+        // Attempt to change class for styling - this might need CSS to be defined elsewhere
+        // bannerTitleElement.className = 'display-4'; // This would replace all existing classes like text-4xl, text-white etc.
+        // A safer approach for class change, if banner-text has other utility classes:
+        // bannerTitleElement.classList.remove('text-4xl', 'banner-text'); // Assuming these are specific to old style
+        // bannerTitleElement.classList.add('display-4'); // Add new style class
+        // For now, just changing text content as CSS changes are unreliable.
+    }
+
+    if (bannerSubtextElement) {
+        bannerSubtextElement.innerHTML = '<span class="changing-text" id="word1"></span> IT <span class="changing-text" id="word2"></span>';
+        // The original JS that animates #word1 and #word2 is assumed to be in site.js and still functional.
+        // If that animation logic needs to be re-initialized or is not present, this won't animate.
+    }
+
+    // Ensure existing typing animation for #word1, #word2 is triggered if it was in a separate function.
+    // This might require specific knowledge of how that animation was originally kicked off in site.js
+    // For example, if there was a function like `startWordAnimation()`, it might need to be called.
+    // Or if it was self-initializing based on element IDs, the innerHTML change should be enough.
+    // End of new script
 });
 
 document.addEventListener('DOMContentLoaded', function () {
