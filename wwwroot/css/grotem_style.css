@@ -1402,3 +1402,23 @@ body:not(.theme-dark) .service-details a:hover {
    font-size: 2rem !important; /* 32px is approx 2rem if base is 16px */
    color: #FFFFFF !important;
 }
+
+/* Explicit fix for tooltip colors in Light Theme on Support Page */
+body:not(.theme-dark) .tooltip-popup {
+    background-color: #080808; /* Explicitly black background for light theme */
+    color: #FFFFFF;           /* Explicitly white text */
+}
+
+body:not(.theme-dark) .tooltip-popup::after {
+    border-color: #080808 transparent transparent transparent; /* Ensure triangle matches explicit black background */
+}
+
+/* Explicit fix for tooltip colors in Dark Theme on Support Page */
+body.theme-dark .tooltip-popup {
+    background-color: var(--theme-card-bg-color); /* Use a dark card background color */
+    color: #FFFFFF;                               /* Ensure text is white (it's already white by default, but this reinforces) */
+}
+
+body.theme-dark .tooltip-popup::after {
+    border-color: var(--theme-card-bg-color) transparent transparent transparent; /* Ensure triangle matches the new background */
+}
