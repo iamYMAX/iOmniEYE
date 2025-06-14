@@ -745,32 +745,37 @@ body.grotem-body.text-gray-100 {
 
 
 /* Tag Cloud */
+
 .tag-cloud {
-    margin-top: 3rem;
     text-align: center;
+    color: white;
+    margin-top: 2%;
+    font-size:26px;
+}
+
+.cashtag {
+    color: rgba(0, 0, 0, 0);
+    font-size: 50px;
+}
+
+.border-top {
+    margin-bottom: 20px;
 }
 
 .tag-cloud span {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    margin: 0.3rem;
-    background-color: #8D021F; /* Bordeaux */
-    color: #FFFFFF; /* White text */
-    border-radius: 20px;
-    font-size: 0.9rem;
+    display: inline-block; /* Элементы будут в строке, но сохранят блочную структуру */
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
-    border: 1px solid #8D021F; /* Border same as background */
-    /* text-transform: uppercase; */
-    /* letter-spacing: 0.5px; */
+    transition: transform 0.2s, background-color 0.2s;
+    margin: 3px; /* Отступ между элементами */
 }
 
-.tag-cloud span:hover {
-    background-color: #B02A37; /* Lighter Bordeaux */
-    color: #FFFFFF; /* White text */
-    border-color: #B02A37; /* Border same as hover background */
-    transform: scale(1.05); /* Keep existing transform */
-}
+    .tag-cloud span:hover {
+        transform: scale(1.1);
+        background-color: rgba(128, 0, 0, 0.6);
+    }
 
 /* Style for the theme switcher button in the simple _Layout.cshtml header */
 /* This is basic; can be refined if the header structure becomes more complex */
