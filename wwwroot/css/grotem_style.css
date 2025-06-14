@@ -1430,3 +1430,8 @@ body.theme-dark .tooltip-popup {
 body.theme-dark .tooltip-popup::after {
     border-color: var(--theme-card-bg-color) transparent transparent transparent; /* Ensure triangle matches the new background */
 }
+
+/* Light theme override for social media icons inside the side popup panel */
+body:not(.theme-dark) .social-panel-icon-link svg {
+    fill: #FFFFFF !important; /* White icons in light theme */
+}
