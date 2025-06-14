@@ -1397,3 +1397,12 @@ body:not(.theme-dark) .service-details a:hover {
    font-size: 2rem !important; /* 32px is approx 2rem if base is 16px */
    color: #FFFFFF !important;
 }
+
+/* Style for the new Telegram Call icon in the floating panel */
+.social-panel-popup .telegram-call-icon svg {
+    fill: #0088cc !important; /* Telegram blue */
+}
+
+.social-panel-popup .telegram-call-icon:hover svg {
+    fill: #0077b3 !important; /* Darker blue on hover */
+}
