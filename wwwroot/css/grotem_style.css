@@ -1520,7 +1520,7 @@ body:not(.theme-dark) .social-panel-icon-link svg {
 }
 
 /* Light Theme 'On' State Thumb */
-:root .ios-toggle input[type="checkbox"]:checked .ios-toggle-thumb {
+:root .ios-toggle input[type="checkbox"]:checked + .ios-toggle-track .ios-toggle-thumb {
     transform: translateX(19px); /* (width - thumb_width - 2*padding_thumb) = 52 - 26 - 2*3 = 17, adjusted to 19 for visual centering */
     background-color: #FFFFFF;
     border: 0.5px solid rgba(0,0,0,0.04);
@@ -1529,7 +1529,7 @@ body:not(.theme-dark) .social-panel-icon-link svg {
 
 /* Dark Theme 'On' State Thumb */
 /* Same transform, potentially different thumb color if needed, but white usually works */
-.theme-dark .ios-toggle input[type="checkbox"]:checked .ios-toggle-thumb {
+.theme-dark .ios-toggle input[type="checkbox"]:checked + .ios-toggle-track .ios-toggle-thumb {
     transform: translateX(19px);
     background-color: #FFFFFF;
      border: 0.5px solid rgba(0,0,0,0.04); /* Consistent with light theme 'on' */
