@@ -1,16 +1,18 @@
-// language_init.js (with console.log statements)
+// language_init.js
 document.addEventListener('DOMContentLoaded', () => {
     console.log('[LANG_INIT] DOMContentLoaded');
 
     const banner = document.getElementById('banner');
     const bannerLangButtons = document.querySelectorAll('.banner-language-buttons .language-button');
-    const headerLangSwitcher = document.getElementById('headerLanguageSwitcher');
+    //MODIFIED: Get the new segmented control
+    const languageSwitcherControl = document.getElementById('languageSegmentedControl');
     const languagePreferenceToken = 'languagePreference';
     const defaultLanguage = 'ru';
 
     console.log('[LANG_INIT] Banner element:', banner);
     console.log('[LANG_INIT] Banner lang buttons:', bannerLangButtons.length);
-    console.log('[LANG_INIT] Header lang switcher:', headerLangSwitcher);
+    //MODIFIED: Log the new control
+    console.log('[LANG_INIT] Language Segmented Control:', languageSwitcherControl);
 
     if (typeof translations === 'undefined') {
         console.error('[LANG_INIT] CRITICAL: Translations object not found. Make sure translations.js is loaded before language_init.js.');
@@ -19,19 +21,23 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('[LANG_INIT] Translations object found.');
     }
 
-    function updateHeaderLangButtonStates(currentLang) {
-        console.log(`[LANG_INIT] updateHeaderLangButtonStates called with: ${currentLang}`);
-        if (headerLangSwitcher) {
-            const buttons = headerLangSwitcher.querySelectorAll('.language-button-header');
+    //MODIFIED: updateHeaderLangButtonStates function to work with segmented control
+    function updateLanguageSwitcherState(currentLang) {
+        console.log(`[LANG_INIT] updateLanguageSwitcherState called with: ${currentLang}`);
+        if (languageSwitcherControl) {
+            const buttons = languageSwitcherControl.querySelectorAll('.segment-button');
             buttons.forEach(button => {
                 if (button.getAttribute('data-lang') === currentLang) {
-                    button.classList.add('active-lang');
+                    button.classList.add('active');
+                    button.setAttribute('aria-pressed', 'true');
                 } else {
-                    button.classList.remove('active-lang');
+                    button.classList.remove('active');
+                    button.setAttribute('aria-pressed', 'false');
                 }
             });
         } else {
-            console.warn('[LANG_INIT] Header language switcher not found for updating button states.');
+            // This console message might appear on pages that don't use _Layout2.cshtml
+            // console.warn('[LANG_INIT] Language Segmented Control not found for updating button states.');
         }
     }
 
@@ -55,14 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (translatedText !== undefined) {
                 element.textContent = translatedText;
                 translatedCount++;
-                // console.log(`[LANG_INIT] Translated key "${key}" to: "${translatedText.substring(0, 30)}..."`);
             } else {
                 console.warn(`[LANG_INIT] Translation key "${key}" not found for language "${targetLang}". Element content: "${element.textContent.trim().substring(0,30)}..."`);
             }
         });
         console.log(`[LANG_INIT] Total elements processed for translation: ${translatedCount}`);
 
-        updateHeaderLangButtonStates(targetLang);
+        //MODIFIED: Call the updated state function
+        updateLanguageSwitcherState(targetLang);
 
         console.log('[LANG_INIT] Attempting to call initTypingAnimation...');
         if (typeof initTypingAnimation === 'function') {
@@ -98,9 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (banner) {
-        const langIsInitiallySet = !!localStorage.getItem(languagePreferenceToken); // Check if it was explicitly set before
+        const langIsInitiallySet = !!localStorage.getItem(languagePreferenceToken);
         console.log(`[LANG_INIT] Language was initially set in localStorage: ${langIsInitiallySet}`);
-        if (langIsInitiallySet && translations[localStorage.getItem(languagePreferenceToken)]) { // Ensure the stored lang is valid before setting banner
+        if (langIsInitiallySet && translations[localStorage.getItem(languagePreferenceToken)]) {
             banner.classList.remove('banner-fullscreen');
             banner.classList.add('banner-language-selected');
             console.log('[LANG_INIT] Banner set to language-selected state (not fullscreen).');
@@ -116,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(`[LANG_INIT] Applying initial translations for: ${currentSelectedLang}`);
     applyTranslations(currentSelectedLang);
 
-    // Event listeners for language buttons on the BANNER
+    // Event listeners for language buttons on the BANNER (remains unchanged)
     if (bannerLangButtons.length > 0) {
         bannerLangButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -129,31 +135,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-    } else if (banner) { // Only warn if banner exists but buttons weren't found
+    } else if (banner) {
         console.warn('[LANG_INIT] Banner language buttons not found.');
     }
 
-    // Event listeners for language buttons in the HEADER
-    if (headerLangSwitcher) {
-        const headerButtons = headerLangSwitcher.querySelectorAll('.language-button-header');
+    // MODIFIED: Event listeners for new language segmented control in the HEADER
+    if (languageSwitcherControl) {
+        const headerButtons = languageSwitcherControl.querySelectorAll('.segment-button');
         if (headerButtons.length > 0) {
             headerButtons.forEach(button => {
                 button.addEventListener('click', (event) => {
                     const lang = event.currentTarget.getAttribute('data-lang');
-                    console.log(`[LANG_INIT] Header language button clicked. Selected lang: ${lang}`);
+                    console.log(`[LANG_INIT] Header language segment clicked. Selected lang: ${lang}`);
                     if (lang) {
                         localStorage.setItem(languagePreferenceToken, lang); // Set preference first
-                        applyTranslations(lang); // Then apply
+                        applyTranslations(lang); // Then apply (this will also update the active state)
                     } else {
-                        console.error('[LANG_INIT] Header language button missing data-lang attribute.');
+                        console.error('[LANG_INIT] Header language segment missing data-lang attribute.');
                     }
                 });
             });
         } else {
-            console.warn('[LANG_INIT] Header language buttons (.language-button-header) not found inside #headerLanguageSwitcher.');
+            console.warn('[LANG_INIT] Header language segments (.segment-button) not found inside #languageSegmentedControl.');
         }
     } else {
-        // console.log('[LANG_INIT] Header language switcher element not found on this page.'); // This might be normal for layouts without it.
+        // console.log('[LANG_INIT] Language Segmented Control element not found on this page.');
     }
     console.log('[LANG_INIT] Event listeners set up.');
 });

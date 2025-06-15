@@ -45,11 +45,15 @@
                 
                 <a href="#about" class="mx-2 text-sm sm:text-base hover:text-burgundy" data-translate-key="nav_about_us">О Нас</a>
                 <a class="mx-2 text-sm sm:text-base hover:text-burgundy" asp-page="/Support" data-translate-key="nav_write_to_support">Написать в тех поддержку</a>
-                <button id="themeSwitcherButton" class="mx-2 text-sm sm:text-base hover:text-burgundy" style="background: none; border: none; cursor: pointer; padding: 0.5rem;" data-translate-key="nav_theme_switch_dark">Switch to Dark Mode</button>
-                <div id="headerLanguageSwitcher" class="inline-block ml-4">
-                    <button class="language-button-header" data-lang="ru" data-translate-key="nav_lang_ru">RU</button>
-                    <span style="color: var(--theme-header-text-color); margin: 0 0.15rem;">/</span>
-                    <button class="language-button-header" data-lang="en" data-translate-key="nav_lang_en">EN</button>
+                <label class="ios-toggle" for="themeSwitcherInput" title="Switch theme" aria-label="Theme switcher">
+                  <input type="checkbox" id="themeSwitcherInput">
+                  <span class="ios-toggle-track">
+                    <span class="ios-toggle-thumb"></span>
+                  </span>
+                </label>
+                <div class="segmented-control" id="languageSegmentedControl">
+                  <button data-lang="ru" class="segment-button" aria-pressed="false" data-translate-key="nav_lang_ru">RU</button>
+                  <button data-lang="en" class="segment-button" aria-pressed="false" data-translate-key="nav_lang_en">EN</button>
                 </div>
             </nav>
         </div>
