@@ -33,36 +33,22 @@
 
             <nav class="relative">
                 <a href="#home" class="mx-2 text-sm sm:text-base hover:text-burgundy" data-translate-key="nav_home">Главная</a>
-
-                <!-- Вложенное меню "Услуги" -->
-                <div class="inline-block relative group">
-                    <a href="#services" class="mx-2 text-sm sm:text-base hover:text-burgundy flex items-center" data-translate-key="nav_services">
-                        Услуги
-                        <span class="ml-1">▼</span>
-                    </a>
-                    <!-- Выпадающее меню -->
-                    <div class="absolute hidden bg-gray-700 text-white py-1 mt-2 z-20 rounded-lg shadow-lg group-hover:block min-w-[200px]">
-                        <a href="#outsorce" class="block px-3 py-2 hover:bg-burgundy text-sm sm:text-base" data-translate-key="nav_services_outsource">IT-Outsorce/Поддержка</a>
-                    </div>
-                </div>
-
-                
+                                
                 <div class="inline-block relative group">
                     <a href="#contact" class="mx-2 text-sm sm:text-base hover:text-burgundy" data-translate-key="nav_contact_us">Связаться с нами
                         
-                        <span class="ml-1">▼</span>
+                        
                     </a>
                     <!-- Выпадающее меню -->
-                    <div class="absolute hidden bg-gray-700 text-white py-1 mt-2 z-10 rounded-lg shadow-lg group-hover:block min-w-[200px]">
-                        <a href="Support" class="block px-3 py-2 hover:bg-burgundy text-sm sm:text-base" data-translate-key="nav_write_to_support">Написать в техподдержку</a>
-                    </div>
+                   
                 </div>
-                <a class="mx-2 text-sm sm:text-base hover:text-burgundy" asp-page="/Support" data-translate-key="nav_write_to_support">Написать в тех поддержку</a>
+                
                 <a href="#about" class="mx-2 text-sm sm:text-base hover:text-burgundy" data-translate-key="nav_about_us">О Нас</a>
+                <a class="mx-2 text-sm sm:text-base hover:text-burgundy" asp-page="/Support" data-translate-key="nav_write_to_support">Написать в тех поддержку</a>
                 <button id="themeSwitcherButton" class="mx-2 text-sm sm:text-base hover:text-burgundy" style="background: none; border: none; cursor: pointer; padding: 0.5rem;" data-translate-key="nav_theme_switch_dark">Switch to Dark Mode</button>
                 <div id="headerLanguageSwitcher" class="inline-block ml-4">
                     <button class="language-button-header" data-lang="ru" data-translate-key="nav_lang_ru">RU</button>
-                    <span style="color: var(--theme-header-text-color); margin: 0 0.25rem;">/</span>
+                    <span style="color: var(--theme-header-text-color); margin: 0 0.15rem;">/</span>
                     <button class="language-button-header" data-lang="en" data-translate-key="nav_lang_en">EN</button>
                 </div>
             </nav>
