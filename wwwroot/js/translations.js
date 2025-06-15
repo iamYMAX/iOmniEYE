@@ -162,7 +162,17 @@ const translations = {
         "banner_cycle_headline3": "Фокус на бизнесе, IT – наша забота!",
         "banner_cycle_subtext3": "Эффективная удаленная IT-поддержка, созданная для нужд малого и среднего бизнеса.",
         "banner_cycle_headline4": "IT-поддержка для вашего бизнеса – удаленно и надежно!",
-        "banner_cycle_subtext4": "Малый или средний бизнес? Получите экспертную IT-помощь без затрат на штатного специалиста."
+        "banner_cycle_subtext4": "Малый или средний бизнес? Получите экспертную IT-помощь без затрат на штатного специалиста.",
+        // --- SUPPORT PAGE ---
+        "support_page_title": "Техническая поддержка. Форма заявки",
+        "support_back_button_text": "Назад",
+        "support_captcha_question_prefix": "Сколько будет",
+        "support_captcha_question_suffix": "?",
+        "support_submit_button": "Отправить",
+        // --- SUCCESS PAGE ---
+        "success_page_title": "Спасибо за вашу заявку!",
+        "success_page_message": "Мы свяжемся с вами в ближайшее время.",
+        "success_back_button_text": "Назад"
     },
     en: {
         // --- NAVIGATION (Example) ---
@@ -326,6 +336,16 @@ const translations = {
         "banner_cycle_headline3": "Focus on Your Business, We'll Handle the IT!",
         "banner_cycle_subtext3": "Efficient remote IT support tailored for the needs of small and medium businesses.",
         "banner_cycle_headline4": "IT Support for Your Business – Remote & Reliable!",
-        "banner_cycle_subtext4": "Small or medium business? Get expert IT help without the cost of an in-house specialist."
+        "banner_cycle_subtext4": "Small or medium business? Get expert IT help without the cost of an in-house specialist.",
+        // --- SUPPORT PAGE ---
+        "support_page_title": "Technical Support. Request Form",
+        "support_back_button_text": "Back",
+        "support_captcha_question_prefix": "What is",
+        "support_captcha_question_suffix": "?",
+        "support_submit_button": "Submit",
+        // --- SUCCESS PAGE ---
+        "success_page_title": "Thank you for your submission!",
+        "success_page_message": "We will contact you shortly.",
+        "success_back_button_text": "Back"
     }
 };

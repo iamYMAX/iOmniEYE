@@ -8,14 +8,14 @@
     Layout = "_Layout4";
 }
 <div class="page-support-content">
-    <h4>Техническая поддержка. Форма заявки</h4>
+    <h4 data-translate-key="support_page_title">Техническая поддержка. Форма заявки</h4>
     <a href="/" class="back-to-home" aria-label="Вернуться на главную">
         <div class="back-circle">
             <span class="arrow a1">&lt;</span>
         <span class="arrow a2">&lt;</span>
         <span class="arrow a3">&lt;</span>
     </div>
-    <span class="back-label">Назад</span>
+    <span class="back-label" data-translate-key="support_back_button_text">Назад</span>
 </a>
 <form class="form" id="clientRequestForm" method="post">
 
@@ -91,7 +91,7 @@
         <div class="tooltip-popup"></div>
     </div>
     <div class="form-group tooltip-wrapper">
-        <label class="control-label">Сколько будет @Model.CaptchaNum1 + @Model.CaptchaNum2?</label>
+        <label class="control-label"><span data-translate-key="support_captcha_question_prefix">Сколько будет</span> @Model.CaptchaNum1 + @Model.CaptchaNum2<span data-translate-key="support_captcha_question_suffix">?</span></label>
 
         <input type="hidden" asp-for="CaptchaNum1" />
         <input type="hidden" asp-for="CaptchaNum2" />
@@ -109,7 +109,7 @@
     </div>
 
     <div class="form-group tooltip-wrapper">
-    <button type="submit" class="btn btn-primary mt-3">Отправить</button></div>
+    <button type="submit" class="btn btn-primary mt-3" data-translate-key="support_submit_button">Отправить</button></div>
 </form>
 </div>
 
