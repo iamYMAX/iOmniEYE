@@ -1490,6 +1490,7 @@ body:not(.theme-dark) .social-panel-icon-link svg {
     border-radius: 50%;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     transition: transform 0.3s ease;
+    transform: translateX(0); /* Explicitly set initial transform */
 }
 
 /* Light Theme 'Off' State (Default) */
