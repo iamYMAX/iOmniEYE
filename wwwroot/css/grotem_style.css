@@ -1118,7 +1118,21 @@ body.grotem-body.text-gray-100 {
     /* Further reduce nav item size or implement hamburger menu (latter needs JS) */
     header nav a, header nav #themeSwitcherButton {
         /* If a hamburger menu isn't implemented, links might need to wrap or be very small */
+        margin-bottom: 0.5rem; /* Add some space below items when they wrap */
     }
+
+    /* Added styles for header navigation overflow */
+    header.bg-gray-800 nav {
+        flex-wrap: wrap;
+        justify-content: center; /* Or flex-start, depending on desired alignment */
+    }
+
+    header.bg-gray-800 nav a,
+    header.bg-gray-800 nav button,
+    header.bg-gray-800 nav div#headerLanguageSwitcher { /* Assuming headerLanguageSwitcher is an ID, if it's a class use . */
+        margin-bottom: 0.5rem; /* Add some space below items when they wrap */
+    }
+    /* End of added styles for header navigation overflow */
 
     .social-panel-fixed-button {
         /* May need to adjust position or size for mobile */
