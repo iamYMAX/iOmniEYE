@@ -82,6 +82,7 @@ body.grotem-body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Headings */
@@ -403,7 +404,7 @@ pre {
     cursor: pointer;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 #themeSwitcherButton:hover {
@@ -791,6 +792,7 @@ body.grotem-body.text-gray-100 {
     text-align: right;
     padding: 1rem;
     border-bottom: 1px solid var(--theme-border-color);
+    transition: border-bottom-color 0.3s ease;
 }
 
 /* Styles for Support.cshtml (Form Page) */
