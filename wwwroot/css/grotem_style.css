@@ -767,7 +767,7 @@ body.grotem-body.text-gray-100 {
 }
 
 .border-top {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .tag-cloud span {
@@ -1147,79 +1147,90 @@ body.grotem-body.text-gray-100 {
         top: 85%;
     }
 }
-
-@media (max-width: 480px) {
+@media (max-width: 580px) {
     #banner {
         /* min-height: 50vh; */ /* Effectively overridden by auto height from 767px rule if not specified here */
-        padding-top: 4rem !important;
-        padding-bottom: 2rem !important;
+        padding-top: 5rem !important;
+        padding-bottom: 5rem !important;
     }
-
-    #banner .bg-black.bg-opacity-50 {
-        padding: 1rem !important;
-    }
-
-    #banner h2, #banner #banner-text {
-        font-size: 1.5rem !important;
-        margin-bottom: 0.5rem !important;
-    }
-
-    #banner p, #banner #banner-subtext {
-        font-size: 0.9rem !important;
-        margin-bottom: 0.8rem !important;
-    }
-
-    #home h2 { /* Welcome to */
-        font-size: 1.25rem;
-    }
-    #home h1 { /* IOmniEYE */
-        font-size: 2rem;
-    }
-    #home .typing-container {
-        font-size: 1rem;
-        min-height: 2em;
-    }
-    #home p.mt-4.text-lg { /* Initial text below typing */
-        font-size: 0.9rem;
-    }
-    #home {
-         padding-top: 2rem !important;
-     }
 }
 
-/* General Polish */
-/* body.grotem-body is already smoothed from global html or body rule, this is redundant if so */
+    @media (max-width: 480px) {
+        #banner {
+            /* min-height: 50vh; */ /* Effectively overridden by auto height from 767px rule if not specified here */
+            padding-top: 8rem !important;
+            padding-bottom: 2rem !important;
+        }
 
-/* Ensure images are responsive by default if not already handled by Bootstrap/Tailwind */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block; /* Removes bottom space under images */
-}
+            #banner .bg-black.bg-opacity-50 {
+                padding: 1rem !important;
+            }
 
-/* Consistent focus outline for accessibility, using theme variables */
-*:focus-visible {
-    outline: 2px solid var(--theme-accent-color);
-    outline-offset: 2px;
-    box-shadow: 0 0 0 4px var(--theme-bg-color), 0 0 0 6px var(--theme-accent-color); /* More prominent */
-}
-/* For browsers not supporting focus-visible, provide a fallback (optional) */
-/* *:focus { ... } */
+            #banner h2, #banner #banner-text {
+                font-size: 1.5rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            #banner p, #banner #banner-subtext {
+                font-size: 0.9rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+
+        #home h2 { /* Welcome to */
+            font-size: 1.25rem;
+        }
+
+        #home h1 { /* IOmniEYE */
+            font-size: 2rem;
+        }
+
+        #home .typing-container {
+            font-size: 1rem;
+            min-height: 2em;
+        }
+
+        #home p.mt-4.text-lg { /* Initial text below typing */
+            font-size: 0.9rem;
+        }
+
+        #home {
+            padding-top: 2rem !important;
+        }
+    }
+
+    /* General Polish */
+    /* body.grotem-body is already smoothed from global html or body rule, this is redundant if so */
+
+    /* Ensure images are responsive by default if not already handled by Bootstrap/Tailwind */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block; /* Removes bottom space under images */
+    }
+
+    /* Consistent focus outline for accessibility, using theme variables */
+    *:focus-visible {
+        outline: 2px solid var(--theme-accent-color);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px var(--theme-bg-color), 0 0 0 6px var(--theme-accent-color); /* More prominent */
+    }
+    /* For browsers not supporting focus-visible, provide a fallback (optional) */
+    /* *:focus { ... } */
 
 
-/* Remove default outline when focus-visible is supported */
-*:focus:not(:focus-visible) {
-    outline: none;
-}
+    /* Remove default outline when focus-visible is supported */
+    *:focus:not(:focus-visible) {
+        outline: none;
+    }
 
-/* Clean up hover effects on header nav links that might have old Tailwind classes */
-header.bg-gray-800 nav a.hover\:text-burgundy:hover { /* Target specific Tailwind class */
-    color: var(--theme-accent-color) !important; /* Override with theme accent */
-}
+    /* Clean up hover effects on header nav links that might have old Tailwind classes */
+    header.bg-gray-800 nav a.hover\:text-burgundy:hover { /* Target specific Tailwind class */
+        color: var(--theme-accent-color) !important; /* Override with theme accent */
+    }
 
-/* --- Footer Social Icon Sizing Correction for _Layout.cshtml context --- */
+    /* --- Footer Social Icon Sizing Correction for _Layout.cshtml context --- */
 
-/*
+    /*
        The footer in _Layout.cshtml has a structure like:
        <footer class="border-top footer text-muted">
            <section id="contact" class="py-16 bg-gray-800"> <!-- This bg-gray-800 is now themed -->
@@ -1237,33 +1248,33 @@ header.bg-gray-800 nav a.hover\:text-burgundy:hover { /* Target specific Tailwin
        The 'fill="white"' will be overridden by theme variable '--theme-footer-icon-fill'.
     */
 
-/* General styling for social links in any footer to ensure consistency */
-footer .social-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem; /* Spacing between icons */
-    margin-top: 1rem; /* Space from "Follow & Contact Us" title */
-}
+    /* General styling for social links in any footer to ensure consistency */
+    footer .social-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem; /* Spacing between icons */
+        margin-top: 1rem; /* Space from "Follow & Contact Us" title */
+    }
 
-footer .social-links a {
-    display: inline-block; /* Needed for width/height to take effect on <a> if not already */
-    line-height: 0; /* Prevents extra space if SVG is smaller than line height */
-}
+        footer .social-links a {
+            display: inline-block; /* Needed for width/height to take effect on <a> if not already */
+            line-height: 0; /* Prevents extra space if SVG is smaller than line height */
+        }
 
-footer .social-links svg {
-    width: 32px;  /* Desired width */
-    height: 32px; /* Desired height */
-    max-width: 100%; /* Ensure it doesn't overflow its 'a' tag if 'a' is constrained */
-    max-height: 100%;
-    fill: var(--theme-footer-icon-fill); /* Ensure it uses the theme variable */
-}
+        footer .social-links svg {
+            width: 32px; /* Desired width */
+            height: 32px; /* Desired height */
+            max-width: 100%; /* Ensure it doesn't overflow its 'a' tag if 'a' is constrained */
+            max-height: 100%;
+            fill: var(--theme-footer-icon-fill); /* Ensure it uses the theme variable */
+        }
 
-footer .social-links a:hover svg {
-    fill: var(--theme-accent-color); /* Standard hover effect */
-}
+        footer .social-links a:hover svg {
+            fill: var(--theme-accent-color); /* Standard hover effect */
+        }
 
-/* If the issue is very specific to _Layout.cshtml's footer structure vs _Layout2/3's footer,
+    /* If the issue is very specific to _Layout.cshtml's footer structure vs _Layout2/3's footer,
        and they behave differently despite similar class names, we might need a more specific selector.
        However, the above should target any footer using this .social-links structure.
        The previous dark theme implementation already had:
@@ -1276,37 +1287,38 @@ footer .social-links a:hover svg {
        The new rules above are more generic for `footer .social-links svg` and should
        not conflict but rather complement by adding size constraints.
     */
-/* --- Readability Fix for .service-details in Light Theme --- */
+    /* --- Readability Fix for .service-details in Light Theme --- */
 
-/* Ensure the base .service-details uses the main card background and text color by default */
-/* This rule was already present, but re-confirming its variable usage. */
-.service-details {
-    background-color: var(--theme-card-bg-color);
-    color: var(--theme-text-color);
-    /* other properties like padding, border-top, etc., should remain as previously defined */
-}
+    /* Ensure the base .service-details uses the main card background and text color by default */
+    /* This rule was already present, but re-confirming its variable usage. */
+    .service-details {
+        background-color: var(--theme-card-bg-color);
+        color: var(--theme-text-color);
+        /* other properties like padding, border-top, etc., should remain as previously defined */
+    }
 
-/* Explicitly set text colors for elements within .service-details to ensure they inherit correctly */
-/* This is redundant if the parent .service-details already sets var(--theme-text-color)
+        /* Explicitly set text colors for elements within .service-details to ensure they inherit correctly */
+        /* This is redundant if the parent .service-details already sets var(--theme-text-color)
    and these elements are standard block elements without overriding classes.
    However, it acts as a safeguard. */
-.service-details h4,
-.service-details p,
-.service-details ul,
-.service-details li {
-    color: var(--theme-text-color);
-}
+        .service-details h4,
+        .service-details p,
+        .service-details ul,
+        .service-details li {
+            color: var(--theme-text-color);
+        }
 
-/* Links within service-details should use accent color */
-/* This was also likely covered, but explicit check. */
-.service-details a {
-    color: var(--theme-accent-color);
-}
-.service-details a:hover {
-    color: var(--theme-accent-hover-color);
-}
+        /* Links within service-details should use accent color */
+        /* This was also likely covered, but explicit check. */
+        .service-details a {
+            color: var(--theme-accent-color);
+        }
 
-/*
+            .service-details a:hover {
+                color: var(--theme-accent-hover-color);
+            }
+
+    /*
   The following rules with `body:not(.theme-dark)` are aggressive overrides.
   They are intended to ensure that IF there are conflicting Tailwind classes
   (e.g., `text-white`) directly on elements INSIDE `.service-details` in the CSHTML,
@@ -1314,311 +1326,351 @@ footer .social-links a:hover svg {
   Ideally, such conflicting classes in CSHTML should be removed.
 */
 
-body:not(.theme-dark) .service-details {
-    background-color: #FFFFFF; /* Force a very light background for light theme */
-    /* border-top: 1px solid var(--theme-border-color, #DEE2E6); /* Border is already defined */
-    color: #212529; /* Force dark text for light theme */
-}
-
-body:not(.theme-dark) .service-details h4,
-body:not(.theme-dark) .service-details p,
-body:not(.theme-dark) .service-details ul,
-body:not(.theme-dark) .service-details li {
-    color: #212529 !important; /* Force dark text, overriding potential Tailwind classes */
-}
-
-body:not(.theme-dark) .service-details a {
-    color: var(--theme-accent-color, #00BFA5) !important; /* Force accent color for links */
-}
-body:not(.theme-dark) .service-details a:hover {
-    color: var(--theme-accent-hover-color, #008c7a) !important;
-}
-
-/* --- Icon Animations --- */
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes vibrate {
-    0% { transform: translate(0); }
-    20% { transform: translate(-1px, 1px) rotate(-1deg); }
-    40% { transform: translate(-1px, -1px) rotate(-1deg); }
-    60% { transform: translate(1px, 1px) rotate(1deg); }
-    80% { transform: translate(1px, -1px) rotate(1deg); }
-    100% { transform: translate(0) rotate(0); }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.7; /* Match base icon opacity */
+    body:not(.theme-dark) .service-details {
+        background-color: #FFFFFF; /* Force a very light background for light theme */
+        /* border-top: 1px solid var(--theme-border-color, #DEE2E6); /* Border is already defined */
+        color: #212529; /* Force dark text for light theme */
     }
-    50% {
-        transform: scale(1.1);
-        opacity: 1;
+
+        body:not(.theme-dark) .service-details h4,
+        body:not(.theme-dark) .service-details p,
+        body:not(.theme-dark) .service-details ul,
+        body:not(.theme-dark) .service-details li {
+            color: #212529 !important; /* Force dark text, overriding potential Tailwind classes */
+        }
+
+        body:not(.theme-dark) .service-details a {
+            color: var(--theme-accent-color, #00BFA5) !important; /* Force accent color for links */
+        }
+
+            body:not(.theme-dark) .service-details a:hover {
+                color: var(--theme-accent-hover-color, #008c7a) !important;
+            }
+
+    /* --- Icon Animations --- */
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
     }
-    100% {
-        transform: scale(1);
-        opacity: 0.7; /* Match base icon opacity */
+
+    @keyframes vibrate {
+        0% {
+            transform: translate(0);
+        }
+
+        20% {
+            transform: translate(-1px, 1px) rotate(-1deg);
+        }
+
+        40% {
+            transform: translate(-1px, -1px) rotate(-1deg);
+        }
+
+        60% {
+            transform: translate(1px, 1px) rotate(1deg);
+        }
+
+        80% {
+            transform: translate(1px, -1px) rotate(1deg);
+        }
+
+        100% {
+            transform: translate(0) rotate(0);
+        }
     }
-}
 
-@keyframes wiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(5deg); }
-  75% { transform: rotate(-5deg); }
-}
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            opacity: 0.7; /* Match base icon opacity */
+        }
 
-/* Apply Animations to Service Card Icons on Hover */
+        50% {
+            transform: scale(1.1);
+            opacity: 1;
+        }
 
-.service-card:hover[data-icon=""]::before { /* Gear (Software Development) */
-    animation: spin 2s linear infinite;
-}
-
-.service-card:hover[data-icon=""]::before { /* Phone (Telephony) xf095 */
-    animation: vibrate 0.5s linear infinite;
-}
-
-.service-card:hover[data-icon=""]::before { /* Chart (Performance Optimization) xf135 */
-    animation: pulse 1.5s ease-in-out infinite;
-}
-
-.service-card:hover[data-icon=""]::before { /* Users (Network Setup) xf233 */
-    animation: pulse 1.5s ease-in-out infinite;
-}
-
-.service-card:hover[data-icon=""]::before { /* Globe (Web Solutions) xf0ac */
-    animation: pulse 1.8s ease-in-out infinite;
-}
-
-.service-card:hover[data-icon=""]::before { /* Wrench (Remote Support) xf0ad */
-    animation: wiggle 1s ease-in-out infinite;
-}
-
-@keyframes social-panel-pulse {
-    0% {
-        transform: scale(0.7);
-        opacity: 0.5;
+        100% {
+            transform: scale(1);
+            opacity: 0.7; /* Match base icon opacity */
+        }
     }
-    50% {
-        transform: scale(1);
-        opacity: 0.8;
+
+    @keyframes wiggle {
+        0%, 100% {
+            transform: rotate(0deg);
+        }
+
+        25% {
+            transform: rotate(5deg);
+        }
+
+        75% {
+            transform: rotate(-5deg);
+        }
     }
-    100% {
-        transform: scale(0.7);
-        opacity: 0.5;
+
+    /* Apply Animations to Service Card Icons on Hover */
+
+    .service-card:hover[data-icon=""]::before { /* Gear (Software Development) */
+        animation: spin 2s linear infinite;
     }
-}
 
-/* --- Banner Text Restyling (Attempt) --- */
-#banner-text { /* This is an h2 */
-   font-size: 3.5rem !important; /* .display-4 typically is this or larger */
-   color: #FFFFFF !important; /* Banner text is usually white */
-   font-weight: 300; /* .display-4 often lighter, but h1/h2 are bold by default */
-   line-height: 1.2;
-}
+    .service-card:hover[data-icon=""]::before { /* Phone (Telephony) xf095 */
+        animation: vibrate 0.5s linear infinite;
+    }
 
-#banner-subtext { /* This is a p */
-   font-size: 2rem !important; /* 32px is approx 2rem if base is 16px */
-   color: #FFFFFF !important;
-}
+    .service-card:hover[data-icon=""]::before { /* Chart (Performance Optimization) xf135 */
+        animation: pulse 1.5s ease-in-out infinite;
+    }
 
-/* Explicit fix for tooltip colors in Light Theme on Support Page */
-body:not(.theme-dark) .tooltip-popup {
-    background-color: #080808; /* Explicitly black background for light theme */
-    color: #FFFFFF;           /* Explicitly white text */
-}
+    .service-card:hover[data-icon=""]::before { /* Users (Network Setup) xf233 */
+        animation: pulse 1.5s ease-in-out infinite;
+    }
 
-body:not(.theme-dark) .tooltip-popup::after {
-    border-color: #080808 transparent transparent transparent; /* Ensure triangle matches explicit black background */
-}
+    .service-card:hover[data-icon=""]::before { /* Globe (Web Solutions) xf0ac */
+        animation: pulse 1.8s ease-in-out infinite;
+    }
 
-/* Explicit fix for tooltip colors in Dark Theme on Support Page */
-body.theme-dark .tooltip-popup {
-    background-color: var(--theme-card-bg-color); /* Use a dark card background color */
-    color: #FFFFFF;                               /* Ensure text is white (it's already white by default, but this reinforces) */
-}
+    .service-card:hover[data-icon=""]::before { /* Wrench (Remote Support) xf0ad */
+        animation: wiggle 1s ease-in-out infinite;
+    }
 
-body.theme-dark .tooltip-popup::after {
-    border-color: var(--theme-card-bg-color) transparent transparent transparent; /* Ensure triangle matches the new background */
-}
+    @keyframes social-panel-pulse {
+        0% {
+            transform: scale(0.7);
+            opacity: 0.5;
+        }
 
-/* Light theme override for social media icons inside the side popup panel */
-body:not(.theme-dark) .social-panel-icon-link svg {
-    fill: #FFFFFF !important; /* White icons in light theme */
-}
+        50% {
+            transform: scale(1);
+            opacity: 0.8;
+        }
 
-/* iOS-style Toggle Switch */
-.ios-toggle {
-    display: inline-block;
-    position: relative;
-    width: 52px; /* Adjusted width */
-    height: 32px; /* Adjusted height */
-    cursor: pointer;
-    user-select: none;
-    vertical-align: middle; /* Align with text if needed */
-}
+        100% {
+            transform: scale(0.7);
+            opacity: 0.5;
+        }
+    }
 
-.ios-toggle input[type="checkbox"] {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    position: absolute;
-}
+    /* --- Banner Text Restyling (Attempt) --- */
+    #banner-text { /* This is an h2 */
+        font-size: 3.5rem !important; /* .display-4 typically is this or larger */
+        color: #FFFFFF !important; /* Banner text is usually white */
+        font-weight: 300; /* .display-4 often lighter, but h1/h2 are bold by default */
+        line-height: 1.2;
+    }
 
-.ios-toggle-track {
-    display: flex; /* Using flex to center thumb vertically if needed */
-    align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--theme-form-border-color, #CED4DA); /* Default track color (off state) */
-    border-radius: 16px; /* height / 2 */
-    transition: background-color 0.3s ease;
-}
+    #banner-subtext { /* This is a p */
+        font-size: 2rem !important; /* 32px is approx 2rem if base is 16px */
+        color: #FFFFFF !important;
+    }
 
-.ios-toggle-thumb {
-    position: absolute;
-    left: 3px; /* Initial position for 'off' state */
-    width: 26px; /* Thumb size */
-    height: 26px; /* Thumb size */
-    background-color: var(--theme-bg-color, #FFFFFF); /* Thumb color */
-    border-radius: 50%;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-    transform: translateX(0); /* Explicitly set initial transform */
-}
+    /* Explicit fix for tooltip colors in Light Theme on Support Page */
+    body:not(.theme-dark) .tooltip-popup {
+        background-color: #080808; /* Explicitly black background for light theme */
+        color: #FFFFFF; /* Explicitly white text */
+    }
 
-/* Light Theme 'Off' State (Default) */
-:root .ios-toggle input[type="checkbox"]:not(:checked) + .ios-toggle-track {
-    background-color: #E9E9EA; /* iOS light mode off-track color */
-}
-:root .ios-toggle input[type="checkbox"]:not(:checked) .ios-toggle-thumb {
-    background-color: #FFFFFF;
-    border: 0.5px solid rgba(0,0,0,0.04);
-    box-shadow: 0px 3px 8px rgba(0,0,0,0.15), 0px 3px 1px rgba(0,0,0,0.06);
-}
+        body:not(.theme-dark) .tooltip-popup::after {
+            border-color: #080808 transparent transparent transparent; /* Ensure triangle matches explicit black background */
+        }
 
-/* Dark Theme 'Off' State */
-.theme-dark .ios-toggle input[type="checkbox"]:not(:checked) + .ios-toggle-track {
-    background-color: #39393D; /* iOS dark mode off-track color */
-}
-.theme-dark .ios-toggle input[type="checkbox"]:not(:checked) .ios-toggle-thumb {
-    background-color: #6B6B6B; /* Adjusted for visibility on dark track */
-    border: none;
-    box-shadow: 0px 3px 8px rgba(0,0,0,0.3), 0px 3px 1px rgba(0,0,0,0.12);
-}
+    /* Explicit fix for tooltip colors in Dark Theme on Support Page */
+    body.theme-dark .tooltip-popup {
+        background-color: var(--theme-card-bg-color); /* Use a dark card background color */
+        color: #FFFFFF; /* Ensure text is white (it's already white by default, but this reinforces) */
+    }
 
+        body.theme-dark .tooltip-popup::after {
+            border-color: var(--theme-card-bg-color) transparent transparent transparent; /* Ensure triangle matches the new background */
+        }
 
-/* 'On' State (checkbox is checked) */
-.ios-toggle input[type="checkbox"]:checked + .ios-toggle-track {
-    background-color: #34C759; /* iOS 'on' color (green) */
-}
+    /* Light theme override for social media icons inside the side popup panel */
+    body:not(.theme-dark) .social-panel-icon-link svg {
+        fill: #FFFFFF !important; /* White icons in light theme */
+    }
 
-/* Light Theme 'On' State Thumb */
-:root .ios-toggle input[type="checkbox"]:checked + .ios-toggle-track .ios-toggle-thumb {
-    transform: translateX(19px); /* (width - thumb_width - 2*padding_thumb) = 52 - 26 - 2*3 = 17, adjusted to 19 for visual centering */
-    background-color: #FFFFFF;
-    border: 0.5px solid rgba(0,0,0,0.04);
-    box-shadow: 0px 3px 8px rgba(0,0,0,0.15), 0px 3px 1px rgba(0,0,0,0.06);
-}
+    /* iOS-style Toggle Switch */
+    .ios-toggle {
+        display: inline-block;
+        position: relative;
+        width: 52px; /* Adjusted width */
+        height: 32px; /* Adjusted height */
+        cursor: pointer;
+        user-select: none;
+        vertical-align: middle; /* Align with text if needed */
+    }
 
-/* Dark Theme 'On' State Thumb */
-/* Same transform, potentially different thumb color if needed, but white usually works */
-.theme-dark .ios-toggle input[type="checkbox"]:checked + .ios-toggle-track .ios-toggle-thumb {
-    transform: translateX(19px);
-    background-color: #FFFFFF;
-     border: 0.5px solid rgba(0,0,0,0.04); /* Consistent with light theme 'on' */
-    box-shadow: 0px 3px 8px rgba(0,0,0,0.15), 0px 3px 1px rgba(0,0,0,0.06);
-}
+        .ios-toggle input[type="checkbox"] {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            position: absolute;
+        }
 
+    .ios-toggle-track {
+        display: flex; /* Using flex to center thumb vertically if needed */
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--theme-form-border-color, #CED4DA); /* Default track color (off state) */
+        border-radius: 16px; /* height / 2 */
+        transition: background-color 0.3s ease;
+    }
 
-/* Focus styles for accessibility */
-.ios-toggle input[type="checkbox"]:focus-visible + .ios-toggle-track {
-    outline: 2px solid var(--theme-accent-color, #00BFA5);
-    outline-offset: 2px;
-}
-.ios-toggle input[type="checkbox"]:focus:not(:focus-visible) + .ios-toggle-track {
-    outline: none;
-}
+    .ios-toggle-thumb {
+        position: absolute;
+        left: 3px; /* Initial position for 'off' state */
+        width: 26px; /* Thumb size */
+        height: 26px; /* Thumb size */
+        background-color: var(--theme-bg-color, #FFFFFF); /* Thumb color */
+        border-radius: 50%;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease;
+        transform: translateX(0); /* Explicitly set initial transform */
+    }
 
-/* Adjustments for placement in header nav */
-header nav .ios-toggle {
-    margin-left: 0.5rem; /* Consistent with other nav items */
-    margin-right: 0.5rem;
-}
+    /* Light Theme 'Off' State (Default) */
+    :root .ios-toggle input[type="checkbox"]:not(:checked) + .ios-toggle-track {
+        background-color: #E9E9EA; /* iOS light mode off-track color */
+    }
 
-/* iOS-style Segmented Control for Language Switcher */
-.segmented-control {
-    display: inline-flex;
-    border-radius: 8px; /* iOS-like rounded corners for the whole control */
-    background-color: var(--theme-header-bg-color, #080808); /* Default to darkish, assuming header context */
-    padding: 2px; /* Small padding to create border effect around buttons */
-    overflow: hidden; /* Ensure children conform to rounded corners */
-    border: 1px solid var(--theme-accent-color, #FFFFFF); /* Accent border for the control */
-    vertical-align: middle; /* Align with other nav items */
-}
+    :root .ios-toggle input[type="checkbox"]:not(:checked) .ios-toggle-thumb {
+        background-color: #FFFFFF;
+        border: 0.5px solid rgba(0,0,0,0.04);
+        box-shadow: 0px 3px 8px rgba(0,0,0,0.15), 0px 3px 1px rgba(0,0,0,0.06);
+    }
 
-.theme-light .segmented-control {
-    background-color: #EFEFF4; /* Lighter background for light theme */
-    border: 1px solid #D1D1D6;
-}
+    /* Dark Theme 'Off' State */
+    .theme-dark .ios-toggle input[type="checkbox"]:not(:checked) + .ios-toggle-track {
+        background-color: #39393D; /* iOS dark mode off-track color */
+    }
+
+    .theme-dark .ios-toggle input[type="checkbox"]:not(:checked) .ios-toggle-thumb {
+        background-color: #6B6B6B; /* Adjusted for visibility on dark track */
+        border: none;
+        box-shadow: 0px 3px 8px rgba(0,0,0,0.3), 0px 3px 1px rgba(0,0,0,0.12);
+    }
 
 
-.segment-button {
-    padding: 6px 12px; /* Adjust padding for size */
-    font-size: 0.8rem; /* Match header nav item font size */
-    font-weight: 500;
-    color: var(--theme-header-text-color, #FFFFFF); /* Default text color */
-    background-color: transparent; /* No background by default */
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    text-align: center;
-    flex-grow: 1; /* Make buttons take equal space if needed */
-}
+    /* 'On' State (checkbox is checked) */
+    .ios-toggle input[type="checkbox"]:checked + .ios-toggle-track {
+        background-color: #34C759; /* iOS 'on' color (green) */
+    }
 
-.theme-light .segment-button {
-    color: #000000;
-}
-.theme-dark .segment-button {
-    color: #FFFFFF;
-}
+    /* Light Theme 'On' State Thumb */
+    :root .ios-toggle input[type="checkbox"]:checked + .ios-toggle-track .ios-toggle-thumb {
+        transform: translateX(19px); /* (width - thumb_width - 2*padding_thumb) = 52 - 26 - 2*3 = 17, adjusted to 19 for visual centering */
+        background-color: #FFFFFF;
+        border: 0.5px solid rgba(0,0,0,0.04);
+        box-shadow: 0px 3px 8px rgba(0,0,0,0.15), 0px 3px 1px rgba(0,0,0,0.06);
+    }
 
-
-/* Style for the active segment */
-.segment-button.active {
-    background-color: var(--theme-accent-color, #FFFFFF); /* Active segment background */
-    color: var(--theme-header-bg-color, #080808); /* Text color for active segment, contrast with accent */
-    border-radius: 6px; /* Slightly smaller radius for the inner active button */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.theme-light .segment-button.active {
-    background-color: #FFFFFF; /* White active segment for light theme */
-    color: #000000; /* Black text on active segment */
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.05);
-}
-.theme-dark .segment-button.active {
-    background-color: var(--theme-accent-color, #34C759); /* Use accent color (e.g. green) or a specific dark theme active color */
-    color: var(--theme-header-bg-color, #080808); /* Ensure contrast */
-}
+    /* Dark Theme 'On' State Thumb */
+    /* Same transform, potentially different thumb color if needed, but white usually works */
+    .theme-dark .ios-toggle input[type="checkbox"]:checked + .ios-toggle-track .ios-toggle-thumb {
+        transform: translateX(19px);
+        background-color: #FFFFFF;
+        border: 0.5px solid rgba(0,0,0,0.04); /* Consistent with light theme 'on' */
+        box-shadow: 0px 3px 8px rgba(0,0,0,0.15), 0px 3px 1px rgba(0,0,0,0.06);
+    }
 
 
-/* Remove extra borders if buttons are direct children */
-.segment-button + .segment-button {
-    /* No explicit border between them, the background of parent provides separation if padding is used,
+    /* Focus styles for accessibility */
+    .ios-toggle input[type="checkbox"]:focus-visible + .ios-toggle-track {
+        outline: 2px solid var(--theme-accent-color, #00BFA5);
+        outline-offset: 2px;
+    }
+
+    .ios-toggle input[type="checkbox"]:focus:not(:focus-visible) + .ios-toggle-track {
+        outline: none;
+    }
+
+    /* Adjustments for placement in header nav */
+    header nav .ios-toggle {
+        margin-left: 0.5rem; /* Consistent with other nav items */
+        margin-right: 0.5rem;
+    }
+
+    /* iOS-style Segmented Control for Language Switcher */
+    .segmented-control {
+        display: inline-flex;
+        border-radius: 8px; /* iOS-like rounded corners for the whole control */
+        background-color: var(--theme-header-bg-color, #080808); /* Default to darkish, assuming header context */
+        padding: 2px; /* Small padding to create border effect around buttons */
+        overflow: hidden; /* Ensure children conform to rounded corners */
+        border: 1px solid var(--theme-accent-color, #FFFFFF); /* Accent border for the control */
+        vertical-align: middle; /* Align with other nav items */
+    }
+
+    .theme-light .segmented-control {
+        background-color: #EFEFF4; /* Lighter background for light theme */
+        border: 1px solid #D1D1D6;
+    }
+
+
+    .segment-button {
+        padding: 6px 12px; /* Adjust padding for size */
+        font-size: 0.8rem; /* Match header nav item font size */
+        font-weight: 500;
+        color: var(--theme-header-text-color, #FFFFFF); /* Default text color */
+        background-color: transparent; /* No background by default */
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        text-align: center;
+        flex-grow: 1; /* Make buttons take equal space if needed */
+    }
+
+    .theme-light .segment-button {
+        color: #000000;
+    }
+
+    .theme-dark .segment-button {
+        color: #FFFFFF;
+    }
+
+
+    /* Style for the active segment */
+    .segment-button.active {
+        background-color: var(--theme-accent-color, #FFFFFF); /* Active segment background */
+        color: var(--theme-header-bg-color, #080808); /* Text color for active segment, contrast with accent */
+        border-radius: 6px; /* Slightly smaller radius for the inner active button */
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .theme-light .segment-button.active {
+        background-color: #FFFFFF; /* White active segment for light theme */
+        color: #000000; /* Black text on active segment */
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .theme-dark .segment-button.active {
+        background-color: var(--theme-accent-color, #34C759); /* Use accent color (e.g. green) or a specific dark theme active color */
+        color: var(--theme-header-bg-color, #080808); /* Ensure contrast */
+    }
+
+
+    /* Remove extra borders if buttons are direct children */
+    .segment-button + .segment-button {
+        /* No explicit border between them, the background of parent provides separation if padding is used,
        or they blend if no padding in parent and no margin on buttons.
        iOS often has a very thin divider. Let's add one. */
-    margin-left: 0; /* Remove space if any, rely on visual separation */
-}
+        margin-left: 0; /* Remove space if any, rely on visual separation */
+    }
 
-/* Optional: thin divider for light theme if not using parent padding for separation */
-/*
+    /* Optional: thin divider for light theme if not using parent padding for separation */
+    /*
 .theme-light .segment-button:not(.active) + .segment-button:not(.active)::before {
     content: '';
     position: absolute;
@@ -1629,8 +1681,8 @@ header nav .ios-toggle {
     background-color: #C7C7CC;
 }
 */
-/* For dark theme, divider might be different or not needed if contrast is good */
-/*
+    /* For dark theme, divider might be different or not needed if contrast is good */
+    /*
 .theme-dark .segment-button:not(.active) + .segment-button:not(.active)::before {
      content: '';
     position: absolute;
@@ -1643,8 +1695,8 @@ header nav .ios-toggle {
 */
 
 
-/* Adjustments for placement in header nav */
-header nav .segmented-control {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-}
+    /* Adjustments for placement in header nav */
+    header nav .segmented-control {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }

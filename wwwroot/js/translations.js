@@ -76,7 +76,7 @@ const translations = {
         "section2_typing_part2": "Мы понимаем ваши потребности и предлагаем идеальные решения.",
 
         // --- OUTSOURCE SECTION (ID: outsorce) ---
-        "outsource_section_title": "Удаленная поддержка(Outsorce)",
+        "outsource_section_title": "Удаленная поддержка",
         "outsource_what_is_included_title": "Что входит в услугу?",
         "outsource_include_item1": "Мониторинг и диагностика систем в режиме реального времени.",
         "outsource_include_item2": "Оперативное устранение сбоев и неполадок.",
