@@ -31,6 +31,7 @@
                class="form-control"
                
                data-error="Пожалуйста, введите имя"
+               data-translate-key-error="support_error_client_name_required"
                oninvalid="setCustomError(this)"
                oninput="clearCustomError(this)" />
         
@@ -47,6 +48,7 @@
                required
                class="form-control"
                data-error="Пожалуйста, введите Название Компании"
+               data-translate-key-error="support_error_company_name_required"
                oninvalid="setCustomError(this)"
                oninput="clearCustomError(this)" />
         <div class="tooltip-popup"></div>
@@ -61,6 +63,7 @@
                class="form-control"
                pattern="^\+?[0-9\s\-]{7,15}$"
                data-error="Пожалуйста, введите Телефонный номер"
+               data-translate-key-error="support_error_phone_number_required"
                oninvalid="setCustomError(this)"
                oninput="clearCustomError(this)" />
         <div class="tooltip-popup"></div>
@@ -74,6 +77,7 @@
                required
                class="form-control"
                data-error="Пожалуйста, введите Email"
+               data-translate-key-error="support_error_email_required"
                oninvalid="setCustomError(this)"
                oninput="clearCustomError(this)" />
         <div class="tooltip-popup"></div>
@@ -86,6 +90,7 @@
                   maxlength="600"
                   required
                   data-error="Пожалуйста, введите сообщение"
+                  data-translate-key-error="support_error_message_required"
                   oninvalid="setCustomError(this)"
                   oninput="clearCustomError(this)"></textarea>
         <div class="tooltip-popup"></div>
@@ -101,6 +106,7 @@
                class="form-control"
                required
                data-error="Введите правильный ответ"
+               data-translate-key-error="support_error_captcha_required"
                oninvalid="setCustomError(this)"
                oninput="clearCustomError(this)" />
 

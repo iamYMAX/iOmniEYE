@@ -67,6 +67,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         console.log(`[LANG_INIT] Total elements processed for translation: ${translatedCount}`);
 
+        // MODIFICATION STARTS HERE: Add new loop for data-error attributes
+        console.log(`[LANG_INIT] Applying translations for data-error attributes for language: ${targetLang}`);
+        let errorTranslatedCount = 0;
+        document.querySelectorAll('[data-translate-key-error]').forEach(element => {
+            const errorKey = element.getAttribute('data-translate-key-error');
+            const translatedErrorMessage = translations[targetLang][errorKey];
+            if (translatedErrorMessage !== undefined) {
+                element.dataset.error = translatedErrorMessage; // Updates data-error attribute
+                errorTranslatedCount++;
+                // console.log(`[LANG_INIT] Translated data-error for key "${errorKey}" to: "${translatedErrorMessage.substring(0, 30)}..."`);
+            } else {
+                console.warn(`[LANG_INIT] Error translation key "${errorKey}" not found for language "${targetLang}".`);
+            }
+        });
+        console.log(`[LANG_INIT] Total data-error attributes processed for translation: ${errorTranslatedCount}`);
+        // MODIFICATION ENDS HERE
+
         //MODIFIED: Call the updated state function
         updateLanguageSwitcherState(targetLang);
 

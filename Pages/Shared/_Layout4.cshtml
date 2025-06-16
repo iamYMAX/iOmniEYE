@@ -3,81 +3,50 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OmniEye - Комплексные IT Решения</title>
+    <title>@ViewData["Title"] - IOmniEYE</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/grotem_style.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/iOmniEYE.styles.css" asp-append-version="true" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/call-icon.css" />
 
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
 </head>
-<body class="bg-gray-900 text-gray-100 grotem-body">
-    <script>
-        (function () {
-            const theme = localStorage.getItem('themePreference');
-            if (theme === 'dark') {
-                document.body.classList.add('theme-dark');
-            } else {
-                document.body.classList.remove('theme-dark'); // Explicitly remove if light is preferred
-            }
-        })();
-    </script>
-    <!-- Navbar -->
-    <header class="bg-gray-800 text-white py-2 fixed top-0 w-full z-50">
-        <div class="container mx-auto flex justify-between items-center px-4">
-            <div class="flex items-center">
-                <a class="navbar-brand text-lg sm:text-xl md:text-2xl hover:text-burgundy" asp-area="" asp-page="/Index">IOmniEYE</a>
-            </div>
-
-            <nav class="relative">
-                <a href="/#home" class="mx-2 text-sm sm:text-base hover:text-burgundy" data-translate-key="nav_home">Главная</a>
-
-                <div class="inline-block relative group">
-                    <a href="/#contact" class="mx-2 text-sm sm:text-base hover:text-burgundy" data-translate-key="nav_contact_us">
-                        Связаться с нами
-
-
-                    </a>
-                    <!-- Выпадающее меню -->
-
-                </div>
-
-                <a href="/#about" class="mx-2 text-sm sm:text-base hover:text-burgundy" data-translate-key="nav_about_us">О Нас</a>
-                <a class="mx-2 text-sm sm:text-base hover:text-burgundy" asp-page="/Support" data-translate-key="nav_write_to_support">Написать в тех поддержку</a>
-                <label class="ios-toggle" for="themeSwitcherInput" title="Switch theme" aria-label="Theme switcher">
-                    <input type="checkbox" id="themeSwitcherInput">
-                    <span class="ios-toggle-track">
-                        <span class="ios-toggle-thumb"></span>
-                    </span>
-                </label>
-                <div class="segmented-control" id="languageSegmentedControl">
-                    <button data-lang="ru" class="segment-button" aria-pressed="false" data-translate-key="nav_lang_ru">RU</button>
-                    <button data-lang="en" class="segment-button" aria-pressed="false" data-translate-key="nav_lang_en">EN</button>
-                </div>
-            </nav>
+@RenderSection("Scripts", required: false)
+<body class="grotem-body">
+            <script>
+              (function() {
+                const theme = localStorage.getItem('themePreference');
+                if (theme === 'dark') {
+                  document.body.classList.add('theme-dark');
+                } else {
+                  document.body.classList.remove('theme-dark'); // Explicitly remove if light is preferred
+                }
+              })();
+            </script>
+    <header>
+        <div style="text-align: right; padding: 1rem;" id="_LayoutSimpleHeader"> <!-- Re-using ID from _Layout.cshtml for consistent styling -->
+            <button id="themeSwitcherButton" style="background: none; border: none; cursor: pointer;">Switch Theme</button>
         </div>
     </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
 
 
-
-    @RenderBody()
-
-
-
-   
-
-
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/translations.js" asp-append-version="true"></script>
-    <script src="~/js/language_init.js" asp-append-version="true"></script>
-    <script src="~/js/site2.js" asp-append-version="true"></script>
-    <script src="~/js/site3.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/theme_switcher.js" asp-append-version="true"></script>
-    <link rel="stylesheet" href="~/css/call-icon.css" />
-    @await RenderSectionAsync("Scripts", required: false)
+    <div id="successPopup" class="popup-message">✅ Заявка успешно отправлена!</div>
+
 </body>
+
 </html>

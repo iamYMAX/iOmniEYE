@@ -178,7 +178,14 @@ const translations = {
         "support_label_company_name": "Название компании",
         "support_label_phone_number": "Телефон",
         "support_label_email": "Электронная почта",
-        "support_label_message": "Текст заявки"
+        "support_label_message": "Текст заявки",
+        // --- SUPPORT PAGE ERRORS ---
+        "support_error_client_name_required": "Пожалуйста, введите имя",
+        "support_error_company_name_required": "Пожалуйста, введите Название Компании",
+        "support_error_phone_number_required": "Пожалуйста, введите Телефонный номер",
+        "support_error_email_required": "Пожалуйста, введите Email",
+        "support_error_message_required": "Пожалуйста, введите сообщение",
+        "support_error_captcha_required": "Введите правильный ответ"
     },
     en: {
         // --- NAVIGATION (Example) ---
@@ -358,6 +365,13 @@ const translations = {
         "support_label_company_name": "Company Name",
         "support_label_phone_number": "Phone Number",
         "support_label_email": "Email",
-        "support_label_message": "Message"
+        "support_label_message": "Message",
+        // --- SUPPORT PAGE ERRORS ---
+        "support_error_client_name_required": "Please enter your name",
+        "support_error_company_name_required": "Please enter the Company Name",
+        "support_error_phone_number_required": "Please enter a phone number",
+        "support_error_email_required": "Please enter an email address",
+        "support_error_message_required": "Please enter your message",
+        "support_error_captcha_required": "Please enter the correct answer"
     }
 };

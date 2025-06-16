@@ -767,7 +767,7 @@ body.grotem-body.text-gray-100 {
 }
 
 .border-top {
-    margin-bottom: -10px;
+    margin-bottom: 20px;
 }
 
 .tag-cloud span {
@@ -1147,18 +1147,12 @@ body.grotem-body.text-gray-100 {
         top: 85%;
     }
 }
-@media (max-width: 580px) {
-    #banner {
-        /* min-height: 50vh; */ /* Effectively overridden by auto height from 767px rule if not specified here */
-        padding-top: 5rem !important;
-        padding-bottom: 5rem !important;
-    }
-}
+
 @media (max-width: 480px) {
     #banner {
         /* min-height: 50vh; */ /* Effectively overridden by auto height from 767px rule if not specified here */
-        padding-top: 8rem !important;
-        padding-bottom: 1rem !important;
+        padding-top: 4rem !important;
+        padding-bottom: 2rem !important;
     }
 
     #banner .bg-black.bg-opacity-50 {
