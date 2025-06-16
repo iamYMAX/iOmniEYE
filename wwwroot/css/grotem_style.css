@@ -1158,7 +1158,7 @@ body.grotem-body.text-gray-100 {
     @media (max-width: 480px) {
         #banner {
             /* min-height: 50vh; */ /* Effectively overridden by auto height from 767px rule if not specified here */
-            padding-top: 8rem !important;
+            padding-top: 9rem !important;
             padding-bottom: 2rem !important;
         }
 
