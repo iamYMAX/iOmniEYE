@@ -172,7 +172,13 @@ const translations = {
         // --- SUCCESS PAGE ---
         "success_page_title": "Спасибо за вашу заявку!",
         "success_page_message": "Мы свяжемся с вами в ближайшее время.",
-        "success_back_button_text": "Назад"
+        "success_back_button_text": "Назад",
+        // --- SUPPORT PAGE LABELS ---
+        "support_label_client_name": "Имя клиента",
+        "support_label_company_name": "Название компании",
+        "support_label_phone_number": "Телефон",
+        "support_label_email": "Электронная почта",
+        "support_label_message": "Текст заявки"
     },
     en: {
         // --- NAVIGATION (Example) ---
@@ -346,6 +352,12 @@ const translations = {
         // --- SUCCESS PAGE ---
         "success_page_title": "Thank you for your submission!",
         "success_page_message": "We will contact you shortly.",
-        "success_back_button_text": "Back"
+        "success_back_button_text": "Back",
+        // --- SUPPORT PAGE LABELS ---
+        "support_label_client_name": "Client Name",
+        "support_label_company_name": "Company Name",
+        "support_label_phone_number": "Phone Number",
+        "support_label_email": "Email",
+        "support_label_message": "Message"
     }
 };

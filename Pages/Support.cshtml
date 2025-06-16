@@ -22,7 +22,7 @@
     <!--<div asp-validation-summary="All" class="text-danger"></div>-->
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group tooltip-wrapper">
-        <label asp-for="ClientRequest.ClientName"></label>
+        <label asp-for="ClientRequest.ClientName" data-translate-key="support_label_client_name"></label>
         <input type="text"
                id="ClientRequest_ClientName"
                name="ClientRequest.ClientName"
@@ -39,7 +39,7 @@
     </div>
     
     <div class="form-group tooltip-wrapper">
-        <label asp-for="ClientRequest.CompanyName"></label>
+        <label asp-for="ClientRequest.CompanyName" data-translate-key="support_label_company_name"></label>
         <input type="text"
                id="ClientRequest_CompanyName"
                name="ClientRequest.CompanyName"
@@ -53,7 +53,7 @@
     </div>
     
     <div class="form-group tooltip-wrapper">
-        <label asp-for="ClientRequest.PhoneNumber"></label>
+        <label asp-for="ClientRequest.PhoneNumber" data-translate-key="support_label_phone_number"></label>
         <input type="tel"
                id="ClientRequest_PhoneNumber"
                name="ClientRequest.PhoneNumber"
@@ -67,7 +67,7 @@
     </div>
     
     <div class="form-group tooltip-wrapper">
-        <label asp-for="ClientRequest.Email"></label>
+        <label asp-for="ClientRequest.Email" data-translate-key="support_label_email"></label>
         <input type="email"
                id="ClientRequest_Email"
                name="ClientRequest.Email"
@@ -80,7 +80,7 @@
     </div>
 
     <div class="form-group tooltip-wrapper">
-        <label asp-for="ClientRequest.Message"></label>
+        <label asp-for="ClientRequest.Message" data-translate-key="support_label_message"></label>
         <textarea asp-for="ClientRequest.Message"
                   class="form-control"
                   maxlength="600"
