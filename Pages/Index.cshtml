@@ -45,20 +45,23 @@
 
 
 <script src="https://unpkg.com/alpinejs" defer></script>
-<!-- Banner Section -->
-<section id="banner" class="relative bg-cover bg-center flex items-center justify-center" style="background-image: url('/resource/baner3.jpg'); height: 100vh;">
-    <div class="container mx-auto text-center">
+<!-- Banner Video Section -->
+<section id="banner-video-container" class="relative flex items-center justify-center" style="height: 100vh;">
+    <video id="banner-video" class="absolute top-0 left-0 w-full h-full object-cover" autoplay muted playsinline loop="false" src="/resource/banner_video.mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="container mx-auto text-center relative z-10"> <!-- Added z-10 here -->
         <div class="bg-black bg-opacity-50 p-8 rounded-lg w-full">
             <h2 class="text-4xl text-white banner-text" id="banner-text" data-translate-key="banner_title">Ваши IT, наш опыт</h2>
             <p class="mt-4 text-lg text-white banner-text" id="banner-subtext" data-translate-key="banner_subtitle">Доверьте OmniEye внедрение надежных и инновационных IT-решений.</p>
             <div class="tag-cloud" style="margin-top: 20px;">
-     <span data-weight="7" onclick="window.location.href='#consulting'">IT Consulting</span>
-     <span data-weight="13" onclick="window.location.href='#outsorce'" >IT Outsource</span>
-     <span data-weight="5">Web Development & App Development</span>
-     <span data-weight="4">IP Telephony</span>
-     <span data-weight="6">СКС Видео Наблюдение</span>
-     <span data-weight="9">Network & Servers</span>
-     <span data-weight="4">Optimization System</span>
+                <span data-weight="7" onclick="window.location.href='#consulting'">IT Consulting</span>
+                <span data-weight="13" onclick="window.location.href='#outsorce'">IT Outsource</span>
+                <span data-weight="5">Web Development & App Development</span>
+                <span data-weight="4">IP Telephony</span>
+                <span data-weight="6">СКС Видео Наблюдение</span>
+                <span data-weight="9">Network & Servers</span>
+                <span data-weight="4">Optimization System</span>
             </div>
         </div>
     </div>
