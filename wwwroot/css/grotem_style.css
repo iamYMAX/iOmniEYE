@@ -437,6 +437,8 @@ section {
 
 /* Banner Section */
 #banner {
+    position: relative; /* Ensure it's a positioning context for the video */
+    overflow: hidden; /* Prevent video spill during animations */
     min-height: 100vh; /* Adjust as needed */
     height: 100vh;
     display: flex; /* For centering content */
@@ -463,6 +465,17 @@ section {
 }
 #banner p {
     font-size: 1.2rem;
+}
+
+/* Video element within the banner */
+#bannerVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures video covers the area, cropping if necessary */
+    z-index: -1; /* Places video behind other banner content */
 }
 
 /* Home Section (Welcome Text & Typing Animation) */
